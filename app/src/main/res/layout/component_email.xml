@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         style="@style/fieldsLogin"
-        android:layout_marginBottom="@dimen/dimen_40"
+        android:layout_marginBottom="@dimen/dimen_50"
         >
         <TextView
             android:id="@+id/emailTitle"

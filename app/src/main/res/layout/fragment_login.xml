@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.LoginActivity"
+    tools:context=".views.MainActivity"
     android:background="@color/yellow_200"
     >
 
@@ -29,14 +29,15 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/fields"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_100"
         >
         <include
             android:layout_width="wrap_content"
@@ -50,15 +51,44 @@
             layout="@layout/component_password"
             />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/goSignup"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clickHere"
+                android:textColor="@color/blue_200"
+                android:layout_marginStart="@dimen/dimen_5"
+                />
+        </LinearLayout>
+
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login"
+            android:textStyle="bold"
             android:textColor="@color/black_200"
-            android:paddingHorizontal="@dimen/dimen_40"
-            android:layout_marginTop="@dimen/dimen_20"
-
+            android:paddingHorizontal="@dimen/dimen_50"
+            android:layout_marginTop="@dimen/dimen_40"
+            />
+        <Button
+            android:id="@+id/btnSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup"
+            android:textStyle="bold"
+            android:textColor="@color/black_200"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
