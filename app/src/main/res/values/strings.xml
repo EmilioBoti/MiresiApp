@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MIRESI</string>
+    <string name="emailTitle">Email</string>
+    <string name="passwordTitle">Password</string>
+    <string name="goSignup">Have you forgotten your password?</string>
+    <string name="clickHere">Click here</string>
+    <string name="login">Login</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="fieldsLogin">
+        <item name="android:layout_marginStart">@dimen/dimen_40</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_40</item>
+    </style>
+</resources>
