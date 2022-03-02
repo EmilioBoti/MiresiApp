@@ -10,7 +10,7 @@ import android.widget.Button
 import com.example.miresiapp.R
 import com.example.miresiapp.businessLogic.login.ILoginInteractor
 import com.example.miresiapp.businessLogic.login.LoginBusinessLogic
-import com.example.miresiapp.views.CityActivity
+import com.example.miresiapp.views.MainBaseActivity
 
 class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.PresenterView {
     private lateinit var btnLogin: Button
@@ -26,7 +26,6 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
 
         btnLogin.setOnClickListener(this)
         btnSignUp.setOnClickListener(this)
-
     }
 
     private fun init(view: View) {
@@ -50,7 +49,7 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
     }
 
     override fun login() {
-        Intent(activity?.applicationContext, CityActivity::class.java).apply {
+        Intent(activity?.applicationContext, MainBaseActivity::class.java).apply {
             startActivity(this)
             activity?.finish()
         }

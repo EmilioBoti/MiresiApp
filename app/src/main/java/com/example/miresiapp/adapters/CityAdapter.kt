@@ -33,7 +33,11 @@ class CityAdapter(private val listCity: MutableList<City>,private val context: C
 
         fun bindData(city: City) {
             nameCity.text = city.name
-            Picasso.get().load(city.image).into(image)
+            Picasso.get().load(city.image)
+                .resize(200, 200)
+                .centerCrop()
+                .into(image)
+
             listener.let {
                 if (absoluteAdapterPosition != RecyclerView.NO_POSITION)
                     itemView.setOnClickListener {

@@ -1,12 +1,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_1"
+        android:id="@+id/pageCity"
         android:enabled="true"
         android:icon="@drawable/location_on_24"
-        android:title="@string/location"/>
+        android:title="@string/city"/>
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/pageRoom"
         android:enabled="true"
         android:icon="@drawable/bedroom_parent_24"
         android:title="@string/bedroom"/>
+    <item
+        android:id="@+id/pageForum"
+        android:enabled="true"
+        android:icon="@drawable/forum_24"
+        android:title="@string/forum"/>
+    <item
+        android:id="@+id/pageProfile"
+        android:enabled="true"
+        android:icon="@drawable/person_24"
+        android:title="@string/profile"/>
 </menu>
