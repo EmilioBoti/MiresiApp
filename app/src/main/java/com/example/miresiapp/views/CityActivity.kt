@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
@@ -43,7 +44,8 @@ class CityActivity : AppCompatActivity(), ICityInter.ViewPresenter, OnClickItemV
         this.listCities = listCities
         cityAdapter = CityAdapter(listCities, this, this)
         recyclerView.apply {
-            layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+            layoutManager = GridLayoutManager(applicationContext, 2, GridLayoutManager.VERTICAL, false)
+            //layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
             adapter = cityAdapter
         }
     }

@@ -10,4 +10,6 @@
     <string name="signup">Sign up</string>
     <string name="confirmpassTitle">Confirm Password</string>
     <string name="name">Name</string>
+    <string name="location">location</string>
+    <string name="bedroom">bedroom</string>
 </resources>
