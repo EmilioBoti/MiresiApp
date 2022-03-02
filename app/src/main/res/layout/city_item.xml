@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:contentPadding="@dimen/dimen_20"
+        android:layout_margin="@dimen/dimen_5"
+
+        >
+        <TextView
+            android:id="@+id/nameCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textSize="@dimen/dimenst_20"
+            android:textColor="@color/black_200"
+            android:layout_gravity="center"
+            />
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
