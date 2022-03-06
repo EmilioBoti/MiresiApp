@@ -3,23 +3,30 @@ package com.example.miresiapp.businessLogic.city
 import com.example.miresiapp.models.City
 import com.example.miresiapp.models.DataProvider
 import com.google.gson.Gson
+import com.example.miresiapp.businessLogic.city.ICityInter.Presenter
+import com.example.miresiapp.businessLogic.city.ICityInter.ViewPresenter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class CityBusinessLogic(private val viewer: ICityInter.ViewPresenter,private val model: DataProvider): ICityInter.Presenter {
+class CityBusinessLogic(private val viewer: ViewPresenter,private val model: DataProvider): Presenter {
     private lateinit var listCities: MutableList<City>
     private lateinit var gson: Gson
 
-     override suspend fun getListCities() {
+     override fun getListCities() {
          gson = Gson()
          listCities = mutableListOf()
-         val obj = model.reqListCities()
 
-         val list = gson.fromJson(obj, MutableList::class.java)
+         GlobalScope.launch(Dispatchers.Main){
+             val obj = model.reqListCities()
+             val list = gson.fromJson(obj, MutableList::class.java)
 
-         list.forEach { city ->
-             val c = gson.toJson(city)
-             val objCity: City = gson.fromJson(c, City::class.java)
-             listCities.add(objCity)
+             list.forEach { city ->
+                 val c = gson.toJson(city)
+                 val objCity: City = gson.fromJson(c, City::class.java)
+                 listCities.add(objCity)
+             }
+             viewer.setListCities(listCities)
          }
-         viewer.setListCities(listCities)
     }
 }

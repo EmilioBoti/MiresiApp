@@ -15,10 +15,11 @@
         <entry key="app/src/main/res/drawable/location_on_24.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/login_input_corner.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_city.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/activity_dash_board.xml" value="0.22348141432456936" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22327898550724637" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.22348141432456936" />
-        <entry key="app/src/main/res/layout/activity_main_base.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_main_base.xml" value="0.25" />
         <entry key="app/src/main/res/layout/city_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/component_confirm_pass.xml" value="0.22327898550724637" />
         <entry key="app/src/main/res/layout/component_email.xml" value="0.335" />

@@ -13,10 +13,13 @@
         android:theme="@style/Theme.MiresiApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".views.MainBaseActivity"
+            android:name=".views.activities.DashBoardActivity"
             android:exported="false" />
         <activity
-            android:name=".views.MainActivity"
+            android:name=".views.activities.MainBaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

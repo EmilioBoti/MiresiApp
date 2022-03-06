@@ -7,7 +7,7 @@ interface ICityInter {
         fun setListCities(listCities: MutableList<City>)
     }
     interface Presenter{
-        suspend fun getListCities()
+        fun getListCities()
     }
     interface ModelPresenter{
         suspend fun reqListCities(): String

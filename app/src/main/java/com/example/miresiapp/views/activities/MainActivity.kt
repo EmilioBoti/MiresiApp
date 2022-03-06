@@ -1,4 +1,4 @@
-package com.example.miresiapp.views
+package com.example.miresiapp.views.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
