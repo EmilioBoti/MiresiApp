@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
@@ -16,10 +14,6 @@ import com.example.miresiapp.businessLogic.city.ICityInter
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.City
 import com.example.miresiapp.models.DataProvider
-import com.example.miresiapp.views.fragments.CityFragment
-import com.example.miresiapp.views.fragments.RoomFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.coroutines.launch
 
 class MainBaseActivity : AppCompatActivity(), ICityInter.ViewPresenter, OnClickItemView, View.OnClickListener {
     private lateinit var listCities: MutableList<City>

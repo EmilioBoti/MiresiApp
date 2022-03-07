@@ -60,6 +60,7 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
     }
 
     override fun login(user: User?) {
+
         Intent(activity?.applicationContext, MainBaseActivity::class.java).apply {
             startActivity(this)
             activity?.finish()
