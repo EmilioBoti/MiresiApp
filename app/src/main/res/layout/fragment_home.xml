@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.fragments.HomeFragment"
+
+    >
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/subTopBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/green_200"
+        >
+
+        <EditText
+            android:id="@+id/searcher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_input_corner"
+            android:drawableEnd="@drawable/search_24"
+            android:layout_margin="@dimen/dimen_10"
+            android:padding="@dimen/dimen_10"
+            android:hint="@string/search"
+            />
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

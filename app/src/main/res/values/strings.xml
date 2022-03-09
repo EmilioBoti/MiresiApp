@@ -23,4 +23,5 @@
     <string name="home">Home</string>
     <string name="wishList">Wish List</string>
     <string name="room">Rooms</string>
+    <string name="recent">Recently Search</string>
 </resources>
