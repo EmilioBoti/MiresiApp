@@ -1,6 +1,7 @@
 package com.example.miresiapp.views.fragments
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
@@ -24,8 +25,9 @@ class HomeFragment : Fragment() {
         searcher = view.findViewById(R.id.searcher)
 
         searcher.setOnClickListener {
+            val ac: Activity = requireActivity()
             Toast.makeText(activity, "${it.id}", Toast.LENGTH_SHORT).show()
-            Intent(activity, SearcherActivity::class.java).apply {
+            Intent(ac, SearcherActivity::class.java).apply {
                 startActivity(this)
             }
         }
