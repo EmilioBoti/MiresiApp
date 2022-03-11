@@ -19,7 +19,9 @@
             android:exported="false" />
         <activity
             android:name=".views.activities.DashBoardActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTop"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +33,7 @@
             android:exported="false" />
         <activity
             android:name=".views.activities.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true"/>
     </application>
 
 </manifest>

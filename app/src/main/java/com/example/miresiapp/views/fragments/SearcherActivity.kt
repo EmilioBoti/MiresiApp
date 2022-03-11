@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.miresiapp.R
 import com.example.miresiapp.adapters.CityAdapter
 import com.example.miresiapp.models.City
+import com.example.miresiapp.views.activities.DashBoardActivity
 
 class SearcherActivity : AppCompatActivity() {
     private lateinit var text1: TextView
@@ -32,7 +33,11 @@ class SearcherActivity : AppCompatActivity() {
                 return true
             }
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Toast.makeText(applicationContext, this@SearcherActivity.text, Toast.LENGTH_SHORT).show()
+                this@SearcherActivity.finish()
+                Intent(applicationContext, DashBoardActivity::class.java).apply {
+                    putExtra("id", 1)
+                    startActivity(this)
+                }
                 //this@SearcherActivity.finish()
                 return true
             }
