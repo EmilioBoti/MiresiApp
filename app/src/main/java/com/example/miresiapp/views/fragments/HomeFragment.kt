@@ -8,10 +8,11 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import com.example.miresiapp.R
 
 class HomeFragment : Fragment() {
-    private lateinit var searcher: EditText
+    private lateinit var searcher: SearchView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -24,13 +25,18 @@ class HomeFragment : Fragment() {
 
         searcher = view.findViewById(R.id.searcher)
 
-        searcher.setOnClickListener {
+        searcher.setOnSearchClickListener {
             val ac: Activity = requireActivity()
-            Toast.makeText(activity, "${it.id}", Toast.LENGTH_SHORT).show()
             Intent(ac, SearcherActivity::class.java).apply {
                 startActivity(this)
             }
         }
+        /*searcher.setOnClickListener {
+            val ac: Activity = requireActivity()
+            Intent(ac, SearcherActivity::class.java).apply {
+                startActivity(this)
+            }
+        }*/
     }
 
 

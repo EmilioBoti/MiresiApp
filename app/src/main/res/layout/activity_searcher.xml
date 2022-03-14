@@ -24,16 +24,28 @@
             android:layout_marginEnd="@dimen/dimen_10"
             android:clickable="true"
             />
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searcher"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/login_input_corner"
-                android:drawableEnd="@drawable/search_24"
-                android:layout_margin="@dimen/dimen_10"
-                android:hint="@string/search"
-                />
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searcher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_input_corner"
+            android:drawableEnd="@drawable/search_24"
+            android:layout_margin="@dimen/dimen_10"
+            android:hint="@string/search"
+            android:focusable="true"
+            >
+
+        </androidx.appcompat.widget.SearchView>
     </com.google.android.material.appbar.MaterialToolbar>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/suggestContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/subTopBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
     <TextView
         android:id="@+id/text1"
         android:layout_width="wrap_content"
@@ -44,7 +56,7 @@
         android:textSize="@dimen/dimenst_30"
         android:layout_marginTop="@dimen/dimen_40"
         android:layout_marginStart="@dimen/dimenst_30"
-        app:layout_constraintTop_toBottomOf="@id/subTopBar"
+        app:layout_constraintTop_toBottomOf="@id/suggestContainer"
         app:layout_constraintStart_toStartOf="parent"
         />
 

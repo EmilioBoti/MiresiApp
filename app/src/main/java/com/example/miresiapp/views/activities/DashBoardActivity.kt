@@ -13,13 +13,12 @@ import com.google.android.material.navigation.NavigationBarView
 
 class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
     private lateinit var bottomNavigationView: BottomNavigationView
-    private var cityId: Int? = null
+    private var cityId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash_board)
 
-        //cityId = intent.extras?.getInt("id")
     }
 
     override fun onStart() {
@@ -37,10 +36,21 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
+        checkFrag(intent)
+    }
+
+    private fun checkFrag(intent: Intent?){
+        cityId = intent?.extras?.getString("city")
+
         cityId.let {
-            setFragmentView(ResidencesFragment())
+            val data = Bundle().apply {
+                putString("city", it!!)
+            }
+            val resi = ResidencesFragment().apply {
+                arguments = data
+            }
+            setFragmentView(resi)
         }
-        //Toast.makeText(applicationContext, "old activity: ${intent?.getd}", Toast.LENGTH_SHORT).show()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

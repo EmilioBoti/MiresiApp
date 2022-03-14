@@ -20,4 +20,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="dimenst_30">30sp</dimen>
+    <dimen name="dimen_400">400dp</dimen>
+    <dimen name="dimenst_15">15sp</dimen>
+    <dimen name="dimen_4">4dp</dimen>
 </resources>

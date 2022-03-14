@@ -30,14 +30,14 @@ class CityAdapter(private val listCity: MutableList<City>,private val context: C
 
     class CityViewHolder(itemView: View,private val listener: OnClickItemView): RecyclerView.ViewHolder(itemView){
         private val nameCity: TextView = itemView.findViewById(R.id.nameCity)
-        private val image: ImageView = itemView.findViewById(R.id.imgCity)
+        //private val image: ImageView = itemView.findViewById(R.id.imgCity)
 
         fun bindData(city: City) {
             nameCity.text = city.name
-            Picasso.get().load(city.image)
+            /*Picasso.get().load(city.image)
                 .resize(200, 200)
                 .centerCrop()
-                .into(image)
+                .into(image)*/
 
             listener.let {
                 if (absoluteAdapterPosition != RecyclerView.NO_POSITION)
