@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ListAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
@@ -12,7 +13,7 @@ import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.City
 import com.squareup.picasso.Picasso
 
-class CityAdapter(private val listCity: MutableList<City>,private val context: Context, val listener: OnClickItemView): RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
+class CityAdapter(private val listCity: MutableList<City>,private val context: Context,val listener: OnClickItemView): RecyclerView.Adapter<CityAdapter.CityViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.city_item, null)
@@ -29,14 +30,14 @@ class CityAdapter(private val listCity: MutableList<City>,private val context: C
 
     class CityViewHolder(itemView: View,private val listener: OnClickItemView): RecyclerView.ViewHolder(itemView){
         private val nameCity: TextView = itemView.findViewById(R.id.nameCity)
-        private val image: ImageView = itemView.findViewById(R.id.imgCity)
+        //private val image: ImageView = itemView.findViewById(R.id.imgCity)
 
         fun bindData(city: City) {
             nameCity.text = city.name
-            Picasso.get().load(city.image)
+            /*Picasso.get().load(city.image)
                 .resize(200, 200)
                 .centerCrop()
-                .into(image)
+                .into(image)*/
 
             listener.let {
                 if (absoluteAdapterPosition != RecyclerView.NO_POSITION)

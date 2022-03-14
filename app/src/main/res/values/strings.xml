@@ -6,7 +6,7 @@
     <string name="clickHere">Click here</string>
     <string name="login">Login</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Hello from Resi Fragment!!</string>
     <string name="signup">Sign up</string>
     <string name="confirmpassTitle">Confirm Password</string>
     <string name="name">Name</string>
@@ -20,4 +20,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="search">Search...</string>
+    <string name="home">Home</string>
+    <string name="wishList">Wish List</string>
+    <string name="room">Rooms</string>
+    <string name="recent">Recently Search</string>
 </resources>

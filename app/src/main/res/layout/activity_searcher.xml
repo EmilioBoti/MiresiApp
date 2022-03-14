@@ -4,57 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.activities.MainBaseActivity"
+    tools:context=".views.fragments.SearcherActivity"
     >
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/topBar"
+        android:id="@+id/subTopBar"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/green_200"
         >
-        <TextView
+        <ImageView
+            android:id="@+id/btnGoBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/app_name"
-            android:textSize="@dimen/dimenst_40"
-            android:textColor="@color/black_200"
-            android:textStyle="bold"
+            android:src="@drawable/arrow_back_24"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:clickable="true"
             />
-    </com.google.android.material.appbar.MaterialToolbar>
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/subTopBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/topBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/green_200"
-        >
-
-        <EditText
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searcher"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/login_input_corner"
             android:drawableEnd="@drawable/search_24"
             android:layout_margin="@dimen/dimen_10"
-            android:padding="@dimen/dimen_10"
             android:hint="@string/search"
-            />
-    </com.google.android.material.appbar.MaterialToolbar>
+            android:focusable="true"
+            >
 
+        </androidx.appcompat.widget.SearchView>
+    </com.google.android.material.appbar.MaterialToolbar>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/containerCities"
+        android:id="@+id/suggestContainer"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/subTopBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/recent"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="@dimen/dimenst_30"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:layout_marginStart="@dimen/dimenst_30"
+        app:layout_constraintTop_toBottomOf="@id/suggestContainer"
+        app:layout_constraintStart_toStartOf="parent"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
