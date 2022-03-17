@@ -3,15 +3,12 @@ package com.example.miresiapp.models
 import android.util.Log
 import com.example.miresiapp.SocketCon
 import com.example.miresiapp.utils.Consts
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import com.example.miresiapp.businessLogic.city.ICityInter.ModelPresenter
 import com.example.miresiapp.businessLogic.login.ILoginInteractor.ModelLogin
 import com.google.gson.Gson
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import kotlin.Exception
@@ -38,7 +35,7 @@ class DataProvider: ModelPresenter, ModelLogin {
                 okHttpClient.newCall(request).execute()
             }
             arr = list.body!!.string()
-        }catch (err: Exception){
+        }catch (err: CancellationException){
             Log.e("err", err.toString())
         }
         return arr

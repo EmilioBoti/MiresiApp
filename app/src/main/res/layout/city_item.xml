@@ -8,20 +8,19 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_5"
-        app:cardCornerRadius="@dimen/dimen_1"
-        app:cardElevation="@dimen/dimen_4"
-        >
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginTop="@dimen/dimen_5"
+        android:layout_marginEnd="@dimen/dimen_10"
+        app:cardElevation="@dimen/dimen_0">
 
         <TextView
             android:id="@+id/nameCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textSize="@dimen/dimenst_20"
-            android:textStyle="bold"
-            android:textColor="@color/black_200"
             android:padding="@dimen/dimen_10"
-            />
+            android:text="@string/app_name"
+            android:textColor="@color/black_200"
+            android:textSize="@dimen/dimenst_20"
+            android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

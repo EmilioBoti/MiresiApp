@@ -29,8 +29,6 @@
             android:id="@+id/searcher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/login_input_corner"
-            android:drawableEnd="@drawable/search_24"
             android:layout_margin="@dimen/dimen_10"
             android:hint="@string/search"
             android:focusable="true"
