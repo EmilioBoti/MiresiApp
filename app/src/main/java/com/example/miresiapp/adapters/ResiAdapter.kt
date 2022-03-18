@@ -27,12 +27,14 @@ class ResiAdapter(private val listResi: MutableList<Residence>?, private val lis
 
     class ResiViewHolder(itemView: View, private val listener: OnClickItemView): RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.nameResi)
-       // val img: ImageView = itemView.findViewById(R.id.imgResi)
-        val descrip: TextView = itemView.findViewById(R.id.descripResi)
+        val img: ImageView = itemView.findViewById(R.id.imgResi)
 
         fun binData(residence: Residence?) {
             name.text = residence?.resiName
-            //descrip.text = residence?.description
+            Picasso.get().load(R.drawable.resa_investigadors)
+                .resize(350, 800)
+                .centerCrop()
+                .into(img)
 
             itemView.setOnClickListener {
                 if (RecyclerView.NO_POSITION != absoluteAdapterPosition ){
