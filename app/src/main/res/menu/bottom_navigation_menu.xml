@@ -7,7 +7,7 @@
     <item
         android:id="@+id/pageRoom"
         android:enabled="true"
-        android:icon="@drawable/bedroom_parent_24"
+        android:icon="@drawable/bed_24"
         android:title="@string/room"/>
     <item
         android:id="@+id/pageForum"

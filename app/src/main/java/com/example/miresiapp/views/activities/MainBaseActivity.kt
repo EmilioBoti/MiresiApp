@@ -55,6 +55,11 @@ class MainBaseActivity : AppCompatActivity(), ICityInter.ViewPresenter, OnClickI
         finish()
         Toast.makeText(applicationContext, listCities[pos].name, Toast.LENGTH_SHORT).show()
     }
+
+    override fun addFavoriteItem(pos: Int, view: View) {
+
+    }
+
     override fun onClick(v: View?) {
         Toast.makeText(applicationContext, "ok", Toast.LENGTH_SHORT).show()
     }

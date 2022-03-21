@@ -12,6 +12,9 @@ interface ApiEndPoint {
     @GET("api/v1/residences/{city}")
     fun getResidences(@Path("city") city: String): Call<MutableList<Residence>>
 
+    @GET("api/v1/resi/{id}")
+    fun getSingleResi(@Path("id") id: Int): Call<MutableList<Residence>>
+
     @GET("api/city/c/{name}")
     fun searchCity(@Path("name") name: String): Call<MutableList<City>>
 

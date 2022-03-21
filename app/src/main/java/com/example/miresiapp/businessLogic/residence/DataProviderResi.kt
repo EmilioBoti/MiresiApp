@@ -10,7 +10,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class DataProviderResi: IResi.PresenterModel{
-    private lateinit var residence: MutableList<Residence>
 
     override suspend fun getResiFromCity(city: String): MutableList<Residence>? {
 
@@ -30,7 +29,26 @@ class DataProviderResi: IResi.PresenterModel{
                 null
             }
         }
+        return result
+    }
 
+    override suspend fun getSingleResi(id: Int): MutableList<Residence>? {
+        val result: MutableList<Residence>? = withContext(Dispatchers.IO){
+            try {
+                val retrofit: Retrofit = Retrofit.Builder()
+                    .baseUrl(Consts.HOST)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+
+                val service = retrofit.create(ApiEndPoint::class.java)
+                service.getSingleResi(id).execute().body()
+            }catch (err: Exception){
+                null
+            }
+            catch (err: CancellationException){
+                null
+            }
+        }
         return result
     }
 }

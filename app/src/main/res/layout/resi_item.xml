@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen_300"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,13 +22,13 @@
         <LinearLayout
             android:id="@+id/con"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             >
             <ImageView
                 android:id="@+id/imgResi"
                 android:layout_width="@dimen/dimen_150"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 />
 
             <RelativeLayout
@@ -36,13 +36,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimen_15"
                 >
+
                 <ImageView
                     android:id="@+id/addFavorite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/favorite_border_24"
                     android:layout_alignParentEnd="true"
-                    />
+                    android:src="@drawable/favorite_border_24" />
+
                 <TextView
                     android:id="@+id/nameResi"
                     android:layout_width="wrap_content"
@@ -57,8 +58,41 @@
                     android:textSize="@dimen/dimenst_30"
                     android:textStyle="bold" />
 
-                
+                <ImageView
+                    android:id="@+id/locationIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nameResi"
+                    android:layout_marginStart="@dimen/dimen_15"
+                    android:layout_marginTop="@dimen/dimen_25"
+                    android:layout_marginEnd="@dimen/dimen_5"
+                    android:src="@drawable/location_on_24" />
 
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/locationIcon"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/dimen_25"
+                    android:layout_marginEnd="@dimen/dimen_35"
+                    android:layout_toEndOf="@id/locationIcon"
+                    android:text="@string/name"
+                    android:textColor="@color/black_200"
+                    android:textSize="@dimen/dimenst_15"
+                    android:textStyle="italic"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/accessTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/locationIcon"
+                    android:layout_marginStart="@dimen/dimen_15"
+                    android:layout_marginTop="@dimen/dimen_40"
+                    >
+                </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -16,18 +16,23 @@
         <entry key="app/src/main/res/drawable/chat_24.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/favorite_24.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/favorite_border_24.xml" value="0.2005" />
+        <entry key="app/src/main/res/drawable/fitness_center_24.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.163" />
+        <entry key="app/src/main/res/drawable/local_parking_24.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/location_on_24.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/login_input_corner.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/pool_24.xml" value="0.2005" />
+        <entry key="app/src/main/res/layout/access_to.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_city.xml" value="0.22327898550724637" />
         <entry key="app/src/main/res/layout/activity_dash_board.xml" value="0.22348141432456936" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22327898550724637" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.22348141432456936" />
         <entry key="app/src/main/res/layout/activity_main_base.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_resi_info.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_searcher.xml" value="0.335" />
         <entry key="app/src/main/res/layout/city_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/component_confirm_pass.xml" value="0.22327898550724637" />
@@ -41,6 +46,8 @@
         <entry key="app/src/main/res/layout/fragment_residences.xml" value="0.23300090661831369" />
         <entry key="app/src/main/res/layout/fragment_room.xml" value="0.32348785400390623" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/gym_layout.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/pool_icon_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/resi_item.xml" value="0.335" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2543822146216332" />
       </map>

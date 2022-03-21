@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import com.example.miresiapp.R
+import com.example.miresiapp.utils.toast
 
 class HomeFragment : Fragment() {
     private lateinit var searcher: SearchView
@@ -19,26 +20,18 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        toast(activity, "Home")
         searcher = view.findViewById(R.id.searcher)
 
         searcher.setOnSearchClickListener {
-            val ac: Activity = requireActivity()
-            Intent(ac, SearcherActivity::class.java).apply {
+            //val ac: Activity = requireActivity()
+            Intent(activity, SearcherActivity::class.java).apply {
                 startActivity(this)
             }
         }
-        /*searcher.setOnClickListener {
-            val ac: Activity = requireActivity()
-            Intent(ac, SearcherActivity::class.java).apply {
-                startActivity(this)
-            }
-        }*/
     }
-
-
 
 }

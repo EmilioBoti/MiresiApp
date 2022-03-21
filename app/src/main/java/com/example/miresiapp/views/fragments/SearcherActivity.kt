@@ -3,8 +3,8 @@ package com.example.miresiapp.views.fragments
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
-import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,7 +35,7 @@ class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItem
         init()
 
         btnGoBack.setOnClickListener {
-            finish()
+            onBackPressed()
         }
     }
     private fun init(){
@@ -72,7 +72,7 @@ class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItem
     }
 
     override fun citySearched(city: MutableList<City>) {
-        navigateTo(0)
+        navigateTo(city[0].name)
     }
 
     override fun suggestions(listCities: MutableList<City>) {
@@ -99,10 +99,12 @@ class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItem
         }
     }
 
-    private fun navigateTo(pos: Int){
+    override fun addFavoriteItem(pos: Int, view: View) {}
+
+    private fun navigateTo(city: String){
         finish()
         Intent(this, DashBoardActivity::class.java).apply {
-            putExtra("city", listCities[pos].name)
+            putExtra("city", city)
             startActivity(this)
         }
     }

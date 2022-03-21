@@ -1,5 +1,6 @@
 package com.example.miresiapp.views.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,12 +16,13 @@ import com.example.miresiapp.businessLogic.residence.DataProviderResi
 import com.example.miresiapp.businessLogic.residence.IResi.PresenterView
 import com.example.miresiapp.businessLogic.residence.ResiInteractorImpl
 import com.example.miresiapp.interfaces.OnClickItemView
-import com.example.miresiapp.models.DataProvider
 import com.example.miresiapp.models.Residence
+import com.example.miresiapp.utils.toast
+import com.example.miresiapp.views.activities.ResiInfoActivity
 import kotlinx.coroutines.launch
 
 class ResidencesFragment : Fragment(), PresenterView, OnClickItemView {
-    private lateinit var city: String
+    private var city: String? = null
     private lateinit var resiInteractorImpl: ResiInteractorImpl
     private lateinit var model: DataProviderResi
     private lateinit var recyclerView: RecyclerView
@@ -37,18 +39,21 @@ class ResidencesFragment : Fragment(), PresenterView, OnClickItemView {
 
     override fun onStart() {
         super.onStart()
-        city = arguments?.getString("city", "")!!
+        city = arguments?.getString("city")
+
         model = DataProviderResi()
         resiInteractorImpl = ResiInteractorImpl(this, model)
 
-        lifecycleScope.launch {
-            resiInteractorImpl.makeRequest(city)
+        city?.let {
+            lifecycleScope.launch {
+                resiInteractorImpl.makeRequest(it)
+            }
         }
     }
 
     override fun getResi(list: MutableList<Residence>?) {
         listResi = list
-        val resiAdapter = ResiAdapter(listResi, this)
+        val resiAdapter = ResiAdapter(listResi, this, activity?.applicationContext)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
             adapter = resiAdapter
@@ -56,14 +61,19 @@ class ResidencesFragment : Fragment(), PresenterView, OnClickItemView {
     }
 
     override fun error(err: String) {
-        toast(err)
-    }
-
-    private fun <T>toast(obj: T){
-        Toast.makeText(activity, obj.toString(), Toast.LENGTH_SHORT).show()
+        toast(activity?.applicationContext, "Error")
     }
 
     override fun onClickItem(pos: Int) {
+        Intent(activity, ResiInfoActivity::class.java).apply {
+            listResi?.let {
+                this.putExtra("id", it[pos].id)
+            }
+            startActivity(this)
+        }
+    }
 
+    override fun addFavoriteItem(pos: Int, view: View) {
+        view.setBackgroundResource(R.drawable.favorite_24)
     }
 }

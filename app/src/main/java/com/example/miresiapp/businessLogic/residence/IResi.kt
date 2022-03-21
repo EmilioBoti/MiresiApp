@@ -9,8 +9,10 @@ interface IResi {
     }
     interface Presenter{
         suspend fun makeRequest(city: String)
+        suspend fun getSingleResi(id: Int)
     }
     interface PresenterModel{
         suspend fun getResiFromCity(city: String): MutableList<Residence>?
+        suspend fun getSingleResi(id: Int): MutableList<Residence>?
     }
 }

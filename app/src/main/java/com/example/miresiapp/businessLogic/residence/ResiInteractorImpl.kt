@@ -16,4 +16,12 @@ class ResiInteractorImpl(private val view: PresenterView,private val model: Pres
             view.getResi(it)
         }?: view.error("error")
     }
+
+    override suspend fun getSingleResi(id: Int) {
+        list = model.getSingleResi(id)
+
+        list?.let {
+            view.getResi(it)
+        }?: view.error("error")
+    }
 }
