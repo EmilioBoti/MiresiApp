@@ -19,8 +19,8 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
     private var cityId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        savedInstanceState?.let { onRestoreInstanceState(it) }
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_dash_board)
     }
 
@@ -33,11 +33,20 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
         bottomNavigationView.setOnItemSelectedListener(this)
     }
 
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?,persistentState: PersistableBundle?) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState)
+        toast(applicationContext, "work!!")
+        savedInstanceState?.let {
+            cityId = it.getString("city")
+        }
+
+    }
+
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
         outState.run {
             putString("city", cityId)
         }
-        super.onSaveInstanceState(outState, outPersistentState)
     }
 
     private fun setFragmentView( fragment: Fragment){
@@ -46,12 +55,12 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
             .commit()
     }
 
-    override fun onNewIntent(intent: Intent?) {
+    /*override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
 
         checkFrag(intent)
         toast(this, "new launched")
-    }
+    }*/
 
     private fun checkFrag(intent: Intent?){
         cityId = intent?.extras?.getString("city")

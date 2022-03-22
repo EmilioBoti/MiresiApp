@@ -1,4 +1,4 @@
-package com.example.miresiapp.views.fragments
+package com.example.miresiapp.views.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +16,7 @@ import com.example.miresiapp.businessLogic.search.ISearch
 import com.example.miresiapp.businessLogic.search.SearchLogicImpl
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.City
-import com.example.miresiapp.views.activities.DashBoardActivity
+import com.example.miresiapp.views.fragments.ResidencesFragment
 import kotlinx.coroutines.launch
 
 class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItemView {
@@ -38,6 +38,7 @@ class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItem
             onBackPressed()
         }
     }
+
     private fun init(){
         btnGoBack = findViewById(R.id.btnGoBack)
         recently = findViewById(R.id.text1)

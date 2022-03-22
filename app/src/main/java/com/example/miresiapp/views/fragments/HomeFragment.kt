@@ -1,16 +1,13 @@
 package com.example.miresiapp.views.fragments
 
-import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import com.example.miresiapp.R
 import com.example.miresiapp.utils.toast
+import com.example.miresiapp.views.activities.SearcherActivity
 
 class HomeFragment : Fragment() {
     private lateinit var searcher: SearchView

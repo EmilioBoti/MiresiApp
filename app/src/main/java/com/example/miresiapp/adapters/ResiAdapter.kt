@@ -13,9 +13,7 @@ import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.Residence
 import com.squareup.picasso.Picasso
 
-class ResiAdapter(
-    private val listResi: MutableList<Residence>?,
-    private val listener: OnClickItemView,
+class ResiAdapter(private val listResi: MutableList<Residence>?, private val listener: OnClickItemView,
     private  val applicationContext: Context?
 ): RecyclerView.Adapter<ResiAdapter.ResiViewHolder>() {
 
@@ -50,12 +48,11 @@ class ResiAdapter(
                 .centerCrop()
                 .into(img)
 
-            favorite.setOnClickListener { view->
+            favorite.setOnClickListener { view ->
                 if(RecyclerView.NO_POSITION != absoluteAdapterPosition){
                     listener.addFavoriteItem(absoluteAdapterPosition, view)
                 }
             }
-
             itemView.setOnClickListener {
                 if (RecyclerView.NO_POSITION != absoluteAdapterPosition ){
                     listener.onClickItem(absoluteAdapterPosition)

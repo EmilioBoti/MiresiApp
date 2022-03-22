@@ -14,19 +14,19 @@
         android:theme="@style/Theme.MiresiApp"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+
         <activity
             android:name=".views.activities.ResiInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".views.fragments.SearcherActivity"
+            android:name=".views.activities.SearcherActivity"
             android:exported="false" />
         <activity
             android:name=".views.activities.DashBoardActivity"
             android:exported="true"
-            android:launchMode="singleTop">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
