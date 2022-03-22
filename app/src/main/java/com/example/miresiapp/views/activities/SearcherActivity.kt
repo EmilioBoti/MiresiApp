@@ -16,6 +16,7 @@ import com.example.miresiapp.businessLogic.search.ISearch
 import com.example.miresiapp.businessLogic.search.SearchLogicImpl
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.City
+import com.example.miresiapp.utils.toast
 import com.example.miresiapp.views.fragments.ResidencesFragment
 import kotlinx.coroutines.launch
 
@@ -87,11 +88,7 @@ class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItem
     }
 
     override fun error(err: String) {
-        toast(err)
-    }
-
-    private fun <T>toast(obj: T){
-        Toast.makeText(this, obj.toString(), Toast.LENGTH_SHORT).show()
+        toast(applicationContext, err)
     }
 
     override fun onClickItem(pos: Int) {
@@ -104,8 +101,10 @@ class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItem
 
     private fun navigateTo(city: String){
         finish()
+        //supportParentActivityIntent
         Intent(this, DashBoardActivity::class.java).apply {
             putExtra("city", city)
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(this)
         }
     }

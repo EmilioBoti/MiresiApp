@@ -19,7 +19,6 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
     private var cityId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        savedInstanceState?.let { onRestoreInstanceState(it) }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash_board)
     }
@@ -33,34 +32,17 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
         bottomNavigationView.setOnItemSelectedListener(this)
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?,persistentState: PersistableBundle?) {
-        super.onRestoreInstanceState(savedInstanceState, persistentState)
-        toast(applicationContext, "work!!")
-        savedInstanceState?.let {
-            cityId = it.getString("city")
-        }
-
-    }
-
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
-        outState.run {
-            putString("city", cityId)
-        }
-    }
-
     private fun setFragmentView( fragment: Fragment){
         supportFragmentManager.beginTransaction()
             .replace(R.id.viewContainer, fragment)
+            //.addToBackStack(null)
+            .commit()
+    }private fun setBackFragmentView( fragment: Fragment){
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.viewContainer, fragment)
+            .addToBackStack(null)
             .commit()
     }
-
-    /*override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-
-        checkFrag(intent)
-        toast(this, "new launched")
-    }*/
 
     private fun checkFrag(intent: Intent?){
         cityId = intent?.extras?.getString("city")
@@ -73,7 +55,7 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
             residencesFragment = ResidencesFragment().apply {
                 arguments = data
             }
-            setFragmentView(residencesFragment)
+            setBackFragmentView(residencesFragment)
         }?: setFragmentView(HomeFragment())
     }
 
@@ -84,15 +66,15 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
                return true
             }
             R.id.pageRoom -> {
-                setFragmentView(RoomFragment())
+                setBackFragmentView(RoomFragment())
                return true
             }
             R.id.pageForum->{
-                setFragmentView(ForumFragment())
+                setBackFragmentView(ForumFragment())
                 return true
             }
             R.id.pageFavorite->{
-                setFragmentView(FavoriteFragment())
+                setBackFragmentView(FavoriteFragment())
                 return true
             }
             else -> { false }
