@@ -47,14 +47,14 @@
         <entry key="app/src/main/res/layout/fragment_city.xml" value="0.22348141432456936" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.22348141432456936" />
         <entry key="app/src/main/res/layout/fragment_forum.xml" value="0.22348141432456936" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22348141432456936" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_residences.xml" value="0.23300090661831369" />
-        <entry key="app/src/main/res/layout/fragment_room.xml" value="0.32348785400390623" />
+        <entry key="app/src/main/res/layout/fragment_room.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/gym_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/pool_icon_layout.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/resi_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/resi_item.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2543822146216332" />
       </map>
     </option>

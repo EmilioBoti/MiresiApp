@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/green_200"
+        android:elevation="@dimen/dimen_4"
         >
 
         <androidx.appcompat.widget.SearchView

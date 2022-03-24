@@ -34,19 +34,19 @@ class ResiAdapter(private val listResi: MutableList<Residence>?, private val lis
         private val img: ImageView = itemView.findViewById(R.id.imgResi)
         private val accessTo: LinearLayout = itemView.findViewById(R.id.accessTo)
         private val favorite: ImageView = itemView.findViewById(R.id.addFavorite)
+        private val priceFrom: TextView = itemView.findViewById(R.id.priceFrom)
 
         fun binData(residence: Residence?) {
             name.text = residence?.resiName
             location.text = residence?.location
+            priceFrom.text = residence?.priceFrom?.let { "€ $it" } ?: "--"
 
             if (residence?.gym != 0) LayoutInflater.from(applicationContext).inflate(R.layout.gym_layout, accessTo)
             if (residence?.parking_car != 0) LayoutInflater.from(applicationContext).inflate(R.layout.parking_icon_layout, accessTo)
 
             Picasso.get().load(residence?.image)
                 //.placeholder(R.drawable.resa_investigadors)
-                .fit()
-                .centerCrop()
-                .into(img)
+                .fit().centerCrop().into(img)
 
             favorite.setOnClickListener { view ->
                 if(RecyclerView.NO_POSITION != absoluteAdapterPosition){

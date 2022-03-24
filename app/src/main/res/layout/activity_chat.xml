@@ -7,6 +7,10 @@
     tools:context=".views.activities.ChatActivity"
     >
 
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

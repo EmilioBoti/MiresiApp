@@ -37,7 +37,8 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
             .replace(R.id.viewContainer, fragment)
             //.addToBackStack(null)
             .commit()
-    }private fun setBackFragmentView( fragment: Fragment){
+    }
+    private fun setBackFragmentView( fragment: Fragment){
         supportFragmentManager.beginTransaction()
             .replace(R.id.viewContainer, fragment)
             .addToBackStack(null)
@@ -55,7 +56,7 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
             residencesFragment = ResidencesFragment().apply {
                 arguments = data
             }
-            setBackFragmentView(residencesFragment)
+            setFragmentView(residencesFragment)
         }?: setFragmentView(HomeFragment())
     }
 
