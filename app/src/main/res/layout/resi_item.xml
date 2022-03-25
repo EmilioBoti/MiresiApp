@@ -49,13 +49,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="@dimen/dimen_15"
-                    android:layout_marginTop="@dimen/dimen_25"
+                    android:layout_marginStart="@dimen/dimen_10"
+                    android:layout_marginTop="@dimen/dimen_20"
                     android:layout_marginEnd="@dimen/dimen_10"
                     android:layout_toStartOf="@id/addFavorite"
                     android:text="@string/name"
                     android:textColor="@color/black_200"
-                    android:textSize="@dimen/dimenst_30"
+                    android:textSize="@dimen/dimenst_25"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/nameResi"
-                    android:layout_marginStart="@dimen/dimen_15"
+                    android:layout_marginStart="@dimen/dimen_10"
                     android:layout_marginTop="@dimen/dimen_25"
                     android:layout_marginEnd="@dimen/dimen_5"
                     android:src="@drawable/location_on_24" />
@@ -79,9 +79,8 @@
                     android:layout_toEndOf="@id/locationIcon"
                     android:text="@string/name"
                     android:textColor="@color/black_200"
-                    android:textSize="@dimen/dimenst_15"
-                    android:textStyle="italic"
-                    />
+                    android:textSize="@dimen/dimenst_12"
+                    android:textStyle="italic" />
 
                 <LinearLayout
                     android:id="@+id/accessTo"

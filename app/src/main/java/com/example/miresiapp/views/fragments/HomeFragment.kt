@@ -24,7 +24,6 @@ class HomeFragment : Fragment() {
         searcher = view.findViewById(R.id.searcher)
 
         searcher.setOnSearchClickListener {
-            //val ac: Activity = requireActivity()
             Intent(activity, SearcherActivity::class.java).apply {
                 startActivity(this)
             }

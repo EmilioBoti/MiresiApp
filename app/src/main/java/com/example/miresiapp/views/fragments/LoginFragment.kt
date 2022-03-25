@@ -1,5 +1,6 @@
 package com.example.miresiapp.views.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,6 +16,9 @@ import com.example.miresiapp.businessLogic.login.LoginBusinessLogic
 import com.example.miresiapp.models.DataProvider
 import com.example.miresiapp.models.User
 import com.example.miresiapp.models.UserLogin
+import com.example.miresiapp.utils.Consts
+import com.example.miresiapp.utils.toast
+import com.example.miresiapp.views.activities.DashBoardActivity
 import com.example.miresiapp.views.activities.MainBaseActivity
 
 class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.PresenterView {
@@ -52,7 +56,7 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
             }
             R.id.btnSignup ->{
                 activity?.supportFragmentManager?.beginTransaction()
-                    ?.replace(R.id.loginRegisterContainer, SignUpFragment())
+                    ?.replace(R.id.loginFrag, SignUpFragment())
                     ?.addToBackStack("loginBack")
                     ?.commit()
             }
@@ -60,10 +64,20 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
     }
 
     override fun login(user: User?) {
-
-        Intent(activity?.applicationContext, MainBaseActivity::class.java).apply {
-            startActivity(this)
-            activity?.finish()
+        val prefe = activity?.getSharedPreferences(resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)?.edit()
+        prefe?.apply {
+            if (user?.id is Int){
+                putInt("userId", user.id)
+                putString("name", user.name)
+                putString("email", user.email)
+                apply()
+                activity?.run {
+                    toast(this, user)
+                    supportFragmentManager.beginTransaction()
+                        .remove(this@LoginFragment)
+                        .commitNowAllowingStateLoss()
+                }
+            } else error()
         }
     }
 

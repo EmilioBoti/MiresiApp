@@ -44,8 +44,7 @@ class DataProviderResi: IResi.PresenterModel{
                 service.getSingleResi(id).execute().body()
             }catch (err: Exception){
                 null
-            }
-            catch (err: CancellationException){
+            } catch (err: CancellationException){
                 null
             }
         }
