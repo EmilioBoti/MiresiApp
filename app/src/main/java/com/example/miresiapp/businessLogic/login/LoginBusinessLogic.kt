@@ -12,12 +12,10 @@ import kotlinx.coroutines.launch
 
 class LoginBusinessLogic(private val interactorView: PresenterView, private val model: DataProvider): Presenter  {
 
-    override fun validUser(userLogin: UserLogin) {
-        GlobalScope.launch(Dispatchers.Main){
-            val user: User? = model.valildUserData(userLogin)
-            user?.let { user ->
-                interactorView.login(user)
-            }?: interactorView.error()
-        }
+    override suspend fun validUser(userLogin: UserLogin) {
+        val user: User? = model.valildUserData(userLogin)
+        user?.let { user ->
+            interactorView.login(user)
+        }?: interactorView.error()
     }
 }

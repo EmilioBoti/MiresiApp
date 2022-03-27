@@ -20,7 +20,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        toast(activity, "Home")
         searcher = view.findViewById(R.id.searcher)
 
         searcher.setOnSearchClickListener {

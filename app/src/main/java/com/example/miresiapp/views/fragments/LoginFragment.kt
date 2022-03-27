@@ -1,7 +1,6 @@
 package com.example.miresiapp.views.fragments
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,16 +9,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.example.miresiapp.R
+import com.example.miresiapp.SocketCon
 import com.example.miresiapp.businessLogic.login.ILoginInteractor
 import com.example.miresiapp.businessLogic.login.LoginBusinessLogic
 import com.example.miresiapp.models.DataProvider
 import com.example.miresiapp.models.User
 import com.example.miresiapp.models.UserLogin
-import com.example.miresiapp.utils.Consts
 import com.example.miresiapp.utils.toast
-import com.example.miresiapp.views.activities.DashBoardActivity
-import com.example.miresiapp.views.activities.MainBaseActivity
+import io.socket.client.Socket
+import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.PresenterView {
     private lateinit var emailInput: EditText
@@ -52,7 +52,9 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.btnLogin ->{
-                loginBusinessLogic.validUser(UserLogin(emailInput.text.toString().trim(), pwInput.text.toString().trim()))
+                lifecycleScope.launch {
+                    loginBusinessLogic.validUser(UserLogin(emailInput.text.toString().trim(), pwInput.text.toString().trim()))
+                }
             }
             R.id.btnSignup ->{
                 activity?.supportFragmentManager?.beginTransaction()
@@ -70,18 +72,23 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
                 putInt("userId", user.id)
                 putString("name", user.name)
                 putString("email", user.email)
+                putString("socketId", user.socketId)
                 apply()
-                activity?.run {
-                    toast(this, user)
-                    supportFragmentManager.beginTransaction()
-                        .remove(this@LoginFragment)
-                        .commitNowAllowingStateLoss()
-                }
+                closeLoginFrag(user)
             } else error()
         }
     }
 
     override fun error() {
         Toast.makeText(activity, "Error to Valid the User", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun closeLoginFrag(user: User){
+        activity?.run {
+            toast(this, user)
+            supportFragmentManager.beginTransaction()
+                .remove(this@LoginFragment)
+                .commitNowAllowingStateLoss()
+        }
     }
 }

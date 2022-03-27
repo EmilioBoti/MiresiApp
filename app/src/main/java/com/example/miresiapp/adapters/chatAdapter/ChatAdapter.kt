@@ -11,10 +11,10 @@ import com.example.miresiapp.adapters.CityAdapter
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.User
 
-class ChatAdapter(private val listChat: MutableList<User>, private val context: Context, val listener: OnClickItemView): RecyclerView.Adapter<ChatAdapter.ChatViewHolder>(){
+class ChatAdapter(private val listChat: MutableList<User>, private val context: Context,private val listener: OnClickItemView): RecyclerView.Adapter<ChatAdapter.ChatViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.city_item, null)
+        val view = LayoutInflater.from(context).inflate(R.layout.chat_item, null)
         return ChatViewHolder(view, listener)
     }
 
@@ -27,8 +27,16 @@ class ChatAdapter(private val listChat: MutableList<User>, private val context: 
     }
 
     class ChatViewHolder(itemView: View, private val listener: OnClickItemView): RecyclerView.ViewHolder(itemView) {
-        fun bindData(user: User) {
+        private val userName: TextView = itemView.findViewById(R.id.userName)
 
+        fun bindData(user: User) {
+            userName.text = user.name
+
+            itemView.setOnClickListener {
+                if (RecyclerView.NO_POSITION != absoluteAdapterPosition){
+                    listener.onClickItem(absoluteAdapterPosition)
+                }
+            }
         }
     }
 }

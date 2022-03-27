@@ -26,4 +26,6 @@
     <string name="room">Rooms</string>
     <string name="recent">Recently Search</string>
     <string name="from">FROM</string>
+    <string name="messenge">Messenge</string>
+    <string name="who">Who</string>
 </resources>

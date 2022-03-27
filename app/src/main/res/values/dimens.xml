@@ -29,4 +29,6 @@
     <dimen name="dimen_35">35dp</dimen>
     <dimen name="dimenst_25">25sp</dimen>
     <dimen name="dimenst_12">12sp</dimen>
+    <dimen name="dimenst_18">18sp</dimen>
+    <dimen name="dimenst_16">16sp</dimen>
 </resources>

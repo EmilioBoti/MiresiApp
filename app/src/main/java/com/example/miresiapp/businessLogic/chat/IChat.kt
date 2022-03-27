@@ -1,5 +1,6 @@
 package com.example.miresiapp.businessLogic.chat
 
+import com.example.miresiapp.models.Message
 import com.example.miresiapp.models.User
 
 interface IChat {
@@ -13,5 +14,7 @@ interface IChat {
     }
     interface  ChatModelPresenter{
         suspend fun getChats(userId: Int): MutableList<User>?
+        suspend fun getUser(userId: Int): MutableList<User>?
+        suspend fun getMessages(from: Int, to: Int): MutableList<Message>?
     }
 }

@@ -14,7 +14,6 @@ class ChatLogicImpl(private val viewer: ChatViewPresenter, private val model: Ch
             viewer.showChats(it)
         } ?: viewer.error("Error")
     }
- 
-    override fun getList(): MutableList<User>? = listUser
 
+    override fun getList(): MutableList<User>? = listUser
 }

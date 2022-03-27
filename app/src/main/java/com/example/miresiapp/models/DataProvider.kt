@@ -15,7 +15,7 @@ import kotlin.Exception
 
 
 class DataProvider: ModelPresenter, ModelLogin {
-    private val mediaType   = "application/json".toMediaTypeOrNull()
+    private val mediaType = "application/json".toMediaTypeOrNull()
     private var listCities: MutableList<City>
     private lateinit var okHttpClient: OkHttpClient
     private lateinit var gson: Gson

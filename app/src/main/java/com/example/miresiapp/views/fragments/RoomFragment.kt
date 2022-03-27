@@ -37,7 +37,8 @@ class RoomFragment : Fragment() {
             val prefe = activity?.getSharedPreferences(resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
             idUser = prefe?.getInt("userId", 0)
             this.idUser?.let {
-                navigateTo(it)
+                if(it != 0) navigateTo(it)
+                else toLogin()
             }?: toLogin()
         }
     }

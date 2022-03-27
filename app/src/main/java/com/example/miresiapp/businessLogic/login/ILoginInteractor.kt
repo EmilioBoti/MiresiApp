@@ -9,7 +9,7 @@ interface ILoginInteractor {
         fun error()
     }
     interface Presenter{
-        fun validUser(userLogin: UserLogin)
+       suspend fun validUser(userLogin: UserLogin)
     }
     interface ModelLogin{
         suspend fun valildUserData(user: UserLogin): User?
