@@ -43,7 +43,6 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_messenger)
-
         data = intent?.extras
 
     }
@@ -86,6 +85,7 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
     override fun onClick(v: View?) {
         message = MessageModel(userSenderId!!, userReceiverId!!, boxInput.text.toString(), false)
         val msm: String = gson.toJson(message)
+        boxInput.setText("")
         mSocket.emit("message", msm)
     }
 
@@ -105,6 +105,7 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
             if((userSenderId == message.userReceiverId) && (message.userSenderId == userReceiverId) ||
                 (userSenderId == message.userSenderId) && (message.userReceiverId == userReceiverId)){
                 listMessage.add(message)
+                messageContainer.scrollToPosition(listMessage.size - 1)
                 messageAdapter.notifyItemInserted(listMessage.size -1)
             }
         }
