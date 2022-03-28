@@ -31,4 +31,6 @@
     <dimen name="dimenst_12">12sp</dimen>
     <dimen name="dimenst_18">18sp</dimen>
     <dimen name="dimenst_16">16sp</dimen>
+    <dimen name="dimenst_14">14sp</dimen>
+    <dimen name="dimen_3">3dp</dimen>
 </resources>
