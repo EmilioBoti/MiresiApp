@@ -81,7 +81,7 @@ class DataProvider: ModelPresenter, ModelLogin {
                     okHttpClient.newCall(request).execute()
                 }
             }catch (err: Exception){
-                Log.e("errSo", err.toString())
+                Log.e("err", err.toString())
             }
         }
 
