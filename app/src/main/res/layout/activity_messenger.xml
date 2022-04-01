@@ -44,9 +44,14 @@
         app:layout_constraintTop_toBottomOf="@id/subTopBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/inputContainer"
+        app:layout_constraintBottom_toTopOf="@id/divider"
         />
-
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/inputContainer"
+            />
         <RelativeLayout
             android:id="@+id/inputContainer"
             android:layout_width="match_parent"
@@ -67,16 +72,18 @@
                 android:layout_toStartOf="@id/btnSender"
                 android:background="@drawable/login_input_corner"
                 android:hint="@string/messenge"
-                android:padding="@dimen/dimen_10" />
+                android:padding="@dimen/dimen_10"
+                android:maxLines="7"
+                />
 
             <ImageButton
                 android:id="@+id/btnSender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/boxMessage"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/dimen_15"
                 android:layout_marginEnd="@dimen/dimen_15"
-                android:layout_marginBottom="@dimen/dimen_15"
                 android:background="@drawable/corner_sender"
                 android:padding="10dp"
                 android:src="@drawable/sender_24" />

@@ -11,7 +11,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/green_200"
+        android:background="@color/blue_200"
         android:elevation="@dimen/dimen_4"
         >
 
