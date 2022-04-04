@@ -5,36 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.activities.ResiInfoActivity"
+    android:background="@color/baby_powder"
     >
-
-    <RelativeLayout
-        android:id="@+id/subTopBar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:elevation="@dimen/dimen_4"
-        android:alpha="1"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        >
-        <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_back_24"
-            android:layout_marginStart="@dimen/dimen_15"
-            />
-        <ImageView
-            android:id="@+id/addFavorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/favorite_border_24"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/dimen_15"
-            />
-    </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,8 +24,65 @@
             <ImageView
                 android:id="@+id/imageResi"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_400"
+                android:layout_height="@dimen/dimen_300"
+                android:src="@drawable/resa_investigadors"
                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/dimen_15"
+                >
+
+                <TextView
+                    android:id="@+id/resi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimenst_30"
+                    android:textColor="@color/black_200"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/dimen_30"
+                    android:text="Resicencia Universitaria"
+                    android:typeface="sans"
+                    />
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimenst_30"
+                    android:textColor="@color/black_200"
+                    android:textStyle="bold"
+                    tools:text="Aleu"
+                    android:typeface="sans"
+                    />
+
+                <TextView
+                    android:id="@+id/about"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/dimenst_18"
+                    android:layout_marginTop="@dimen/dimen_20"
+                    tools:text="Resicencia Universitaria Aleu"
+                    android:maxLines="3"
+                    android:typeface="sans"
+                    />
+                <TextView
+                    android:id="@+id/readMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="end"
+                    android:text="@string/readMore"
+                    android:textColor="@color/blue_200"
+                    android:layout_marginBottom="@dimen/dimen_10"
+                    />
+
+                <include
+                    layout="@layout/facilities"
+                    />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

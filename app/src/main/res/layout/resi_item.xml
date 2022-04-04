@@ -75,22 +75,21 @@
                     android:layout_alignBottom="@id/locationIcon"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="@dimen/dimen_25"
-                    android:layout_marginEnd="@dimen/dimen_35"
+                    android:layout_marginEnd="@dimen/dimen_5"
                     android:layout_toEndOf="@id/locationIcon"
                     android:text="@string/name"
                     android:textColor="@color/black_200"
                     android:textSize="@dimen/dimenst_12"
                     android:textStyle="italic" />
 
-                <LinearLayout
+                <GridLayout
                     android:id="@+id/accessTo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/locationIcon"
                     android:layout_marginStart="@dimen/dimen_15"
                     android:layout_marginTop="@dimen/dimen_40"
-                    android:orientation="horizontal"
-                    />
+                    android:orientation="horizontal" />
 
                 <LinearLayout
                     android:id="@+id/priceContainer"
@@ -108,7 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/from"
-                        android:textSize="@dimen/dimenst_20"
+                        android:textSize="@dimen/dimenst_15"
                         />
 
                     <TextView
@@ -116,8 +115,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/from"
-                        android:textSize="@dimen/dimenst_30"
-                        android:textColor="@color/black_200"
+                        android:textSize="@dimen/dimenst_20"
+                        android:textColor="@color/green_200"
                         android:textStyle="bold"
                         android:layout_marginTop="@dimen/dimen_5"
                         />

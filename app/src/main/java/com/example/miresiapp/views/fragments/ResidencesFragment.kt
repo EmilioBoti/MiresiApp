@@ -74,7 +74,7 @@ class ResidencesFragment : Fragment(), PresenterView, OnClickItemView {
     }
 
     override fun addFavoriteItem(pos: Int, view: View) {
-        toast(activity, listResi?.get(pos)?.idUser)
+        toast(activity, listResi?.get(pos)?.link)
         //view.background = resources.getDrawable(0)
         //view.background = resources.getDrawable(R.drawable.favorite_24)
         //view.setBackgroundResource(R.drawable.favorite_24)

@@ -28,4 +28,13 @@
     <string name="from">FROM</string>
     <string name="messenge">Messenge</string>
     <string name="who">Who</string>
+    <string name="readMore">Read more</string>
+    <string name="readLess">Read Less</string>
+    <string name="facilitiesServices">Facilities and Services</string>
+    <string name="gym">Gym</string>
+    <string name="carParking">Car Parking</string>
+    <string name="pool">Pool</string>
+    <string name="bikeParking">Bicycle Parking</string>
+    <string name="studyRoom">Study Room</string>
+    <string name="laundryRoom">Laundry Room</string>
 </resources>

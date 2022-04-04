@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -32,7 +33,7 @@ class ResiAdapter(private val listResi: MutableList<Residence>?, private val lis
         private val name: TextView = itemView.findViewById(R.id.nameResi)
         private val location: TextView = itemView.findViewById(R.id.location)
         private val img: ImageView = itemView.findViewById(R.id.imgResi)
-        private val accessTo: LinearLayout = itemView.findViewById(R.id.accessTo)
+        private val accessTo: GridLayout = itemView.findViewById(R.id.accessTo)
         private val favorite: ImageView = itemView.findViewById(R.id.addFavorite)
         private val priceFrom: TextView = itemView.findViewById(R.id.priceFrom)
 

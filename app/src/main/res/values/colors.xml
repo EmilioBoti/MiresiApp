@@ -17,4 +17,15 @@
     <color name="red_200">#F83A44</color>
     <color name="red_400">#F72631</color>
     <color name="red_500">#D90812</color>
+
+    <!--others color -->
+    <color name="rich_Black">#011627</color>
+    <color name="baby_powder">#FDFFFC</color>
+    <color name="floral_white">#FFF8F0</color>
+    <color name="ghost_white">#F7F7FF</color>
+    <color name="gray">#393E41</color>
+    <color name="dark_blue">#13293D</color>
+    <color name="darker_green">#031926</color>
+    <color name="oxford_blue">#05204A</color>
+
 </resources>
