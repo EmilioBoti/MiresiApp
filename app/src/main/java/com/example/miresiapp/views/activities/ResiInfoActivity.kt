@@ -11,16 +11,14 @@ import com.example.miresiapp.R
 import com.example.miresiapp.businessLogic.residence.DataProviderResi
 import com.example.miresiapp.businessLogic.residence.IResi.PresenterView
 import com.example.miresiapp.businessLogic.residence.ResiInteractorImpl
+import com.example.miresiapp.databinding.ActivityResiInfoBinding
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.utils.toast
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 
 class ResiInfoActivity : AppCompatActivity(), PresenterView {
-    private lateinit var name: TextView
-    private lateinit var about: TextView
-    private lateinit var readMore: TextView
-    private lateinit var image: ImageView
+    private lateinit var binding: ActivityResiInfoBinding
     private lateinit var gridLayout: GridLayout
     private var idResi: Int? = null
     private lateinit var model: DataProviderResi
@@ -29,7 +27,8 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_resi_info)
+        binding = ActivityResiInfoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
     }
 
@@ -37,10 +36,6 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView {
         super.onStart()
 
         idResi = intent?.extras?.getInt("id")
-        image = findViewById(R.id.imageResi)
-        name = findViewById(R.id.name)
-        about = findViewById(R.id.about)
-        readMore = findViewById(R.id.readMore)
         gridLayout = findViewById(R.id.facilitiesContainer)
 
         model = DataProviderResi()
@@ -51,13 +46,14 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView {
                 resiInteractorImpl.getSingleResi(it)
             }
         }
-        readMore.setOnClickListener {
-            if (about.maxLines == about.lineCount){
-                about.maxLines = 3
-                readMore.text = resources.getString(R.string.readMore)
+        binding.readMore.setOnClickListener {
+            val inf = binding.about
+            if (inf.maxLines == inf.lineCount){
+                inf.maxLines = 3
+                binding.readMore.text = resources.getString(R.string.readMore)
             } else{
-                readMore.text = resources.getString(R.string.readLess)
-                about.maxLines = about.lineCount
+                binding.readMore.text = resources.getString(R.string.readLess)
+                inf.maxLines = inf.lineCount
             }
         }
     }
@@ -65,9 +61,9 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView {
     override fun getResi(list: MutableList<Residence>?) {
         resi = list
         val residence: Residence? = resi?.get(0)
-        Picasso.get().load(residence?.image).fit().centerCrop().into(image)
-        name.text = residence?.resiName
-        about.text = residence?.description
+        Picasso.get().load(residence?.image).fit().centerCrop().into(binding.imageResi)
+        binding.name.text = residence?.resiName
+        binding.about.text = residence?.description
         facilities(residence)
 
     }

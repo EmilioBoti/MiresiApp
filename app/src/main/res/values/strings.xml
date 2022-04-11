@@ -37,4 +37,7 @@
     <string name="bikeParking">Bicycle Parking</string>
     <string name="studyRoom">Study Room</string>
     <string name="laundryRoom">Laundry Room</string>
+    <string name="createPost">Create your Post</string>
+    <string name="dateStart">YYY-MM-DD</string>
+    <string name="to">To</string>
 </resources>

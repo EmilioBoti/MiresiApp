@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_15"
         android:layout_marginTop="@dimen/dimen_5"
-        android:layout_marginEnd="@dimen/dimen_5"
+        android:layout_marginEnd="@dimen/dimen_100"
         android:layout_marginBottom="@dimen/dimen_5"
         android:elevation="@dimen/dimen_4"
         app:cardCornerRadius="@dimen/dimen_10"
@@ -22,7 +22,7 @@
             android:orientation="vertical"
             android:gravity="start"
             >
-            <TextView
+            <!--<TextView
                 android:id="@+id/from"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/dimenst_12"
                 android:textColor="@color/blue_200"
-                />
+                />-->
 
             <TextView
                 android:id="@+id/messageText"
@@ -38,7 +38,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/messenge"
                 android:textColor="@color/black"
-                android:textSize="@dimen/dimenst_14" />
+                android:textSize="@dimen/dimenst_16"
+                android:layout_margin="@dimen/dimen_4"
+                />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

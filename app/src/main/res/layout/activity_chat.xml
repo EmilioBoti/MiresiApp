@@ -10,7 +10,7 @@
     <include
         layout="@layout/toolbar_component"
         />
-
+    
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatContainer"
         android:layout_width="match_parent"

@@ -17,7 +17,6 @@ import com.example.miresiapp.businessLogic.search.SearchLogicImpl
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.City
 import com.example.miresiapp.utils.toast
-import com.example.miresiapp.views.fragments.ResidencesFragment
 import kotlinx.coroutines.launch
 
 class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItemView {

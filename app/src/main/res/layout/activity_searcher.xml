@@ -31,7 +31,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_10"
             android:hint="@string/search"
-            android:focusable="true"
             >
 
         </androidx.appcompat.widget.SearchView>

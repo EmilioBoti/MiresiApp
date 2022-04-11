@@ -20,8 +20,10 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/arrow_back_24.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/auto_stories_24.xml" value="0.1835" />
+        <entry key="app/src/main/res/drawable/bed_24.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/bedroom_parent_24.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/bg_message_box.xml" value="0.17" />
+        <entry key="app/src/main/res/drawable/border.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/chat_24.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/corner_sender.xml" value="0.1655" />
         <entry key="app/src/main/res/drawable/favorite_24.xml" value="0.2005" />
@@ -43,6 +45,7 @@
         <entry key="app/src/main/res/layout/access_to.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.23300090661831369" />
         <entry key="app/src/main/res/layout/activity_city.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/activity_create_post.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_dash_board.xml" value="0.22348141432456936" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22327898550724637" />
@@ -57,6 +60,7 @@
         <entry key="app/src/main/res/layout/component_confirm_pass.xml" value="0.22327898550724637" />
         <entry key="app/src/main/res/layout/component_email.xml" value="0.335" />
         <entry key="app/src/main/res/layout/component_password.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/drop_down_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/facilities.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_city.xml" value="0.22348141432456936" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.22348141432456936" />
@@ -70,13 +74,16 @@
         <entry key="app/src/main/res/layout/gym_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/gym_layout_wtext.xml" value="0.375" />
         <entry key="app/src/main/res/layout/laundry_icon_wtext.xml" value="0.45" />
-        <entry key="app/src/main/res/layout/message_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/message_item.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/message_item2.xml" value="0.335" />
         <entry key="app/src/main/res/layout/parking_icon_wtext.xml" value="0.45" />
         <entry key="app/src/main/res/layout/pool_icon_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/pool_icon_wtext.xml" value="0.375" />
         <entry key="app/src/main/res/layout/resi_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/study_room_icon_wtext.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/toolbarPost_component.xml" value="0.375" />
         <entry key="app/src/main/res/layout/toolbar_component.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/toolbar_post_component.xml" value="0.17089755213055305" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2543822146216332" />
       </map>
     </option>

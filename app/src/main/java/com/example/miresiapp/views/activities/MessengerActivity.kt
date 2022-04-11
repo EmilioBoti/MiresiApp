@@ -14,6 +14,7 @@ import com.example.miresiapp.adapters.chatAdapter.MessageAdapter
 import com.example.miresiapp.businessLogic.chat.ChatDataProvider
 import com.example.miresiapp.businessLogic.message.IMessenger
 import com.example.miresiapp.businessLogic.message.MessengeLogicImpl
+import com.example.miresiapp.databinding.ActivityMessengerBinding
 import com.example.miresiapp.models.Message
 import com.example.miresiapp.models.MessageModel
 import com.example.miresiapp.utils.toast
@@ -22,16 +23,12 @@ import io.socket.client.Socket
 import kotlinx.coroutines.launch
 
 class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.ViewPresenter {
+    private lateinit var binding: ActivityMessengerBinding
     private lateinit var mSocket: Socket
-    private lateinit var btnSender: ImageButton
-    private lateinit var boxInput: EditText
-    private lateinit var messageContainer: RecyclerView
-    private lateinit var btnGoBack: ImageView
-    private lateinit var userName: TextView
     private lateinit var listMessage: MutableList<Message>
     private var data: Bundle? = null
-    private var userSenderId: Int? = null
-    private var userReceiverId: Int? = null
+    private var from: Int? = null
+    private var to: Int? = null
     private lateinit var userSenderSOId: String
     private lateinit var userReceiverSOId: String
     private lateinit var message: MessageModel
@@ -42,7 +39,8 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_messenger)
+        binding = ActivityMessengerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         data = intent?.extras
 
     }
@@ -52,28 +50,20 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
 
         gson = Gson()
         mSocket = SocketCon.getSocket()
-        messageContainer = findViewById(R.id.messageContainer)
-        userName = findViewById(R.id.userNameSelected)
-        boxInput = findViewById(R.id.boxMessage)
-        btnGoBack = findViewById(R.id.btnGoBack)
-        btnSender = findViewById(R.id.btnSender)
-        btnSender.setOnClickListener(this)
+        binding.btnSender.setOnClickListener(this)
         model = ChatDataProvider()
         listMessage = mutableListOf()
         messengeLogicImpl = MessengeLogicImpl(this, model)
-        messageAdapter = MessageAdapter(listMessage)
-        userSenderId = data?.getInt("senderUserId")
-        userReceiverId = data?.getInt("receiverUserId")
-        userReceiverSOId = data?.getString("receiverSOId", "")!!
-        userName.text = data?.getString("name", "")!!
+        from = data?.getInt("from")
+        to = data?.getInt("to")
+        binding.userNameSelected.text = data?.getString("name", "")!!
 
-
-        requestSMS(userSenderId!!, userReceiverId!!)
+        requestSMS(from!!, to!!)
 
         lifecycleScope.launch {
-            messengeLogicImpl.requestMessage(userSenderId!!, userReceiverId!!)
+            messengeLogicImpl.requestMessage(from!!, to!!)
         }
-        btnGoBack.setOnClickListener {
+        binding.btnGoBack.setOnClickListener {
             onBackPressed()
         }
     }
@@ -83,29 +73,32 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
         }
     }
     override fun onClick(v: View?) {
-        message = MessageModel(userSenderId!!, userReceiverId!!, boxInput.text.toString(), false)
-        val msm: String = gson.toJson(message)
-        boxInput.setText("")
-        mSocket.emit("message", msm)
+        if(binding.boxMessage.text.isNotEmpty()){
+            message = MessageModel(from!!, to!!, binding.boxMessage.text.toString(), false)
+            val msm: String = gson.toJson(message)
+            binding.boxMessage.setText("")
+            mSocket.emit("message", msm)
+        }
     }
 
-    override fun showMessage(listMessage: MutableList<Message>) {
+    override fun showMessage(listMessage: MutableList<Message>) {to
         this.listMessage = listMessage
-        messageAdapter = MessageAdapter(this.listMessage)
+        messageAdapter = MessageAdapter(this.listMessage, from!!)
 
-        messageContainer.apply {
+        binding.messageContainer.apply {
             layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
             scrollToPosition(listMessage.size - 1)
+            setHasFixedSize(true)
             adapter = messageAdapter
         }
     }
 
     override fun updateChat(message: Message) {
         lifecycleScope.launch {
-            if((userSenderId == message.userReceiverId) && (message.userSenderId == userReceiverId) ||
-                (userSenderId == message.userSenderId) && (message.userReceiverId == userReceiverId)){
+            if((from == message.userReceiverId) && (message.userSenderId == to) ||
+                (from == message.userSenderId) && (message.userReceiverId == to)) {
                 listMessage.add(message)
-                messageContainer.scrollToPosition(listMessage.size - 1)
+                binding.messageContainer.scrollToPosition(listMessage.size - 1)
                 messageAdapter.notifyItemInserted(listMessage.size -1)
             }
         }

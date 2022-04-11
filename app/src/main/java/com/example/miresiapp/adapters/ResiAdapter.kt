@@ -36,7 +36,7 @@ class ResiAdapter(private val listResi: MutableList<Residence>?, private val lis
         private val accessTo: GridLayout = itemView.findViewById(R.id.accessTo)
         private val favorite: ImageView = itemView.findViewById(R.id.addFavorite)
         private val priceFrom: TextView = itemView.findViewById(R.id.priceFrom)
-
+        
         fun binData(residence: Residence?) {
             name.text = residence?.resiName
             location.text = residence?.location

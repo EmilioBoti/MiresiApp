@@ -50,7 +50,7 @@ class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {
         chatLogicImpl = ChatLogicImpl(this, model)
 
         idUser?.let {
-            toast(applicationContext, it)
+            //toast(applicationContext, it)
             lifecycleScope.launch {
                 chatLogicImpl.requestChats(it)
             }
@@ -93,10 +93,10 @@ class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {
     override fun onClickItem(pos: Int) {
         idUser?.let {
             Intent(this, MessengerActivity::class.java).apply {
-                putExtra("senderUserId", it)
-                putExtra("receiverUserId", listChats[pos].id)
+                putExtra("from", it)
+                putExtra("to", listChats[pos].id)
                 putExtra("name", listChats[pos].name)
-                putExtra("receiverSOId", listChats[0].socketId)
+                //putExtra("receiverSOId", listChats[0].socketId)
                 startActivity(this)
             }
         }

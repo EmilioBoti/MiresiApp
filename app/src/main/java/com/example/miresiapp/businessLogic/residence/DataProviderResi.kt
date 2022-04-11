@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class DataProviderResi: IResi.PresenterModel{
+open class DataProviderResi: IResi.PresenterModel{
 
     override suspend fun getResiFromCity(city: String): MutableList<Residence>? {
 

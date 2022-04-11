@@ -10,12 +10,13 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import com.example.miresiapp.R
-import com.example.miresiapp.utils.toast
 import com.example.miresiapp.views.activities.ChatActivity
-import com.example.miresiapp.views.activities.MainActivity
+import com.example.miresiapp.views.activities.CreatePost
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class RoomFragment : Fragment() {
+class RoomFragment : Fragment(), View.OnClickListener {
     private lateinit var chatIcon: ImageView
+    private lateinit var createPost: FloatingActionButton
     private var idUser: Int? = null
     private var fragmentLayout: FrameLayout? = null
 
@@ -28,6 +29,8 @@ class RoomFragment : Fragment() {
 
         chatIcon = view.findViewById(R.id.chat)
         fragmentLayout = activity?.findViewById<FrameLayout>(R.id.loginFrag)
+        createPost = view.findViewById(R.id.createPoast)
+        createPost.setOnClickListener(this)
     }
 
     override fun onStart() {
@@ -53,6 +56,12 @@ class RoomFragment : Fragment() {
     private fun navigateTo(idUser: Int){
         Intent(activity, ChatActivity::class.java).apply {
             this.putExtra("id", idUser)
+            startActivity(this)
+        }
+    }
+
+    override fun onClick(v: View?) {
+        Intent(activity, CreatePost::class.java).apply {
             startActivity(this)
         }
     }

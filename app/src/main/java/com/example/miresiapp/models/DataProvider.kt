@@ -16,13 +16,9 @@ import kotlin.Exception
 
 class DataProvider: ModelPresenter, ModelLogin {
     private val mediaType = "application/json".toMediaTypeOrNull()
-    private var listCities: MutableList<City>
+    private var listCities: MutableList<City> = mutableListOf()
     private lateinit var okHttpClient: OkHttpClient
     private lateinit var gson: Gson
-
-    init {
-        listCities = mutableListOf()
-    }
 
     override suspend fun reqListCities(): String{
         var arr = "[]"
