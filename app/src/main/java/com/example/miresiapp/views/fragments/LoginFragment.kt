@@ -28,6 +28,7 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
     private lateinit var btnSignUp: Button
     private lateinit var loginBusinessLogic: LoginBusinessLogic
     private lateinit var model: DataProvider
+    private lateinit var mSocket: Socket
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_login, container, false)
@@ -46,6 +47,7 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
         btnLogin = view.findViewById(R.id.btnLogin)
         btnSignUp = view.findViewById(R.id.btnSignup)
         model = DataProvider()
+        mSocket = SocketCon.getSocket()
         loginBusinessLogic = LoginBusinessLogic(this, model)
     }
 
@@ -58,6 +60,7 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
             }
             R.id.btnSignup ->{
                 activity?.supportFragmentManager?.beginTransaction()
+                   // ?.setCustomAnimations(R.anim.slide_in,R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
                     ?.replace(R.id.loginFrag, SignUpFragment())
                     ?.addToBackStack("loginBack")
                     ?.commit()
@@ -66,6 +69,7 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
     }
 
     override fun login(user: User?) {
+        //mSocket.emit("user", user?.id, mSocket.id())
         val prefe = activity?.getSharedPreferences(resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)?.edit()
         prefe?.apply {
             if (user?.id is Int){
@@ -85,8 +89,8 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
 
     private fun closeLoginFrag(user: User){
         activity?.run {
-            toast(this, user)
             supportFragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
                 .remove(this@LoginFragment)
                 .commitNowAllowingStateLoss()
         }

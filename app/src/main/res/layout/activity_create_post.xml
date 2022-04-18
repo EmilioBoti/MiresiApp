@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.activities.CreatePost"
-
+    android:background="@drawable/bg_message_box"
     >
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/subTopBar"
@@ -26,30 +26,45 @@
             android:layout_height="wrap_content"
             android:text="@string/createPost"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/black_200"
+            android:textColor="@color/dark_blue"
             android:textSize="@dimen/dimenst_20"
+            android:textStyle="bold"
             />
     </com.google.android.material.appbar.MaterialToolbar>
-    <Spinner
-        android:id="@+id/residences"
+    <LinearLayout
+        android:id="@+id/selectContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subTopBar"
-        android:layout_margin="@dimen/dimen_20"
-        android:padding="@dimen/dimen_20"
-        />
-    <Spinner
-        android:id="@+id/rooms"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/residences"
-        android:layout_margin="@dimen/dimen_20"
-        android:padding="@dimen/dimen_20"
-        />
+        android:gravity="end"
+        >
+        <Spinner
+            android:id="@+id/cities"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/selectSpinner"
+            android:spinnerMode="dialog"
+            android:padding="@dimen/dimen_20"
+            />
+        <Spinner
+            android:id="@+id/residences"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/selectSpinner"
+            android:spinnerMode="dialog"
+            android:padding="@dimen/dimen_20"
+            />
+        <Spinner
+            android:id="@+id/rooms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_20"
+            android:spinnerMode="dialog"
+            style="@style/selectSpinner"
+            />
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textField"
@@ -58,7 +73,7 @@
         android:hint="@string/dateStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rooms"
+        app:layout_constraintTop_toBottomOf="@+id/selectContainer"
         android:layout_margin="@dimen/dimen_20"
         app:startIconDrawable="@drawable/date_range_24"
         >
@@ -91,4 +106,18 @@
             />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCreatePost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/createPost"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_marginEnd="@dimen/dimen_10"
+        android:enabled="true"
+        android:padding="@dimen/dimen_20"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,11 +9,11 @@ import com.example.miresiapp.R
 import com.example.miresiapp.models.City
 import com.example.miresiapp.models.Residence
 
-class DropDownAdapter(private val list: MutableList<City>): BaseAdapter() {
+class DropDownResi(private val list: MutableList<Residence>): BaseAdapter() {
 
     override fun getCount(): Int = list.size
 
-    override fun getItem(position: Int): City = list[position]
+    override fun getItem(position: Int): Residence = list[position]
 
     override fun getItemId(position: Int): Long = list[position].id.toLong()
 
@@ -23,6 +23,6 @@ class DropDownAdapter(private val list: MutableList<City>): BaseAdapter() {
         return view
     }
     private fun binData(view: View, pos: Int){
-        view.findViewById<TextView>(R.id.resiname).text = list[pos].name
+        view.findViewById<TextView>(R.id.resiname).text = list[pos].resiName
     }
 }

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/dimen_5"
+    app:cardElevation="@dimen/dimen_2"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/imagePost"
+            android:layout_width="@dimen/dimen_160"
+            android:layout_height="@dimen/dimen_250" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_250"
+            android:layout_toEndOf="@id/imagePost"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_10">
+
+            <TextView
+                android:id="@+id/roomName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/black_200"
+                android:textSize="@dimen/dimenst_20"
+                android:textStyle="bold"
+                tools:text="@string/postTittle" />
+
+            <TextView
+                android:id="@+id/resiName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/roomName"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:textColor="@color/black_200"
+                android:textSize="@dimen/dimenst_16"
+                tools:text="@string/postsubTittle" />
+
+            <TextView
+                android:id="@+id/dates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/resiName"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:textColor="@color/black_200"
+                android:textSize="@dimen/dimenst_16"
+                android:textStyle="bold"
+                tools:text="@string/postDate" />
+
+            <RelativeLayout
+                android:id="@+id/byUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/navTo"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:gravity="center_vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/imageUserContaiuner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_5"
+                    app:cardCornerRadius="@dimen/dimen_200">
+
+                    <ImageView
+                        android:id="@+id/imageUser"
+                        android:layout_width="@dimen/dimen_50"
+                        android:layout_height="@dimen/dimen_50"
+                        android:src="@drawable/person_24"
+                        />
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/priceRoom"
+                    android:layout_toEndOf="@id/imageUserContaiuner"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/by"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_5"
+                        android:text="@string/publishedBy"
+                        android:textColor="@color/black_200" />
+
+                    <TextView
+                        android:id="@+id/userName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_5"
+                        android:textColor="@color/black_200"
+                        tools:text="@string/userName" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/priceRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_5"
+                    android:layout_marginEnd="@dimen/dimen_5"
+                    android:textColor="@color/black_200"
+                    android:textSize="@dimen/dimenst_25"
+                    android:textStyle="bold"
+                    tools:text="@string/priceRoom" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/navTo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/seeTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_20"
+                    android:text="@string/see"
+                    android:textColor="@color/blue_200" />
+
+                <TextView
+                    android:id="@+id/chatTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/goChat"
+                    android:textColor="@color/blue_200" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

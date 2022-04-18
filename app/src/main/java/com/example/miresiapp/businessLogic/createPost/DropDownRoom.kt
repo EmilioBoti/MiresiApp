@@ -8,12 +8,13 @@ import android.widget.TextView
 import com.example.miresiapp.R
 import com.example.miresiapp.models.City
 import com.example.miresiapp.models.Residence
+import com.example.miresiapp.models.Room
 
-class DropDownAdapter(private val list: MutableList<City>): BaseAdapter() {
+class DropDownRoom(private val list: MutableList<Room>): BaseAdapter() {
 
     override fun getCount(): Int = list.size
 
-    override fun getItem(position: Int): City = list[position]
+    override fun getItem(position: Int): Room = list[position]
 
     override fun getItemId(position: Int): Long = list[position].id.toLong()
 

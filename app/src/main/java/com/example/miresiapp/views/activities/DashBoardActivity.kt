@@ -1,26 +1,30 @@
 package com.example.miresiapp.views.activities
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.miresiapp.R
+import com.example.miresiapp.SocketCon
 import com.example.miresiapp.utils.toast
 import com.example.miresiapp.views.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import io.socket.client.Socket
 
 class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var residencesFragment: ResidencesFragment
     private var cityId: String? = null
+    private lateinit var mSocket: Socket
+    private var userId: Int? = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash_board)
+
     }
 
     override fun onStart() {
@@ -31,7 +35,17 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener(this)
     }
-
+    private fun getCurrentUserData(): Int? {
+        val prefe = getSharedPreferences(resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
+        return prefe?.getInt("userId", 0)
+    }
+    private fun conn() {
+        userId = getCurrentUserData()
+        userId?.let {
+            toast(applicationContext, "y")
+            if (it !=  0) mSocket.emit("user", it, mSocket.id())
+        }
+    }
     private fun setFragmentView( fragment: Fragment){
         supportFragmentManager.beginTransaction()
             .replace(R.id.viewContainer, fragment)
@@ -45,24 +59,27 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
             .commit()
     }
 
-    private fun checkFrag(intent: Intent?){
+    private fun checkFrag(intent: Intent?) {
         cityId = intent?.extras?.getString("city")
         residencesFragment = ResidencesFragment()
-
+        val frag = supportFragmentManager.fragments
+        
         cityId?.let {
-            val data = Bundle().apply {
-                putString("city", it)
-            }
+            val data = Bundle().apply { putString("city", it) }
             residencesFragment = ResidencesFragment().apply {
                 arguments = data
             }
             setFragmentView(residencesFragment)
-        }?: setFragmentView(HomeFragment())
+        }?: if (frag.size > 0){
+            setFragmentView(frag[frag.size-1])
+        }else setFragmentView(HomeFragment())
+
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.pageHome->{
+            R.id.pageHome -> {
                 setFragmentView(HomeFragment())
                return true
             }
@@ -70,16 +87,16 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
                 setBackFragmentView(RoomFragment())
                return true
             }
-            R.id.pageForum->{
+            R.id.pageForum -> {
                 setBackFragmentView(ForumFragment())
                 return true
             }
-            R.id.pageFavorite->{
+            R.id.pageFavorite ->{
                 setBackFragmentView(FavoriteFragment())
                 return true
             }
             else -> { false }
         }
-        return false
+        return true
     }
 }

@@ -38,6 +38,14 @@
     <string name="studyRoom">Study Room</string>
     <string name="laundryRoom">Laundry Room</string>
     <string name="createPost">Create your Post</string>
-    <string name="dateStart">YYY-MM-DD</string>
+    <string name="dateStart">YYYY-MM-DD</string>
     <string name="to">To</string>
+    <string name="postTittle">Habitación Individual Superior</string>
+    <string name="postsubTittle">en Residencia Universitaria Aleu</string>
+    <string name="postDate">30/08/2022 - 01/062023</string>
+    <string name="publishedBy">Published By</string>
+    <string name="priceRoom">€550</string>
+    <string name="userName">Emilio Botier</string>
+    <string name="goChat">Chat</string>
+    <string name="see">See</string>
 </resources>

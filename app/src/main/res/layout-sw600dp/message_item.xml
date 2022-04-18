@@ -20,6 +20,7 @@
         app:contentPaddingRight="@dimen/dimen_10"
         app:contentPaddingBottom="@dimen/dimen_5"
         android:layout_alignParentEnd="true"
+        app:cardBackgroundColor="@color/indigo_blue"
         >
 
         <LinearLayout
@@ -28,7 +29,7 @@
             android:orientation="vertical"
             android:gravity="end"
             >
-            <TextView
+            <!--<TextView
                 android:id="@+id/from"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,15 +37,17 @@
                 android:textSize="@dimen/dimenst_16"
                 android:textStyle="bold"
                 android:textColor="@color/blue_200"
-                />
+                />-->
 
             <TextView
                 android:id="@+id/messageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/messenge"
-                android:textColor="@color/black"
-                android:textSize="@dimen/dimenst_20" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimenst_20"
+                android:layout_margin="@dimen/dimen_4"
+                />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

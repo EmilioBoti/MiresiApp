@@ -14,45 +14,35 @@ import com.example.miresiapp.adapters.CityAdapter
 import com.example.miresiapp.businessLogic.search.DataProviderSearch
 import com.example.miresiapp.businessLogic.search.ISearch
 import com.example.miresiapp.businessLogic.search.SearchLogicImpl
+import com.example.miresiapp.databinding.ActivitySearcherBinding
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.City
 import com.example.miresiapp.utils.toast
 import kotlinx.coroutines.launch
 
 class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItemView {
-    private lateinit var recently: TextView
-    private lateinit var btnGoBack: ImageView
-    private lateinit var searcher: SearchView
+    private lateinit var binding: ActivitySearcherBinding
     private lateinit var model: DataProviderSearch
     private lateinit var searchLogicImpl: SearchLogicImpl
-    private lateinit var recyclerSuggest: RecyclerView
     private lateinit var listCities: MutableList<City>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_searcher)
+        binding = ActivitySearcherBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        init()
-
-        btnGoBack.setOnClickListener {
+        binding.btnGoBack.setOnClickListener {
             onBackPressed()
         }
-    }
-
-    private fun init(){
-        btnGoBack = findViewById(R.id.btnGoBack)
-        recently = findViewById(R.id.text1)
-        searcher = findViewById(R.id.searcher)
-        recyclerSuggest = findViewById(R.id.suggestContainer)
-
-        model = DataProviderSearch()
-        searchLogicImpl = SearchLogicImpl(this, model)
     }
 
     override fun onStart() {
         super.onStart()
 
-        searcher.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        model = DataProviderSearch()
+        searchLogicImpl = SearchLogicImpl(this, model)
+
+        binding.searcher.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 lifecycleScope.launch {
                     newText?.let {
@@ -80,7 +70,7 @@ class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItem
         this.listCities = listCities
         
         val cityAdapter: CityAdapter = CityAdapter(this.listCities, applicationContext, this)
-        recyclerSuggest.apply {
+        binding.suggestContainer.apply {
             layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
             adapter = cityAdapter
         }
@@ -90,7 +80,7 @@ class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItem
         toast(applicationContext, err)
     }
 
-    override fun onClickItem(pos: Int) {
+    override fun onClickItem(pos: Int, view: View) {
         lifecycleScope.launch {
             searchLogicImpl.requestCity(listCities[pos].name.trim())
         }

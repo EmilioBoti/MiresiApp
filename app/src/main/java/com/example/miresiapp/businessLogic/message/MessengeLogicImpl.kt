@@ -3,6 +3,7 @@ package com.example.miresiapp.businessLogic.message
 import com.example.miresiapp.SocketCon
 import com.example.miresiapp.businessLogic.chat.ChatDataProvider
 import com.example.miresiapp.models.Message
+import com.example.miresiapp.models.MessageModel
 import com.google.gson.Gson
 import io.socket.client.Socket
 
@@ -24,6 +25,11 @@ class MessengeLogicImpl(private val viewer: IMessenger.ViewPresenter, private va
         listMessage?.let {
             viewer.showMessage(it)
         }
+    }
+
+    override fun sendMessage(message: MessageModel) {
+        val msm: String = gson.toJson(message)
+        mSocket.emit("message", msm)
     }
 
     private fun socketEventsListenner(){

@@ -15,12 +15,18 @@
         android:elevation="@dimen/dimen_4"
         >
 
-        <ImageView
-            android:layout_width="@dimen/dimen_50"
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_foreground"
-            />
-
+            app:cardCornerRadius="@dimen/dimen_200"
+            android:layout_marginEnd="@dimen/dimen_10"
+            >
+            <ImageView
+                android:layout_width="@dimen/dimen_50"
+                android:layout_height="@dimen/dimen_50"
+                android:src="@drawable/person_24"
+                />
+        </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searcher"

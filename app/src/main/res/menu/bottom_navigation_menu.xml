@@ -13,7 +13,8 @@
         android:id="@+id/pageForum"
         android:enabled="true"
         android:icon="@drawable/forum_24"
-        android:title="@string/forum"/>
+        android:title="@string/forum"
+        />
     <item
         android:id="@+id/pageFavorite"
         android:enabled="true"

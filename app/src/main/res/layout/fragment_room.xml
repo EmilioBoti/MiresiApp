@@ -28,12 +28,14 @@
             />
     </com.google.android.material.appbar.MaterialToolbar>
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/postContainer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_0"
         app:layout_constraintTop_toBottomOf="@id/subTopBar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/post_item"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -48,7 +48,7 @@ class MainBaseActivity : AppCompatActivity(), ICityInter.ViewPresenter, OnClickI
         }
     }
 
-    override fun onClickItem(pos: Int) {
+    override fun onClickItem(pos: Int, view: View) {
         Intent(this, DashBoardActivity::class.java).apply {
             startActivity(this)
         }

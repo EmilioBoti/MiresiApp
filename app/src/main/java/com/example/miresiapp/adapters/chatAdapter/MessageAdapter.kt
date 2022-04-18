@@ -42,7 +42,6 @@ class MessageAdapter(private val listMessage: MutableList<Message>, private val 
         private val sms: TextView = itenView.findViewById(R.id.messageText)
 
         fun bindData(message: Message) {
-            //from.text = message.fromUser
             sms.text = message.sms
         }
     }

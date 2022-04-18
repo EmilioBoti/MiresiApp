@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -64,7 +63,7 @@ class ResidencesFragment : Fragment(), PresenterView, OnClickItemView {
         toast(activity?.applicationContext, "Error")
     }
 
-    override fun onClickItem(pos: Int) {
+    override fun onClickItem(pos: Int, view: View) {
         Intent(activity, ResiInfoActivity::class.java).apply {
             listResi?.let {
                 this.putExtra("id", it[pos].id)

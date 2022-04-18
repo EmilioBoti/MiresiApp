@@ -24,13 +24,10 @@ import kotlinx.coroutines.launch
 
 class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.ViewPresenter {
     private lateinit var binding: ActivityMessengerBinding
-    private lateinit var mSocket: Socket
     private lateinit var listMessage: MutableList<Message>
     private var data: Bundle? = null
     private var from: Int? = null
     private var to: Int? = null
-    private lateinit var userSenderSOId: String
-    private lateinit var userReceiverSOId: String
     private lateinit var message: MessageModel
     private lateinit var gson: Gson
     private lateinit var model: ChatDataProvider
@@ -42,14 +39,13 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
         binding = ActivityMessengerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         data = intent?.extras
-
     }
 
     override fun onStart() {
         super.onStart()
 
         gson = Gson()
-        mSocket = SocketCon.getSocket()
+
         binding.btnSender.setOnClickListener(this)
         model = ChatDataProvider()
         listMessage = mutableListOf()
@@ -58,26 +54,18 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
         to = data?.getInt("to")
         binding.userNameSelected.text = data?.getString("name", "")!!
 
-        requestSMS(from!!, to!!)
-
         lifecycleScope.launch {
-            messengeLogicImpl.requestMessage(from!!, to!!)
+           messengeLogicImpl.requestMessage(from!!, to!!)
         }
         binding.btnGoBack.setOnClickListener {
             onBackPressed()
         }
     }
-    private fun requestSMS(from: Int, to: Int){
-        if (mSocket.connected()){
-            userSenderSOId = mSocket.id()
-        }
-    }
     override fun onClick(v: View?) {
         if(binding.boxMessage.text.isNotEmpty()){
             message = MessageModel(from!!, to!!, binding.boxMessage.text.toString(), false)
-            val msm: String = gson.toJson(message)
             binding.boxMessage.setText("")
-            mSocket.emit("message", msm)
+            messengeLogicImpl.sendMessage(message)
         }
     }
 
@@ -87,7 +75,7 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
 
         binding.messageContainer.apply {
             layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
-            scrollToPosition(listMessage.size - 1)
+            scrollToPosition(listMessage.size -1)
             setHasFixedSize(true)
             adapter = messageAdapter
         }

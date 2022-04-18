@@ -24,8 +24,7 @@ open class DataProviderResi: IResi.PresenterModel{
                 service.getResidences(city).execute().body()
             }catch (err: Exception){
                 null
-            }
-            catch (err: CancellationException){
+            } catch (err: CancellationException){
                 null
             }
         }

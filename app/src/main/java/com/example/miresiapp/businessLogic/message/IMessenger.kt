@@ -1,6 +1,7 @@
 package com.example.miresiapp.businessLogic.message
 
 import com.example.miresiapp.models.Message
+import com.example.miresiapp.models.MessageModel
 
 interface IMessenger {
     interface ViewPresenter{
@@ -10,5 +11,6 @@ interface IMessenger {
     }
     interface Presenter{
         suspend fun requestMessage(from: Int, to: Int)
+        fun sendMessage(message: MessageModel)
     }
 }

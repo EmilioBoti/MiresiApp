@@ -4,4 +4,9 @@
         <item name="android:layout_marginStart">@dimen/dimen_40</item>
         <item name="android:layout_marginEnd">@dimen/dimen_40</item>
     </style>
+    <style name="selectSpinner">
+        <item name="android:layout_marginEnd">@dimen/dimen_20</item>
+        <item name="android:layout_marginStart">@dimen/dimen_20</item>
+        <item name="android:layout_marginTop">@dimen/dimen_10</item>
+    </style>
 </resources>

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
@@ -54,9 +53,9 @@ class ResiAdapter(private val listResi: MutableList<Residence>?, private val lis
                     listener.addFavoriteItem(absoluteAdapterPosition, view)
                 }
             }
-            itemView.setOnClickListener {
+            itemView.setOnClickListener { view ->
                 if (RecyclerView.NO_POSITION != absoluteAdapterPosition ){
-                    listener.onClickItem(absoluteAdapterPosition)
+                    listener.onClickItem(absoluteAdapterPosition, view)
                 }
             }
         }

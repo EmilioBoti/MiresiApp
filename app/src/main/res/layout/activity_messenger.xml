@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/white"
-        android:elevation="@dimen/dimen_4"
+        android:elevation="@dimen/dimen_1"
         >
 
         <ImageView
@@ -72,9 +72,10 @@
                 android:layout_toStartOf="@id/btnSender"
                 android:background="@drawable/login_input_corner"
                 android:hint="@string/messenge"
-                android:padding="@dimen/dimen_10"
                 android:maxLines="7"
-                />
+                android:padding="@dimen/dimen_10"
+                android:textColor="@color/black_200"
+                android:textColorHint="@color/dark_blue" />
 
             <ImageButton
                 android:id="@+id/btnSender"

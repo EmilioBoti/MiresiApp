@@ -1,23 +1,32 @@
 package com.example.miresiapp.interfaces.apiendpoints
 
-import com.example.miresiapp.models.City
-import com.example.miresiapp.models.Message
-import com.example.miresiapp.models.Residence
-import com.example.miresiapp.models.User
+import com.example.miresiapp.models.*
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ApiEndPoint {
 
+    @Headers("Content-Type: application/json")
+    @POST("api/v1/createPost")
+    fun insertPost(@Body post: Post): Call<MutableList<Post>>
+
+    @GET("api/v1/posts")
+    fun getPosts(): Call<MutableList<PostModel>>
+
     @GET("api/v1/residences/{city}")
     fun getResidences(@Path("city") city: String): Call<MutableList<Residence>>
+
+    @GET("api/v1/resirooms/{id}")
+    fun getRoomsResi(@Path("id") id: Int): Call<MutableList<Room>>
 
     @GET("api/v1/resi/{id}")
     fun getSingleResi(@Path("id") id: Int): Call<MutableList<Residence>>
 
     @GET("api/city/c/{name}")
     fun searchCity(@Path("name") name: String): Call<MutableList<City>>
+
+    @GET("api/v1/cities/")
+    fun getAllCities(): Call<MutableList<City>>
 
     @GET("api/v1/chats/{idUser}")
     fun userChats(@Path("idUser") idUser: Int): Call<MutableList<User>>
