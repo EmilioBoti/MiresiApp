@@ -1,28 +1,23 @@
 package com.example.miresiapp.views.activities
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.lifecycleScope
 import com.example.miresiapp.R
 import com.example.miresiapp.businessLogic.createPost.*
 import com.example.miresiapp.databinding.ActivityCreatePostBinding
-import com.example.miresiapp.databinding.ActivityMainBinding
 import com.example.miresiapp.models.City
 import com.example.miresiapp.models.Post
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 import com.example.miresiapp.utils.toast
-import com.google.android.material.datepicker.CalendarConstraints
-import com.google.android.material.datepicker.DateValidatorPointForward
-import com.google.android.material.datepicker.MaterialDatePicker
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-class CreatePost : AppCompatActivity(), IPost.ViewPresenter, AdapterView.OnItemSelectedListener, View.OnClickListener {
+class CreatePost : AppCompatActivity(), IPost.ViewPresenter, View.OnClickListener {
     private lateinit var binding: ActivityCreatePostBinding
     private lateinit var listResi: MutableList<Residence>
     private lateinit var listCities: MutableList<City>
@@ -47,40 +42,60 @@ class CreatePost : AppCompatActivity(), IPost.ViewPresenter, AdapterView.OnItemS
         createPost = CreatePostImpl(this, postDataProvider, applicationContext)
 
         lifecycleScope.launch { createPost.requestCities() }
-        binding.cities.onItemSelectedListener = this
-        binding.residences.onItemSelectedListener = this
-        binding.rooms.onItemSelectedListener = this
         binding.btnGoBack.setOnClickListener { onBackPressed() }
         binding.btnCreatePost.setOnClickListener(this)
+
+        binding.cities.setOnItemClickListener { parent, view, position, id ->
+            lifecycleScope.launch {
+                createPost.requestResi(listCities[position].name)
+            }
+        }
+        binding.residences.setOnItemClickListener { parent, view, position, id ->
+            resiId = listResi[position].id
+            lifecycleScope.launch {
+                createPost.requestRooms(listResi[position].id)
+            }
+        }
+        binding.rooms.setOnItemClickListener { parent, view, position, id ->
+            roomId = listRooms[position].id
+        }
     }
 
     override fun setDropDown(list: MutableList<Residence>?) {
+        val l = arrayListOf<String>()
+        list?.let { it.forEach { l.add(it.resiName) } }
+        val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_dropdown_item,l)
         list?.let {
             listResi = it
             val dropDownResi: DropDownResi = DropDownResi(it)
             binding.residences.apply {
-                adapter = dropDownResi
+                setAdapter(adapter)
+                //adapter = dropDownResi
             }
         }
     }
 
     override fun setCitiesValues(list: MutableList<City>?) {
+        val l = arrayListOf<String>()
+        list?.let { it.forEach { l.add(it.name) } }
+        val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_dropdown_item,l)
         list?.let {
             listCities = it
             val dropDownAdapter: DropDownAdapter = DropDownAdapter(it)
             binding.cities.apply {
-                adapter = dropDownAdapter
+                setAdapter(adapter)
             }
         }
     }
 
     override fun setRoomsValues(list: MutableList<Room>?) {
+        val l = arrayListOf<String>()
+        list?.let { it.forEach { l.add(it.name) } }
+        val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_dropdown_item,l)
         list?.let {
             listRooms = it
             val dropDownRoom: DropDownRoom = DropDownRoom(it)
-            binding.rooms.apply {
-                adapter = dropDownRoom
-            }
+            binding.rooms.setAdapter(adapter)
         }
     }
 
@@ -91,8 +106,7 @@ class CreatePost : AppCompatActivity(), IPost.ViewPresenter, AdapterView.OnItemS
     override fun errorValidDate(err: String) {
         toast(applicationContext, err)
     }
-
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+    /* override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         when(parent?.id){
             R.id.cities -> {
                 lifecycleScope.launch {
@@ -105,13 +119,11 @@ class CreatePost : AppCompatActivity(), IPost.ViewPresenter, AdapterView.OnItemS
                     createPost.requestRooms(listResi[position].id)
                 }
             }
-            R.id.rooms ->{
-                roomId = listRooms[position].id
-            }
+            R.id.rooms ->{ roomId = listRooms[position].id }
         }
-    }
+    }*/
 
-    override fun onNothingSelected(parent: AdapterView<*>?) {}
+   // override fun onNothingSelected(parent: AdapterView<*>?) {}
 
     override fun onClick(v: View?) {
         val dateStart = binding.dateStart.text?.toString()

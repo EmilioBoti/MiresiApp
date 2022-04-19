@@ -35,35 +35,138 @@
         android:id="@+id/selectContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subTopBar"
-        android:gravity="end"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_40"
         >
-        <Spinner
-            android:id="@+id/cities"
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_40"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+            app:boxCornerRadiusBottomEnd="@dimen/dimen_20"
+            app:boxCornerRadiusTopStart="@dimen/dimen_20"
+            app:boxCornerRadiusBottomStart="@dimen/dimen_20"
+            app:boxCornerRadiusTopEnd="@dimen/dimen_20"
+            app:boxBackgroundColor="@color/green_200"
+            app:boxStrokeColor="@color/blue_200"
+            app:boxStrokeWidth="@dimen/dimen_1"
+            app:boxBackgroundMode="outline"
+
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/cities"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/city"
+                android:textColor="@color/black"
+                android:background="@null"
+                android:ellipsize="end"
+                android:inputType="none"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:paddingTop="@dimen/dimen_5"
+                android:paddingBottom="@dimen/dimen_5"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_40"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+            app:boxCornerRadiusBottomEnd="@dimen/dimen_20"
+            app:boxCornerRadiusTopStart="@dimen/dimen_20"
+            app:boxCornerRadiusBottomStart="@dimen/dimen_20"
+            app:boxCornerRadiusTopEnd="@dimen/dimen_20"
+            app:boxBackgroundColor="@color/green_200"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/blue_200"
+            app:boxStrokeWidth="@dimen/dimen_1"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:layout_marginStart="@dimen/dimen_10"
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/residences"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/residence"
+                android:textColor="@color/black_200"
+                android:background="@null"
+                android:ellipsize="end"
+                android:paddingTop="@dimen/dimen_5"
+                android:paddingBottom="@dimen/dimen_5"
+                android:dropDownSelector="@drawable/spinner_style"
+                android:inputType="none"
+                android:maxLines="1"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_40"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+            app:boxCornerRadiusBottomEnd="@dimen/dimen_20"
+            app:boxCornerRadiusTopStart="@dimen/dimen_20"
+            app:boxCornerRadiusBottomStart="@dimen/dimen_20"
+            app:boxCornerRadiusTopEnd="@dimen/dimen_20"
+            app:boxStrokeColor="@color/blue_200"
+            app:boxBackgroundColor="@color/green_200"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidth="@dimen/dimen_1"
+            app:endIconDrawable="@drawable/arrow_drop_down_24"
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/rooms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/room"
+                android:textColor="@color/black"
+                android:background="@null"
+                android:dropDownSelector="@drawable/spinner_style"
+                android:ellipsize="end"
+                android:inputType="none"
+                android:maxLines="1"
+                tools:ignore="LabelFor"
+                android:paddingTop="@dimen/dimen_5"
+                android:paddingBottom="@dimen/dimen_5"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+       <!--<Spinner
+            android:id="@+id/cities"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/selectSpinner"
+            android:tag="@string/city"
+            android:padding="@dimen/dimen_5"
+            android:background="@drawable/spinner_style"
+            android:gravity="center_horizontal"
             android:spinnerMode="dialog"
-            android:padding="@dimen/dimen_20"
             />
         <Spinner
             android:id="@+id/residences"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/selectSpinner"
             android:spinnerMode="dialog"
-            android:padding="@dimen/dimen_20"
+            android:padding="@dimen/dimen_5"
+            android:background="@drawable/spinner_style"
+
             />
         <Spinner
             android:id="@+id/rooms"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dimen_20"
+            android:padding="@dimen/dimen_5"
             android:spinnerMode="dialog"
             style="@style/selectSpinner"
-            />
+            android:background="@drawable/spinner_style"
+            />-->
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout

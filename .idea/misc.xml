@@ -42,11 +42,12 @@
         <entry key="app/src/main/res/drawable/person_24.xml" value="0.16" />
         <entry key="app/src/main/res/drawable/pool_24.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/sender_24.xml" value="0.1655" />
+        <entry key="app/src/main/res/drawable/spinner_style.xml" value="0.1765" />
         <entry key="app/src/main/res/layout-sw600dp/message_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/access_to.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_city.xml" value="0.22327898550724637" />
-        <entry key="app/src/main/res/layout/activity_create_post.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_create_post.xml" value="0.45" />
         <entry key="app/src/main/res/layout/activity_dash_board.xml" value="0.22348141432456936" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22327898550724637" />
@@ -56,7 +57,7 @@
         <entry key="app/src/main/res/layout/activity_resi_info.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_searcher.xml" value="0.335" />
         <entry key="app/src/main/res/layout/bicycle_icon_wtext.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/chat_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/chat_item.xml" value="0.45" />
         <entry key="app/src/main/res/layout/city_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/component_confirm_pass.xml" value="0.22327898550724637" />
         <entry key="app/src/main/res/layout/component_email.xml" value="0.335" />
@@ -68,6 +69,7 @@
         <entry key="app/src/main/res/layout/fragment_forum.xml" value="0.22348141432456936" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.1243209360635186" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.21622846781504987" />
         <entry key="app/src/main/res/layout/fragment_residences.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_room.xml" value="0.335" />
@@ -82,6 +84,7 @@
         <entry key="app/src/main/res/layout/pool_icon_wtext.xml" value="0.375" />
         <entry key="app/src/main/res/layout/post_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/resi_item.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/spinner_list.xml" value="0.335" />
         <entry key="app/src/main/res/layout/study_room_icon_wtext.xml" value="0.45" />
         <entry key="app/src/main/res/layout/toolbarPost_component.xml" value="0.375" />
         <entry key="app/src/main/res/layout/toolbar_component.xml" value="0.5160202360876898" />

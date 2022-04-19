@@ -4,13 +4,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.TextView
 import com.example.miresiapp.R
 import com.example.miresiapp.models.City
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 
-class DropDownRoom(private val list: MutableList<Room>): BaseAdapter() {
+class DropDownRoom(private val list: MutableList<Room>): BaseAdapter(), Filterable {
 
     override fun getCount(): Int = list.size
 
@@ -25,5 +27,9 @@ class DropDownRoom(private val list: MutableList<Room>): BaseAdapter() {
     }
     private fun binData(view: View, pos: Int){
         view.findViewById<TextView>(R.id.resiname).text = list[pos].name
+    }
+
+    override fun getFilter(): Filter {
+        TODO("Not yet implemented")
     }
 }

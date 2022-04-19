@@ -41,7 +41,6 @@ class CreatePostImpl(private val viewer: ViewPresenter, private val model: PostD
         if (validDate(dateStart) && validDate(dateEnd)){
             val post = Post(getDataUser()!!, resiId, roomId,dateStart, dateEnd)
             val d = model.insertPost(post)
-            d
         }else viewer.errorValidDate("Date must be format YYYY-MM-DD or YYYY/MM/DD")
     }
 
@@ -53,7 +52,7 @@ class CreatePostImpl(private val viewer: ViewPresenter, private val model: PostD
 
     private fun validDate(date: String): Boolean {
         var d = date
-        val regex = """^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])${'$'}""".toRegex()
+        val regex = """^\d{4}/(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])${'$'}""".toRegex()
         /*if (date.contains("/") || date.contains(".")){
             d = ""
             date.forEach { if (it == '/') d+= "-" else d += it }

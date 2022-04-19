@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="@dimen/dimen_5"
     app:cardElevation="@dimen/dimen_2"
+    app:cardBackgroundColor="@color/white"
     >
 
     <RelativeLayout
