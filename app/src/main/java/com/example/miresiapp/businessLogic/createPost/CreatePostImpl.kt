@@ -15,6 +15,7 @@ class CreatePostImpl(private val viewer: ViewPresenter, private val model: PostD
     private var listCities: MutableList<City>? = null
     private var listRooms: MutableList<Room>? = null
     private var userId: Int? = null
+    private lateinit var date: String
 
     override suspend fun requestResi(city: String) {
         list = model.getResiFromCity(city)
@@ -38,9 +39,11 @@ class CreatePostImpl(private val viewer: ViewPresenter, private val model: PostD
     }
 
     override suspend fun createPost(resiId: Int, roomId: Int, dateStart: String, dateEnd: String) {
-        if (validDate(dateStart) && validDate(dateEnd)){
-            val post = Post(getDataUser()!!, resiId, roomId,dateStart, dateEnd)
-            val d = model.insertPost(post)
+        val dateS = reformDate(dateStart)
+        val dateE = reformDate(dateEnd)
+        if (validDate(dateS) && validDate(dateE)) {
+            val post = Post(getDataUser()!!, resiId, roomId, dateS, dateE)
+            val d = model.insertPost(post) //it suppose to return some datas
         }else viewer.errorValidDate("Date must be format YYYY-MM-DD or YYYY/MM/DD")
     }
 
@@ -50,13 +53,16 @@ class CreatePostImpl(private val viewer: ViewPresenter, private val model: PostD
         return userId
     }
 
-    private fun validDate(date: String): Boolean {
+    private fun reformDate(date: String): String {
         var d = date
-        val regex = """^\d{4}/(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])${'$'}""".toRegex()
-        /*if (date.contains("/") || date.contains(".")){
+        if (date.contains("/") || date.contains(".")){
             d = ""
-            date.forEach { if (it == '/') d+= "-" else d += it }
-        }*/
+            date.forEach { if (it == '/') d += "-" else d += it }
+        }
+        return d
+    }
+    private fun validDate(date: String): Boolean {
+        val regex = """^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])${'$'}""".toRegex()
         return (regex.matches(date))
     }
 

@@ -14,7 +14,6 @@ object SocketCon {
     fun setSocket(){
         try {
             mSocket = IO.socket(Consts.HOST).connect()
-           //mSocket.connect()
         }catch (err: URISyntaxException){
             Log.e("socketErr", err.reason)
         }

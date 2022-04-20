@@ -10,12 +10,10 @@ import io.socket.client.Socket
 class MessengeLogicImpl(private val viewer: IMessenger.ViewPresenter, private val model: ChatDataProvider): IMessenger.Presenter {
     private var message: Message? = null
     private var listMessage: MutableList<Message>? = null
-    private var mSocket: Socket
-    private var gson: Gson
+    private var mSocket: Socket = SocketCon.getSocket()
+    private var gson: Gson = Gson()
 
     init {
-        mSocket = SocketCon.getSocket()
-        gson = Gson()
         socketEventsListenner()
     }
 

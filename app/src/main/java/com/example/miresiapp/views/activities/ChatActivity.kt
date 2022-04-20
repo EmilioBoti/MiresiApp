@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
+import com.example.miresiapp.SocketCon
 import com.example.miresiapp.adapters.chatAdapter.ChatAdapter
 import com.example.miresiapp.businessLogic.chat.ChatDataProvider
 import com.example.miresiapp.businessLogic.chat.ChatLogicImpl
@@ -16,6 +17,7 @@ import com.example.miresiapp.businessLogic.chat.IChat.ChatViewPresenter
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.User
 import com.google.gson.Gson
+import io.socket.client.Socket
 import kotlinx.coroutines.launch
 
 class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {
@@ -26,6 +28,7 @@ class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {
     private lateinit var chatAdapter: ChatAdapter
     private lateinit var listChats: MutableList<User>
     private lateinit var gson: Gson
+    private lateinit var mSocket: Socket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +43,7 @@ class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {
         chatContainer = findViewById(R.id.chatContainer)
         gson = Gson()
         model = ChatDataProvider()
-        chatLogicImpl = ChatLogicImpl(this, model)
+        chatLogicImpl = ChatLogicImpl(this, model, applicationContext)
 
         idUser?.let {
             lifecycleScope.launch {
