@@ -1,71 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.activities.MainActivity"
+    tools:context=".views.activities.BaseRegister"
     android:background="@color/yellow_200"
     >
 
     <LinearLayout
-        android:id="@+id/logo"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_250"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/green_200"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="@color/black_200"
-            android:textSize="@dimen/dimenst_50"
-            android:textStyle="bold"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/fields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_100"
-        android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo">
+        >
+        <LinearLayout
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_250"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/blue_200"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textColor="@color/black_200"
+                android:textSize="@dimen/dimenst_50"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
 
-        <include
-            layout="@layout/component_email"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/fields"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_100"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
 
-            />
+            <include
+                layout="@layout/component_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <include
+                layout="@layout/component_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <include
+                layout="@layout/component_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <include
+                layout="@layout/component_confirm_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <include
-            layout="@layout/component_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <include
-            layout="@layout/component_confirm_pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/btnSignup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_40"
-            android:paddingHorizontal="@dimen/dimen_50"
-            android:text="@string/signup"
-            android:textColor="@color/black_200"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/btnSignup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_40"
+                android:paddingHorizontal="@dimen/dimen_50"
+                android:text="@string/signup"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:backgroundTint="@color/blue_200"
+                />
+        </LinearLayout>
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

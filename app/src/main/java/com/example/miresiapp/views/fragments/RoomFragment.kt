@@ -55,75 +55,25 @@ class RoomFragment : Fragment(), View.OnClickListener, IRooms.ViewPresenter, OnC
         createPost = view.findViewById(R.id.createPoast)
         createPost.setOnClickListener(this)
 
-        postDataProvider = PostDataProvider()
-        roomsLogicImpl = RoomsLogicImpl(this, postDataProvider)
-
     }
 
     override fun onStart() {
         super.onStart()
-        idUser = getCurrentUserData()
 
-        SocketCon.setSocket()
-        mSocket = SocketCon.getSocket()
+        postDataProvider = PostDataProvider()
+        roomsLogicImpl = RoomsLogicImpl(this, postDataProvider, activity)
 
         lifecycleScope.launch {
             roomsLogicImpl.requestPost()
         }
 
         chatIcon.setOnClickListener {
-            idUser = getCurrentUserData()
-            this.idUser?.let {
-                if(it != 0){
-                    conn()
-                    navigateTo(it)
-                }
-                else toLogin()
-            }?: toLogin()
-        }
-    }
-
-    private fun getUserLoged() {
-        mSocket.on("connect") {
-            conn()
-        }
-    }
-
-    private fun conn() {
-        idUser = getCurrentUserData()
-        idUser?.let {
-            mSocket.emit("user", it, mSocket.id())
-        }
-    }
-
-    private fun toLogin(){
-        activity?.supportFragmentManager?.beginTransaction()
-            ?.setCustomAnimations(R.anim.slide_in,R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
-            ?.addToBackStack(null)
-            ?.replace(R.id.loginFrag, LoginFragment())
-            ?.commit()
-    }
-    private fun getCurrentUserData(): Int? {
-        val prefe = activity?.getSharedPreferences(resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
-        return prefe?.getInt("userId", 0)
-    }
-
-    private fun navigateTo(idUser: Int) {
-        Intent(activity, ChatActivity::class.java).apply {
-            this.putExtra("id", idUser)
-            startActivity(this)
+            roomsLogicImpl.navigaateTo()
         }
     }
 
     override fun onClick(v: View?) {
-        //idUser = getCurrentUserData()
-        idUser?.let {
-            if(it != 0) Intent(activity, CreatePost::class.java).apply {
-                startActivity(this)
-            }
-            else toLogin()
-        }?: toLogin()
-
+        roomsLogicImpl.navCreatePost()
     }
 
     override fun showPost(list: MutableList<PostModel>) {
@@ -138,32 +88,18 @@ class RoomFragment : Fragment(), View.OnClickListener, IRooms.ViewPresenter, OnC
     override fun onClickItem(pos: Int, view: View) {
         when(view.id) {
             R.id.chatTo -> {
-                navToMessanger(pos)
+                roomsLogicImpl.navToMessanger(listPost[pos].userId, listPost[pos].userName)
             }
             R.id.seeTo -> {
                 navToRoom(pos)
             }
         }
-
     }
 
     override fun addFavoriteItem(pos: Int, view: View) {
         TODO("Not yet implemented")
     }
 
-    private fun navToMessanger(pos: Int) {
-        conn()
-        idUser?.let {
-            if (it != 0) {
-                Intent(activity?.applicationContext, MessengerActivity::class.java).apply {
-                    putExtra("name", listPost[pos].userName)
-                    putExtra("from", idUser)
-                    putExtra("to", listPost[pos].userId)
-                    startActivity(this)
-                }
-            }else toLogin()
-        }?: toLogin()
-    }
     private fun navToRoom(pos: Int) {
         //it not suppost to go to this screen, just for testing.
         Intent(activity?.applicationContext, ResiInfoActivity::class.java).apply {

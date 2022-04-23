@@ -8,7 +8,11 @@ interface ApiEndPoint {
 
     @Headers("Content-Type: application/json")
     @POST("api/v1/createPost")
-    fun insertPost(@Body post: Post): Call<MutableList<Post>>
+    fun insertPost(@Body post: Post): Call<Boolean>
+
+    @Headers("Content-Type: application/json")
+    @POST("api/v1/signup")
+    fun register(@Body newUser: RegisterUser): Call<User>
 
     @GET("api/v1/posts")
     fun getPosts(): Call<MutableList<PostModel>>

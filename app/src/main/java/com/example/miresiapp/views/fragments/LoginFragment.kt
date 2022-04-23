@@ -1,6 +1,7 @@
 package com.example.miresiapp.views.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import com.example.miresiapp.models.DataProvider
 import com.example.miresiapp.models.User
 import com.example.miresiapp.models.UserLogin
 import com.example.miresiapp.utils.toast
+import com.example.miresiapp.views.activities.DashBoardActivity
 import io.socket.client.Socket
 import kotlinx.coroutines.launch
 
@@ -47,6 +49,7 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
         btnLogin = view.findViewById(R.id.btnLogin)
         btnSignUp = view.findViewById(R.id.btnSignup)
         model = DataProvider()
+        SocketCon.setSocket()
         mSocket = SocketCon.getSocket()
         loginBusinessLogic = LoginBusinessLogic(this, model)
     }
@@ -60,8 +63,8 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
             }
             R.id.btnSignup ->{
                 activity?.supportFragmentManager?.beginTransaction()
-                   // ?.setCustomAnimations(R.anim.slide_in,R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
-                    ?.replace(R.id.loginFrag, SignUpFragment())
+                    ?.setCustomAnimations(R.anim.slide_in,R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
+                    ?.replace(R.id.loginRegisterContainer, SignUpFragment())
                     ?.addToBackStack("loginBack")
                     ?.commit()
             }
@@ -69,17 +72,15 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
     }
 
     override fun login(user: User?) {
-        //mSocket.emit("user", user?.id, mSocket.id())
         val prefe = activity?.getSharedPreferences(resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)?.edit()
-        prefe?.apply {
-            if (user?.id is Int){
+        user?.let {
+            prefe?.apply {
                 putInt("userId", user.id)
                 putString("name", user.name)
                 putString("email", user.email)
-                putString("socketId", user.socketId)
                 apply()
-                closeLoginFrag(user)
-            } else error()
+            }
+            closeLoginFrag(user)
         }
     }
 
@@ -88,11 +89,9 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
     }
 
     private fun closeLoginFrag(user: User){
-        activity?.run {
-            supportFragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
-                .remove(this@LoginFragment)
-                .commitNowAllowingStateLoss()
+        Intent(activity?.applicationContext, DashBoardActivity::class.java).apply {
+            activity?.startActivity(this)
         }
+        activity?.finish()
     }
 }

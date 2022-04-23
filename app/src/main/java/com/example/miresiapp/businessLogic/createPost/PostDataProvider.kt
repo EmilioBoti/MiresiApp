@@ -52,7 +52,7 @@ class PostDataProvider: IPost.ModelPresenter, DataProviderResi() {
         return result
     }
 
-    override suspend fun insertPost(post: Post): MutableList<Post>? {
+    override suspend fun insertPost(post: Post): Boolean? {
         //it is not working properly, must be fix it
         return  withContext(Dispatchers.IO) {
             try {

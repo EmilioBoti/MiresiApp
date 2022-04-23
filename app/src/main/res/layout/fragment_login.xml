@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.activities.MainActivity"
+    tools:context=".views.activities.BaseRegister"
     android:background="@color/yellow_200"
     >
 
@@ -76,9 +76,10 @@
             android:layout_height="wrap_content"
             android:text="@string/login"
             android:textStyle="bold"
-            android:textColor="@color/black_200"
+            android:textColor="@color/white"
             android:paddingHorizontal="@dimen/dimen_50"
             android:layout_marginTop="@dimen/dimen_40"
+            android:backgroundTint="@color/blue_200"
             />
         <Button
             android:id="@+id/btnSignup"

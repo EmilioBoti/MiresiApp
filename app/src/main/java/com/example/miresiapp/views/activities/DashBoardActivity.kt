@@ -24,26 +24,31 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash_board)
-
     }
 
     override fun onStart() {
         super.onStart()
 
+        userId = getCurrentUserData()
+
+        SocketCon.setSocket()
+        mSocket = SocketCon.getSocket()
+        mSocket.connect()
         checkFrag(intent)
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener(this)
+
     }
     private fun getCurrentUserData(): Int? {
         val prefe = getSharedPreferences(resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
         return prefe?.getInt("userId", 0)
     }
     private fun conn() {
-        userId = getCurrentUserData()
-        userId?.let {
-            toast(applicationContext, "y")
-            if (it !=  0) mSocket.emit("user", it, mSocket.id())
+        mSocket.on("connect"){
+            userId?.let {
+                if (it !=  0) mSocket.emit("user", it, mSocket.id())
+            }
         }
     }
     private fun setFragmentView( fragment: Fragment){
@@ -63,7 +68,7 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
         cityId = intent?.extras?.getString("city")
         residencesFragment = ResidencesFragment()
         val frag = supportFragmentManager.fragments
-        
+        conn()
         cityId?.let {
             val data = Bundle().apply { putString("city", it) }
             residencesFragment = ResidencesFragment().apply {
@@ -73,7 +78,6 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
         }?: if (frag.size > 0){
             setFragmentView(frag[frag.size-1])
         }else setFragmentView(HomeFragment())
-
 
     }
 

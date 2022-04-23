@@ -3,15 +3,11 @@ package com.example.miresiapp.views.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.lifecycleScope
-import com.example.miresiapp.R
 import com.example.miresiapp.businessLogic.createPost.*
 import com.example.miresiapp.databinding.ActivityCreatePostBinding
 import com.example.miresiapp.models.City
-import com.example.miresiapp.models.Post
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 import com.example.miresiapp.utils.toast
@@ -26,7 +22,6 @@ class CreatePost : AppCompatActivity(), IPost.ViewPresenter, View.OnClickListene
     private lateinit var createPost: CreatePostImpl
     private var resiId: Int? = null
     private var roomId: Int? = null
-    private var userId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

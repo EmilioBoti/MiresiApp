@@ -8,5 +8,8 @@ interface IRooms {
     }
     interface Presenter{
         suspend fun requestPost()
+        fun navigaateTo()
+        fun navCreatePost()
+        fun navToMessanger(idTo: Int, userName: String)
     }
 }

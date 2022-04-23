@@ -43,7 +43,10 @@ class CreatePostImpl(private val viewer: ViewPresenter, private val model: PostD
         val dateE = reformDate(dateEnd)
         if (validDate(dateS) && validDate(dateE)) {
             val post = Post(getDataUser()!!, resiId, roomId, dateS, dateE)
-            val d = model.insertPost(post) //it suppose to return some datas
+            val valid = model.insertPost(post) //it suppose to return some datas
+            valid?.let {
+                if (it) viewer.postCreated(valid)
+            }
         }else viewer.errorValidDate("Date must be format YYYY-MM-DD or YYYY/MM/DD")
     }
 

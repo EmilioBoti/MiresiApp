@@ -59,8 +59,9 @@
         <entry key="app/src/main/res/layout/bicycle_icon_wtext.xml" value="0.5" />
         <entry key="app/src/main/res/layout/chat_item.xml" value="0.45" />
         <entry key="app/src/main/res/layout/city_item.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/component_confirm_pass.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/component_confirm_pass.xml" value="0.335" />
         <entry key="app/src/main/res/layout/component_email.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/component_name.xml" value="0.45" />
         <entry key="app/src/main/res/layout/component_password.xml" value="0.335" />
         <entry key="app/src/main/res/layout/drop_down_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/facilities.xml" value="0.375" />

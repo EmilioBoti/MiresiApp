@@ -28,7 +28,6 @@ class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {
     private lateinit var chatAdapter: ChatAdapter
     private lateinit var listChats: MutableList<User>
     private lateinit var gson: Gson
-    private lateinit var mSocket: Socket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

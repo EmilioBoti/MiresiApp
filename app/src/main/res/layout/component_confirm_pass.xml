@@ -25,13 +25,14 @@
             />
 
         <EditText
+            android:id="@+id/confimPw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dimen_10"
             android:background="@drawable/login_input_corner"
             android:inputType="textPassword"
             android:drawableEnd="@drawable/remove_red_eye_24"
             android:layout_marginBottom="@dimen/dimen_10"
+            style="@style/fieldInput"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -39,6 +40,7 @@
             android:text="@string/login"
             android:textColor="@color/blue_200"
             android:layout_marginStart="@dimen/dimen_5"
+            android:textStyle="bold"
             />
     </LinearLayout>
 

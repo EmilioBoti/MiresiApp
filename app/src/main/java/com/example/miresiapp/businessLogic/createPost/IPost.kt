@@ -20,7 +20,7 @@ interface IPost {
     interface ModelPresenter{
         suspend fun getAllCities(): MutableList<City>?
         suspend fun getRooms(id: Int): MutableList<Room>?
-        suspend fun insertPost(post: Post): MutableList<Post>?
+        suspend fun insertPost(post: Post): Boolean?
         suspend fun getPost(): MutableList<PostModel>?
     }
 }
