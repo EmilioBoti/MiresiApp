@@ -40,6 +40,13 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
         bottomNavigationView.setOnItemSelectedListener(this)
 
     }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+
+        checkFrag(intent)
+
+    }
     private fun getCurrentUserData(): Int? {
         val prefe = getSharedPreferences(resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
         return prefe?.getInt("userId", 0)

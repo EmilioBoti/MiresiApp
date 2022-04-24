@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.SearchView
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -42,24 +44,16 @@ class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItem
         model = DataProviderSearch()
         searchLogicImpl = SearchLogicImpl(this, model)
 
-        binding.searcher.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextChange(newText: String?): Boolean {
-                lifecycleScope.launch {
-                    newText?.let {
-                        searchLogicImpl.requestSuggest(it.trim())
-                    }
-                }
-                return true
+        binding.searcher.doOnTextChanged { text, start, before, count ->
+            lifecycleScope.launch {
+                searchLogicImpl.requestSuggest(text.toString().trim())
             }
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                lifecycleScope.launch {
-                    query?.let {
-                        searchLogicImpl.requestCity(it.trim())
-                    }
-                }
-                return true
+        }
+        binding.searcher.setOnItemClickListener { parent, view, position, id ->
+            lifecycleScope.launch {
+                searchLogicImpl.requestCity(listCities[position].name.trim())
             }
-        })
+        }
     }
 
     override fun citySearched(city: MutableList<City>) {
@@ -68,12 +62,11 @@ class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItem
 
     override fun suggestions(listCities: MutableList<City>) {
         this.listCities = listCities
-        
-        val cityAdapter: CityAdapter = CityAdapter(this.listCities, applicationContext, this)
-        binding.suggestContainer.apply {
-            layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
-            adapter = cityAdapter
-        }
+        val l = arrayListOf<String>()
+        this.listCities.let { it.forEach { l.add(it.name) } }
+
+        val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_dropdown_item,l)
+        binding.searcher.setAdapter(adapter)
     }
 
     override fun error(err: String) {
@@ -85,14 +78,14 @@ class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItem
             searchLogicImpl.requestCity(listCities[pos].name.trim())
         }
     }
-
+    
     override fun addFavoriteItem(pos: Int, view: View) {}
 
     private fun navigateTo(city: String){
         finish()
-        //supportParentActivityIntent
         Intent(this, DashBoardActivity::class.java).apply {
             putExtra("city", city)
+            addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(this)
         }

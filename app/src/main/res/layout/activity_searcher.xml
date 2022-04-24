@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/subTopBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +25,16 @@
             android:layout_marginEnd="@dimen/dimen_10"
             android:clickable="true"
             />
-        <androidx.appcompat.widget.SearchView
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/searcher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search"
+            android:background="@drawable/login_input_corner"
+            android:padding="@dimen/dimen_10"
+            />
+        <!--<androidx.appcompat.widget.SearchView
             android:id="@+id/searcher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,16 +42,16 @@
             android:hint="@string/search"
             >
 
-        </androidx.appcompat.widget.SearchView>
+        </androidx.appcompat.widget.SearchView>-->
     </com.google.android.material.appbar.MaterialToolbar>
-    <androidx.recyclerview.widget.RecyclerView
+    <!--<androidx.recyclerview.widget.RecyclerView
         android:id="@+id/suggestContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/subTopBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        />-->
     <TextView
         android:id="@+id/text1"
         android:layout_width="wrap_content"
@@ -53,7 +62,7 @@
         android:textSize="@dimen/dimenst_30"
         android:layout_marginTop="@dimen/dimen_40"
         android:layout_marginStart="@dimen/dimenst_30"
-        app:layout_constraintTop_toBottomOf="@id/suggestContainer"
+        app:layout_constraintTop_toBottomOf="@id/subTopBar"
         app:layout_constraintStart_toStartOf="parent"
         />
 
