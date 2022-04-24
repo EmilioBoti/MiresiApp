@@ -62,10 +62,8 @@ class CreatePost : AppCompatActivity(), IPost.ViewPresenter, View.OnClickListene
         val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_dropdown_item,l)
         list?.let {
             listResi = it
-            val dropDownResi: DropDownResi = DropDownResi(it)
             binding.residences.apply {
                 setAdapter(adapter)
-                //adapter = dropDownResi
             }
         }
     }
@@ -76,7 +74,6 @@ class CreatePost : AppCompatActivity(), IPost.ViewPresenter, View.OnClickListene
         val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_dropdown_item,l)
         list?.let {
             listCities = it
-            val dropDownAdapter: DropDownAdapter = DropDownAdapter(it)
             binding.cities.apply {
                 setAdapter(adapter)
             }
@@ -89,7 +86,6 @@ class CreatePost : AppCompatActivity(), IPost.ViewPresenter, View.OnClickListene
         val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_dropdown_item,l)
         list?.let {
             listRooms = it
-            val dropDownRoom: DropDownRoom = DropDownRoom(it)
             binding.rooms.setAdapter(adapter)
         }
     }
@@ -101,24 +97,6 @@ class CreatePost : AppCompatActivity(), IPost.ViewPresenter, View.OnClickListene
     override fun errorValidDate(err: String) {
         toast(applicationContext, err)
     }
-    /* override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        when(parent?.id){
-            R.id.cities -> {
-                lifecycleScope.launch {
-                    createPost.requestResi(listCities[position].name)
-                }
-            }
-            R.id.residences ->{
-                resiId = listResi[position].id
-                lifecycleScope.launch {
-                    createPost.requestRooms(listResi[position].id)
-                }
-            }
-            R.id.rooms ->{ roomId = listRooms[position].id }
-        }
-    }*/
-
-   // override fun onNothingSelected(parent: AdapterView<*>?) {}
 
     override fun onClick(v: View?) {
         val dateStart = binding.dateStart.text?.toString()
