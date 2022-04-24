@@ -13,6 +13,7 @@ import com.example.miresiapp.businessLogic.chat.IChat.ChatViewPresenter
 import com.example.miresiapp.businessLogic.chat.IChat.ChatPresenter
 import com.example.miresiapp.models.Message
 import com.example.miresiapp.models.User
+import com.example.miresiapp.utils.LocalData
 import com.google.gson.Gson
 import io.socket.client.Socket
 
@@ -23,13 +24,15 @@ class ChatLogicImpl(private val viewer: ChatViewPresenter, private val model: Ch
     private lateinit var message: Message
     private val channelId = "com.example.miresiapp"
     private val notificationId: Int = 1
+    private var userId: Int? = null
 
     init {
         createNotificationChannel()
         mSocket.on("private", ) { data ->
             val d = data[0]
             message = gson.fromJson<Message>(d.toString(), Message::class.java)
-            showNotifycationMusic(message)
+            userId = LocalData.getCurrentUserId(context)
+            if (userId != message.userSenderId) showNotifycationMusic(message)
         }
     }
 

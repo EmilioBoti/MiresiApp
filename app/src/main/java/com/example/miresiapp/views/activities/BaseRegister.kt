@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.miresiapp.R
+import com.example.miresiapp.utils.LocalData
 import com.example.miresiapp.views.fragments.LoginFragment
 
 class BaseRegister : AppCompatActivity() {
@@ -21,7 +22,7 @@ class BaseRegister : AppCompatActivity() {
         checkLogin()
     }
     private fun checkLogin(){
-        userId = getCurrentUserData()
+        userId = LocalData.getCurrentUserId(applicationContext)
 
         userId?.let {
             if (it != 0){
@@ -36,9 +37,5 @@ class BaseRegister : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.loginRegisterContainer, LoginFragment())
             .commit()
-    }
-    private fun getCurrentUserData(): Int? {
-        val prefe = getSharedPreferences(resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
-        return prefe?.getInt("userId", 0)
     }
 }

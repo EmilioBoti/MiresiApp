@@ -18,7 +18,6 @@ import com.example.miresiapp.businessLogic.login.LoginBusinessLogic
 import com.example.miresiapp.models.DataProvider
 import com.example.miresiapp.models.User
 import com.example.miresiapp.models.UserLogin
-import com.example.miresiapp.utils.toast
 import com.example.miresiapp.views.activities.DashBoardActivity
 import io.socket.client.Socket
 import kotlinx.coroutines.launch
@@ -51,7 +50,7 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
         model = DataProvider()
         SocketCon.setSocket()
         mSocket = SocketCon.getSocket()
-        loginBusinessLogic = LoginBusinessLogic(this, model)
+        loginBusinessLogic = LoginBusinessLogic(this, model, requireActivity())
     }
 
     override fun onClick(v: View?) {
@@ -72,23 +71,14 @@ class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.Present
     }
 
     override fun login(user: User?) {
-        val prefe = activity?.getSharedPreferences(resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)?.edit()
-        user?.let {
-            prefe?.apply {
-                putInt("userId", user.id)
-                putString("name", user.name)
-                putString("email", user.email)
-                apply()
-            }
-            closeLoginFrag(user)
-        }
+        closeLoginFrag(user)
     }
 
     override fun error() {
         Toast.makeText(activity, "Error to Valid the User", Toast.LENGTH_SHORT).show()
     }
 
-    private fun closeLoginFrag(user: User){
+    private fun closeLoginFrag(user: User?){
         Intent(activity?.applicationContext, DashBoardActivity::class.java).apply {
             activity?.startActivity(this)
         }
