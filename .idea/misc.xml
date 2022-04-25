@@ -74,6 +74,7 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.21622846781504987" />
         <entry key="app/src/main/res/layout/fragment_residences.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_room.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/gym_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/gym_layout_wtext.xml" value="0.375" />

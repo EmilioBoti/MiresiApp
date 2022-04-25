@@ -22,6 +22,8 @@ import com.example.miresiapp.models.City
 import com.example.miresiapp.utils.toast
 import kotlinx.coroutines.launch
 
+
+//not in use
 class SearcherActivity : AppCompatActivity(), ISearch.ViewPresenter, OnClickItemView {
     private lateinit var binding: ActivitySearcherBinding
     private lateinit var model: DataProviderSearch

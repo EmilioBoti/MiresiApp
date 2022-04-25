@@ -45,7 +45,7 @@ class RoomFragment : Fragment(), View.OnClickListener, IPost.ViewPresenter, OnCl
         chatIcon = view.findViewById(R.id.chat)
         postContainer = view.findViewById(R.id.postContainer)
 
-        fragmentLayout = activity?.findViewById<FrameLayout>(R.id.loginFrag)
+        fragmentLayout = activity?.findViewById<FrameLayout>(R.id.fragContainer)
         createPost = view.findViewById(R.id.createPoast)
         createPost.setOnClickListener(this)
 
