@@ -1,4 +1,4 @@
-package com.example.miresiapp.businessLogic.rooms
+package com.example.miresiapp.businessLogic.posts
 
 import android.content.Context
 import android.content.Intent
@@ -9,7 +9,7 @@ import com.example.miresiapp.views.activities.ChatActivity
 import com.example.miresiapp.views.activities.CreatePost
 import com.example.miresiapp.views.activities.MessengerActivity
 
-class RoomsLogicImpl(private val viewer: IRooms.ViewPresenter,private val model: PostDataProvider, private val context: Context?): IRooms.Presenter {
+class PostsLogicImpl(private val viewer: IPost.ViewPresenter, private val model: PostDataProvider, private val context: Context?): IPost.Presenter {
     private var idUser: Int? = null
 
     init {

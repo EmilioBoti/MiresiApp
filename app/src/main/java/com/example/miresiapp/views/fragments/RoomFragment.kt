@@ -1,6 +1,5 @@
 package com.example.miresiapp.views.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,30 +12,25 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
-import com.example.miresiapp.SocketCon
 import com.example.miresiapp.businessLogic.createPost.PostDataProvider
-import com.example.miresiapp.businessLogic.rooms.IRooms
-import com.example.miresiapp.businessLogic.rooms.RoomsLogicImpl
-import com.example.miresiapp.businessLogic.rooms.adapters.PostAdapter
+import com.example.miresiapp.businessLogic.posts.IPost
+import com.example.miresiapp.businessLogic.posts.PostsLogicImpl
+import com.example.miresiapp.businessLogic.posts.adapters.PostAdapter
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.PostModel
-import com.example.miresiapp.utils.toast
-import com.example.miresiapp.views.activities.ChatActivity
-import com.example.miresiapp.views.activities.CreatePost
-import com.example.miresiapp.views.activities.MessengerActivity
 import com.example.miresiapp.views.activities.ResiInfoActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import io.socket.client.Socket
 import kotlinx.coroutines.launch
 
-class RoomFragment : Fragment(), View.OnClickListener, IRooms.ViewPresenter, OnClickItemView {
+class RoomFragment : Fragment(), View.OnClickListener, IPost.ViewPresenter, OnClickItemView {
     private lateinit var chatIcon: ImageView
     private lateinit var createPost: FloatingActionButton
     private var idUser: Int? = null
     private var fragmentLayout: FrameLayout? = null
     private var listPost: MutableList<PostModel> = mutableListOf()
     private lateinit var postContainer: RecyclerView
-    private lateinit var roomsLogicImpl: RoomsLogicImpl
+    private lateinit var postsLogicImpl: PostsLogicImpl
     private lateinit var postDataProvider: PostDataProvider
     private lateinit var postAdapter: PostAdapter
     private lateinit var mSocket: Socket
@@ -61,19 +55,19 @@ class RoomFragment : Fragment(), View.OnClickListener, IRooms.ViewPresenter, OnC
         super.onStart()
 
         postDataProvider = PostDataProvider()
-        roomsLogicImpl = RoomsLogicImpl(this, postDataProvider, activity)
+        postsLogicImpl = PostsLogicImpl(this, postDataProvider, activity)
 
         lifecycleScope.launch {
-            roomsLogicImpl.requestPost()
+            postsLogicImpl.requestPost()
         }
 
         chatIcon.setOnClickListener {
-            roomsLogicImpl.navigaateTo()
+            postsLogicImpl.navigaateTo()
         }
     }
 
     override fun onClick(v: View?) {
-        roomsLogicImpl.navCreatePost()
+        postsLogicImpl.navCreatePost()
     }
 
     override fun showPost(list: MutableList<PostModel>) {
@@ -88,7 +82,7 @@ class RoomFragment : Fragment(), View.OnClickListener, IRooms.ViewPresenter, OnC
     override fun onClickItem(pos: Int, view: View) {
         when(view.id) {
             R.id.chatTo -> {
-                roomsLogicImpl.navToMessanger(listPost[pos].userId, listPost[pos].userName)
+                postsLogicImpl.navToMessanger(listPost[pos].userId, listPost[pos].userName)
             }
             R.id.seeTo -> {
                 navToRoom(pos)

@@ -104,7 +104,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_5"
                         android:textColor="@color/black_200"
-                        tools:text="@string/userName" />
+                        tools:text="@string/userName"
+                        android:textStyle="bold"
+                        />
                 </LinearLayout>
 
                 <TextView

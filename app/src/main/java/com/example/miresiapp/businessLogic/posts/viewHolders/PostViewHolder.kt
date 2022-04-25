@@ -1,4 +1,4 @@
-package com.example.miresiapp.businessLogic.rooms.viewHolders
+package com.example.miresiapp.businessLogic.posts.viewHolders
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.databinding.PostItemBinding

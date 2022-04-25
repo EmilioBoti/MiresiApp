@@ -8,11 +8,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/dimen_10"
         android:text="@string/facilitiesServices"
-        android:textColor="@color/black_200"
-        android:textSize="@dimen/dimenst_20"
+        style="@style/subTitleInfo"
         />
 
     <GridLayout

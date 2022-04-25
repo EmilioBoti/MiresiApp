@@ -1,10 +1,9 @@
-package com.example.miresiapp.businessLogic.rooms.adapters
+package com.example.miresiapp.businessLogic.posts.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.miresiapp.businessLogic.rooms.viewHolders.PostViewHolder
+import com.example.miresiapp.businessLogic.posts.viewHolders.PostViewHolder
 import com.example.miresiapp.databinding.PostItemBinding
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.PostModel

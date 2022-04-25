@@ -85,6 +85,7 @@
         <entry key="app/src/main/res/layout/pool_icon_wtext.xml" value="0.375" />
         <entry key="app/src/main/res/layout/post_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/resi_item.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/room_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/spinner_list.xml" value="0.335" />
         <entry key="app/src/main/res/layout/study_room_icon_wtext.xml" value="0.45" />
         <entry key="app/src/main/res/layout/toolbarPost_component.xml" value="0.375" />

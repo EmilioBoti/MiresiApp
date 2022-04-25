@@ -1,8 +1,8 @@
-package com.example.miresiapp.businessLogic.rooms
+package com.example.miresiapp.businessLogic.posts
 
 import com.example.miresiapp.models.PostModel
 
-interface IRooms {
+interface IPost {
     interface ViewPresenter{
         fun showPost(list: MutableList<PostModel>)
     }

@@ -2,6 +2,7 @@ package com.example.miresiapp.businessLogic.residence
 
 import com.example.miresiapp.interfaces.apiendpoints.ApiEndPoint
 import com.example.miresiapp.models.Residence
+import com.example.miresiapp.models.Room
 import com.example.miresiapp.utils.Consts
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
@@ -41,6 +42,25 @@ open class DataProviderResi: IResi.PresenterModel{
 
                 val service = retrofit.create(ApiEndPoint::class.java)
                 service.getSingleResi(id).execute().body()
+            }catch (err: Exception){
+                null
+            } catch (err: CancellationException){
+                null
+            }
+        }
+        return result
+    }
+
+    override suspend fun getRooms(id: Int): MutableList<Room>? {
+        val result: MutableList<Room>? = withContext(Dispatchers.IO){
+            try {
+                val retrofit: Retrofit = Retrofit.Builder()
+                    .baseUrl(Consts.HOST)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+
+                val service = retrofit.create(ApiEndPoint::class.java)
+                service.getRoomsResi(id).execute().body()
             }catch (err: Exception){
                 null
             } catch (err: CancellationException){

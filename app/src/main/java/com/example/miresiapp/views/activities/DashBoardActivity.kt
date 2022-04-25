@@ -8,7 +8,6 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.example.miresiapp.R
 import com.example.miresiapp.SocketCon
-import com.example.miresiapp.utils.toast
 import com.example.miresiapp.views.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
@@ -16,7 +15,7 @@ import io.socket.client.Socket
 
 class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
     private lateinit var bottomNavigationView: BottomNavigationView
-    private lateinit var residencesFragment: ResidencesFragment
+    private lateinit var residencesFragment: ResidenceFragment
     private var cityId: String? = null
     private lateinit var mSocket: Socket
     private var userId: Int? = 0
@@ -73,12 +72,12 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
 
     private fun checkFrag(intent: Intent?) {
         cityId = intent?.extras?.getString("city")
-        residencesFragment = ResidencesFragment()
+        residencesFragment = ResidenceFragment()
         val frag = supportFragmentManager.fragments
         conn()
         cityId?.let {
             val data = Bundle().apply { putString("city", it) }
-            residencesFragment = ResidencesFragment().apply {
+            residencesFragment = ResidenceFragment().apply {
                 arguments = data
             }
             setFragmentView(residencesFragment)

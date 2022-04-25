@@ -16,11 +16,12 @@ import com.example.miresiapp.businessLogic.residence.IResi.PresenterView
 import com.example.miresiapp.businessLogic.residence.ResiInteractorImpl
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.Residence
+import com.example.miresiapp.models.Room
 import com.example.miresiapp.utils.toast
 import com.example.miresiapp.views.activities.ResiInfoActivity
 import kotlinx.coroutines.launch
 
-class ResidencesFragment : Fragment(), PresenterView, OnClickItemView {
+class ResidenceFragment : Fragment(), PresenterView, OnClickItemView {
     private var city: String? = null
     private lateinit var resiInteractorImpl: ResiInteractorImpl
     private lateinit var model: DataProviderResi
@@ -57,6 +58,10 @@ class ResidencesFragment : Fragment(), PresenterView, OnClickItemView {
             layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
             adapter = resiAdapter
         }
+    }
+
+    override fun setRooms(list: MutableList<Room>) {
+        TODO("Not yet implemented")
     }
 
     override fun error(err: String) {
