@@ -10,6 +10,7 @@
         <entry key="..\:/Users/emili/Desktop/Emilio/Projects/MiresiApp/app/src/main/res/layout/city_item.xml" value="0.25" />
         <entry key="..\:/Users/emili/Desktop/Emilio/Projects/MiresiApp/app/src/main/res/layout/component_email.xml" value="0.33" />
         <entry key="..\:/Users/emili/Desktop/Emilio/Projects/MiresiApp/app/src/main/res/layout/fragment_city.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/emili/Desktop/Emilio/Projects/MiresiApp/app/src/main/res/layout/fragment_forum.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/emili/Desktop/Emilio/Projects/MiresiApp/app/src/main/res/layout/fragment_home.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/emili/Desktop/Emilio/Projects/MiresiApp/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/Users/emili/Desktop/Emilio/Projects/MiresiApp/app/src/main/res/layout/fragment_notifications.xml" value="0.18229166666666666" />
@@ -74,7 +75,6 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.21622846781504987" />
         <entry key="app/src/main/res/layout/fragment_residences.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_room.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/gym_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/gym_layout_wtext.xml" value="0.375" />
