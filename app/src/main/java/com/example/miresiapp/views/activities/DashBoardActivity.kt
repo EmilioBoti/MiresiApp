@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.example.miresiapp.R
 import com.example.miresiapp.SocketCon
@@ -40,12 +41,6 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
 
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-
-        checkFrag(intent)
-
-    }
     private fun getCurrentUserData(): Int? {
         val prefe = getSharedPreferences(resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
         return prefe?.getInt("userId", 0)
