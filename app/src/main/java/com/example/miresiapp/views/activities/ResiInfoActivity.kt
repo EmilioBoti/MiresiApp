@@ -9,15 +9,18 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
 import com.example.miresiapp.businessLogic.residence.DataProviderResi
 import com.example.miresiapp.businessLogic.residence.IResi.PresenterView
 import com.example.miresiapp.businessLogic.residence.ResiInteractorImpl
+import com.example.miresiapp.businessLogic.residence.adapters.CommentAdapter
 import com.example.miresiapp.businessLogic.residence.adapters.RoomAdapter
 import com.example.miresiapp.databinding.ActivityResiInfoBinding
 import com.example.miresiapp.interfaces.OnClickItemView
+import com.example.miresiapp.models.CommentModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 import com.example.miresiapp.utils.toast
@@ -53,6 +56,7 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
             lifecycleScope.launch {
                 resiInteractorImpl.getSingleResi(it)
                 resiInteractorImpl.getRooms(it)
+                resiInteractorImpl.getComments(it, 10)
             }
         }
 
@@ -66,6 +70,10 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
                 inf.maxLines = inf.lineCount
             }
         }
+
+        binding.seeAllComments.setOnClickListener {
+            toast(applicationContext, "Good")
+        }
     }
     
     override fun getResi(list: MutableList<Residence>?) {
@@ -74,6 +82,7 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
         Picasso.get().load(residence?.image).fit().centerCrop().into(binding.imageResi)
         binding.name.text = residence?.resiName
         binding.about.text = residence?.description
+        gridLayout.removeAllViews()
         facilities(residence)
 
     }
@@ -88,6 +97,17 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
         }
     }
 
+    override fun setComments(list: MutableList<CommentModel>) {
+        val commentAdapter = CommentAdapter(list, this)
+
+        binding.commentsContainer.apply {
+            layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
+            setHasFixedSize(true)
+            addItemDecoration(DividerItemDecoration(applicationContext, LinearLayoutManager.VERTICAL))
+            adapter = commentAdapter
+        }
+    }
+
     private fun facilities(residence: Residence?){
         if (residence?.gym != 0) LayoutInflater.from(applicationContext).inflate(R.layout.gym_layout_wtext, gridLayout)
         if (residence?.laundry != 0) LayoutInflater.from(applicationContext).inflate(R.layout.laundry_icon_wtext, gridLayout)
@@ -98,7 +118,6 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
     }
 
     override fun error(err: String) {
-
     }
 
     override fun onClickItem(pos: Int, view: View) {

@@ -51,4 +51,5 @@
     <string name="residence">Residence</string>
     <string name="nameResi">Resicencia Universitaria</string>
     <string name="comments">Comments</string>
+    <string name="seeAllComments">View All comments</string>
 </resources>

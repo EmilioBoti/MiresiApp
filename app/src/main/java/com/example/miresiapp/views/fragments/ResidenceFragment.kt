@@ -15,6 +15,7 @@ import com.example.miresiapp.businessLogic.residence.DataProviderResi
 import com.example.miresiapp.businessLogic.residence.IResi.PresenterView
 import com.example.miresiapp.businessLogic.residence.ResiInteractorImpl
 import com.example.miresiapp.interfaces.OnClickItemView
+import com.example.miresiapp.models.CommentModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 import com.example.miresiapp.utils.toast
@@ -61,6 +62,10 @@ class ResidenceFragment : Fragment(), PresenterView, OnClickItemView {
     }
 
     override fun setRooms(list: MutableList<Room>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun setComments(list: MutableList<CommentModel>) {
         TODO("Not yet implemented")
     }
 

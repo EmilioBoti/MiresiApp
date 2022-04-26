@@ -14,6 +14,9 @@ interface ApiEndPoint {
     @POST("api/v1/signup")
     fun register(@Body newUser: RegisterUser): Call<User>
 
+    @GET("api/v1/comments/{id}/{limit}")
+    fun getComments(@Path("id") id: Int,@Path("limit") limit: Int, ): Call<MutableList<CommentModel>>
+
     @GET("api/v1/posts")
     fun getPosts(): Call<MutableList<PostModel>>
 

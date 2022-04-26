@@ -20,6 +20,7 @@
         <entry key="..\:/Users/emili/Desktop/Emilio/Projects/MiresiApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.18229166666666666" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/arrow_back_24.xml" value="0.163" />
+        <entry key="app/src/main/res/drawable/arrow_forward_ios_24.xml" value="0.192" />
         <entry key="app/src/main/res/drawable/auto_stories_24.xml" value="0.1835" />
         <entry key="app/src/main/res/drawable/bed_24.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/bedroom_parent_24.xml" value="0.163" />
@@ -60,6 +61,8 @@
         <entry key="app/src/main/res/layout/bicycle_icon_wtext.xml" value="0.5" />
         <entry key="app/src/main/res/layout/chat_item.xml" value="0.45" />
         <entry key="app/src/main/res/layout/city_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/comment_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/comments_seccion.xml" value="0.375" />
         <entry key="app/src/main/res/layout/component_confirm_pass.xml" value="0.335" />
         <entry key="app/src/main/res/layout/component_email.xml" value="0.335" />
         <entry key="app/src/main/res/layout/component_name.xml" value="0.45" />
@@ -75,6 +78,7 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.21622846781504987" />
         <entry key="app/src/main/res/layout/fragment_residences.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_room.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.1243209360635186" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/gym_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/gym_layout_wtext.xml" value="0.375" />
