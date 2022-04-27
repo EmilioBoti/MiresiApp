@@ -87,14 +87,20 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
 
     }
 
+    private fun <T : MutableList<*>>checkList(list: T): Boolean {
+        return list.isNotEmpty()
+    }
     override fun setRooms(list: MutableList<Room>) {
         listRooms = list
         val roomAdapter = RoomAdapter(listRooms, this)
 
-        binding.roomContainer.apply {
-            layoutManager = LinearLayoutManager(applicationContext, RecyclerView.HORIZONTAL, false)
-            adapter = roomAdapter
-        }
+        if (checkList(list)){
+            binding.roomContainer.apply {
+                layoutManager = LinearLayoutManager(applicationContext, RecyclerView.HORIZONTAL, false)
+                adapter = roomAdapter
+            }
+        }else binding.titleRooms.visibility = View.GONE
+
     }
 
     override fun setComments(list: MutableList<CommentModel>) {

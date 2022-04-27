@@ -23,18 +23,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dimen_10"
-                android:textColor="@color/black_200"
-                android:textSize="@dimen/dimenst_16"
+                android:textColor="@color/blue_200"
+                android:textSize="@dimen/dimenst_14"
                 android:textStyle="bold"
                 tools:text="@string/name" />
+
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@string/name"
-                android:textSize="@dimen/dimenst_16"
+                android:layout_alignBaseline="@id/userName"
                 android:layout_toEndOf="@id/userName"
-                />
+                android:textSize="@dimen/dimenst_14"
+                android:textStyle="italic"
+                tools:text="@string/postDate" />
 
             <TextView
                 android:id="@+id/comment"
@@ -42,10 +44,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/userName"
                 android:layout_marginTop="@dimen/dimen_10"
-                android:maxLines="5"
+                android:maxLines="4"
                 android:textColor="@color/black_200"
                 android:textSize="@dimen/dimenst_16"
-                tools:text="@string/name" />
+                tools:text="@string/comments" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
