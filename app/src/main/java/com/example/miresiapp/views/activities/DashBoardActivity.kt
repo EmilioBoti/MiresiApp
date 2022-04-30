@@ -1,17 +1,19 @@
 package com.example.miresiapp.views.activities
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.example.miresiapp.R
 import com.example.miresiapp.SocketCon
+import com.example.miresiapp.models.Message
+import com.example.miresiapp.utils.LocalData
+import com.example.miresiapp.utils.Notifications
 import com.example.miresiapp.views.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import com.google.gson.Gson
 import io.socket.client.Socket
 
 class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
@@ -20,6 +22,8 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
     private var cityId: String? = null
     private lateinit var mSocket: Socket
     private var userId: Int? = 0
+    private lateinit var message: Message
+    private var gson: Gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,22 +32,24 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
 
     override fun onStart() {
         super.onStart()
-
-        userId = getCurrentUserData()
-
         SocketCon.setSocket()
         mSocket = SocketCon.getSocket()
         mSocket.connect()
+
+        userId = LocalData.getCurrentUserId(applicationContext)
+        Notifications.createNotificationChannel(applicationContext)
+        socketEventListenner()
         checkFrag(intent)
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener(this)
-
     }
-
-    private fun getCurrentUserData(): Int? {
-        val prefe = getSharedPreferences(resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
-        return prefe?.getInt("userId", 0)
+    private fun socketEventListenner(){
+        mSocket.on("private", ) { data ->
+            val d = data[0]
+            message = gson.fromJson<Message>(d.toString(), Message::class.java)
+            if (userId != message.userSenderId) Notifications.showNotifycationMusic(applicationContext, message)
+        }
     }
     private fun conn() {
         mSocket.on("connect"){

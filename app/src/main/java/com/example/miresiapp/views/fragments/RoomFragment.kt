@@ -18,6 +18,7 @@ import com.example.miresiapp.businessLogic.posts.PostsLogicImpl
 import com.example.miresiapp.businessLogic.posts.adapters.PostAdapter
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.PostModel
+import com.example.miresiapp.utils.LocalData
 import com.example.miresiapp.views.activities.ResiInfoActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import io.socket.client.Socket
@@ -33,7 +34,6 @@ class RoomFragment : Fragment(), View.OnClickListener, IPost.ViewPresenter, OnCl
     private lateinit var postsLogicImpl: PostsLogicImpl
     private lateinit var postDataProvider: PostDataProvider
     private lateinit var postAdapter: PostAdapter
-    private lateinit var mSocket: Socket
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_room, container, false)
@@ -54,6 +54,7 @@ class RoomFragment : Fragment(), View.OnClickListener, IPost.ViewPresenter, OnCl
     override fun onStart() {
         super.onStart()
 
+        idUser = LocalData.getCurrentUserId(activity?.applicationContext!!)
         postDataProvider = PostDataProvider()
         postsLogicImpl = PostsLogicImpl(this, postDataProvider, activity)
 
@@ -72,7 +73,7 @@ class RoomFragment : Fragment(), View.OnClickListener, IPost.ViewPresenter, OnCl
 
     override fun showPost(list: MutableList<PostModel>) {
         listPost = list
-        postAdapter = PostAdapter(listPost, this)
+        postAdapter = PostAdapter(listPost, idUser!!,this,)
         postContainer.apply {
             layoutManager = LinearLayoutManager(activity?.applicationContext, RecyclerView.VERTICAL, false)
             adapter = postAdapter

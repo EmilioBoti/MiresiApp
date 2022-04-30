@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
@@ -23,10 +25,11 @@ import kotlinx.coroutines.launch
 class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {
     private var idUser: Int? = null
     private lateinit var chatContainer: RecyclerView
+    private lateinit var searcher: SearchView
     private lateinit var model: ChatDataProvider
     private lateinit var chatLogicImpl: ChatLogicImpl
     private lateinit var chatAdapter: ChatAdapter
-    private lateinit var listChats: MutableList<User>
+    //private lateinit var listChats: MutableList<User>
     private lateinit var gson: Gson
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +43,8 @@ class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {
         super.onStart()
 
         chatContainer = findViewById(R.id.chatContainer)
+        searcher = findViewById(R.id.searcher)
+
         gson = Gson()
         model = ChatDataProvider()
         chatLogicImpl = ChatLogicImpl(this, model, applicationContext)
@@ -49,15 +54,37 @@ class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {
                 chatLogicImpl.requestChats(it)
             }
         }
+
+        searcher.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                //chatLogicImpl.findChats(newText!!)
+                return true
+            }
+        })
     }
 
     override fun showChats(listChats: MutableList<User>?) {
-        this.listChats = listChats!!
-        chatAdapter = ChatAdapter(this.listChats, applicationContext, this)
+        listChats?.let {
+            setChats(listChats)
+        }
+    }
 
-        chatContainer.apply {
-            layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
-            adapter = chatAdapter
+    override fun chatFound(listChats: MutableList<User>) {
+        setChats(listChats)
+    }
+
+    override fun chatTo(user: User) {
+        idUser?.let {
+            Intent(this, MessengerActivity::class.java).apply {
+                putExtra("from", it)
+                putExtra("to", user.id)
+                putExtra("name", user.name)
+                startActivity(this)
+            }
         }
     }
 
@@ -66,15 +93,17 @@ class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {
     }
 
     override fun onClickItem(pos: Int, view: View) {
-        idUser?.let {
-            Intent(this, MessengerActivity::class.java).apply {
-                putExtra("from", it)
-                putExtra("to", listChats[pos].id)
-                putExtra("name", listChats[pos].name)
-                startActivity(this)
-            }
+        chatLogicImpl.onChat(pos)
+    }
+    private fun setChats(listChats: MutableList<User>){
+        chatContainer.removeAllViews()
+        chatAdapter = ChatAdapter(listChats, applicationContext, this)
+        chatContainer.apply {
+            layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
+            addItemDecoration(DividerItemDecoration(applicationContext, LinearLayoutManager.VERTICAL))
+            setHasFixedSize(true)
+            adapter = chatAdapter
         }
     }
-
     override fun addFavoriteItem(pos: Int, view: View) { }
 }

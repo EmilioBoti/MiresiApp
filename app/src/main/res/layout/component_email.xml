@@ -28,6 +28,7 @@
             android:inputType="textEmailAddress"
             android:background="@drawable/login_input_corner"
             style="@style/fieldInput"
+            android:textColor="@color/black_200"
             />
     </LinearLayout>
 

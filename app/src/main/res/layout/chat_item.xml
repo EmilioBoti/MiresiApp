@@ -7,7 +7,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:contentPadding="@dimen/dimen_3"
+        app:contentPadding="@dimen/dimen_12"
         >
 
         <RelativeLayout
@@ -19,12 +19,12 @@
                 android:id="@+id/circularImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/dimen_200"
+                app:cardCornerRadius="@dimen/dimen_150"
                 >
                 <ImageView
                     android:id="@+id/userImage"
-                    android:layout_width="@dimen/dimen_80"
-                    android:layout_height="@dimen/dimen_80"
+                    android:layout_width="@dimen/dimen_50"
+                    android:layout_height="@dimen/dimen_50"
                     android:src="@drawable/ic_launcher_foreground"
                     />
             </androidx.cardview.widget.CardView>
@@ -33,15 +33,14 @@
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/dimen_15"
                 android:layout_marginTop="@dimen/dimenst_15"
                 android:layout_toEndOf="@id/circularImg"
                 android:text="@string/name"
                 android:textColor="@color/black_200"
                 android:textSize="@dimen/dimenst_16"
-                android:textStyle="bold"
-                android:layout_centerVertical="true"
-                />
+                android:textStyle="bold" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

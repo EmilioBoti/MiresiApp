@@ -52,8 +52,11 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
         messengeLogicImpl = MessengeLogicImpl(this, model)
         from = data?.getInt("from")
         to = data?.getInt("to")
-        binding.userNameSelected.text = data?.getString("name", "")!!
 
+        binding.userNameSelected.text = data?.getString("name", "").run {
+            this!!.replaceFirst(this[0].toString(), this[0].titlecase())
+        }
+        
         lifecycleScope.launch {
            messengeLogicImpl.requestMessage(from!!, to!!)
         }
@@ -63,7 +66,7 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
     }
     override fun onClick(v: View?) {
         if(binding.boxMessage.text.isNotEmpty()){
-            message = MessageModel(from!!, to!!, binding.boxMessage.text.toString(), false)
+            message = MessageModel(from!!, to!!, binding.boxMessage.text.toString().trim(), false)
             binding.boxMessage.setText("")
             messengeLogicImpl.sendMessage(message)
         }

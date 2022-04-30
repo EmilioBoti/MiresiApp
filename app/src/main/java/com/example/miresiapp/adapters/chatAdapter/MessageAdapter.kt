@@ -3,12 +3,12 @@ package com.example.miresiapp.adapters.chatAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
+import com.example.miresiapp.adapters.viewHolders.MessageViewHolder
 import com.example.miresiapp.models.Message
 
-class MessageAdapter(private val listMessage: MutableList<Message>, private val from: Int): RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
+class MessageAdapter(private val listMessage: MutableList<Message>, private val from: Int): RecyclerView.Adapter<MessageViewHolder>() {
     private val TYPE_ONE: Int = 1
     private val TYPE_TWO: Int = 2
     lateinit var view: View
@@ -34,15 +34,6 @@ class MessageAdapter(private val listMessage: MutableList<Message>, private val 
             TYPE_ONE
         }else{
             TYPE_TWO
-        }
-    }
-
-    class MessageViewHolder(itenView: View): RecyclerView.ViewHolder(itenView) {
-        //private val from: TextView = itenView.findViewById(R.id.from)
-        private val sms: TextView = itenView.findViewById(R.id.messageText)
-
-        fun bindData(message: Message) {
-            sms.text = message.sms
         }
     }
 }

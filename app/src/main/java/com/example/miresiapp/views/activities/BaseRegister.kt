@@ -1,6 +1,5 @@
 package com.example.miresiapp.views.activities
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +11,7 @@ class BaseRegister : AppCompatActivity() {
     private var userId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.splashScreen)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
