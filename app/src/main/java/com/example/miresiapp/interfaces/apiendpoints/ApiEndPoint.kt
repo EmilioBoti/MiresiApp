@@ -17,6 +17,9 @@ interface ApiEndPoint {
     @GET("api/v1/comments/{id}/{limit}")
     fun getComments(@Path("id") id: Int,@Path("limit") limit: Int, ): Call<MutableList<CommentModel>>
 
+    @GET("api/v1/forums")
+    fun getForums(): Call<MutableList<ForumModel>>?
+
     @GET("api/v1/posts")
     fun getPosts(): Call<MutableList<PostModel>>
 

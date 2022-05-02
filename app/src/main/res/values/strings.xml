@@ -52,4 +52,9 @@
     <string name="nameResi">Resicencia Universitaria</string>
     <string name="comments">Comments</string>
     <string name="seeAllComments">View All comments</string>
+    <string name="forumtitle">Title of the Forum</string>
+    <string name="forumDate">10/04/2022</string>
+    <string name="bacelona">Barcelona</string>
+    <string name="forums">Forums</string>
+    <string name="reload">Reload</string>
 </resources>

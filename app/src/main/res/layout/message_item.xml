@@ -20,7 +20,7 @@
         app:contentPaddingLeft="@dimen/dimen_10"
         app:contentPaddingRight="@dimen/dimen_10"
         app:contentPaddingTop="@dimen/dimen_5"
-        app:cardBackgroundColor="@color/indigo_blue"
+        app:cardBackgroundColor="@color/blue_200"
 
         >
 

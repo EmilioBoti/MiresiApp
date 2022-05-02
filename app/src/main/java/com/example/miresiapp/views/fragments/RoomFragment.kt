@@ -1,6 +1,10 @@
 package com.example.miresiapp.views.fragments
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -58,12 +62,30 @@ class RoomFragment : Fragment(), View.OnClickListener, IPost.ViewPresenter, OnCl
         postDataProvider = PostDataProvider()
         postsLogicImpl = PostsLogicImpl(this, postDataProvider, activity)
 
-        lifecycleScope.launch {
-            postsLogicImpl.requestPost()
-        }
+
+        if (networkConectivity()){
+            lifecycleScope.launch {
+                postsLogicImpl.requestPost()
+            }
+        } else activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.viewContainer, NotConnection())?.commit()
 
         chatIcon.setOnClickListener {
             postsLogicImpl.navigaateTo()
+        }
+    }
+
+    private fun networkConectivity(): Boolean{
+        val conn = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            conn.activeNetwork?.let {
+                val c = conn.getNetworkCapabilities(it)
+                return c!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || c.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+            }?: return false
+
+        }else {
+            val netInfo = conn.activeNetworkInfo
+            return netInfo != null && netInfo.isConnectedOrConnecting
         }
     }
 

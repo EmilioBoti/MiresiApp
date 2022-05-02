@@ -46,6 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/divider"
+        tools:listitem="@layout/message_item"
         />
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/divider"

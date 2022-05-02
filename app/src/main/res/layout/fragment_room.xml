@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/dark_blue"
+        android:background="@color/blue_200"
         android:alpha="1"
         android:elevation="@dimen/dimen_4"
         >
@@ -45,6 +45,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/dimen_15"
+        app:tint="@color/white"
         android:src="@drawable/add_24"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
