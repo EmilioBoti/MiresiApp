@@ -11,6 +11,14 @@ interface ApiEndPoint {
     fun insertPost(@Body post: Post): Call<Boolean>
 
     @Headers("Content-Type: application/json")
+    @POST("api/v1/addfavourite")
+    fun addToFavourite(@Body favourite: FavouriteModel): Call<Boolean>
+
+    @Headers("Content-Type: application/json")
+    @POST("api/v1/removefavourite")
+    fun removeFromFavourite(@Body favourite: FavouriteModel): Call<Boolean>
+
+    @Headers("Content-Type: application/json")
     @POST("api/v1/signup")
     fun register(@Body newUser: RegisterUser): Call<User>
 

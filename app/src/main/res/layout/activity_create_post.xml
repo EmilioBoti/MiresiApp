@@ -39,8 +39,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subTopBar"
         android:layout_marginTop="@dimen/dimen_40"
-        android:layout_marginStart="@dimen/dimen_10"
-        android:layout_marginEnd="@dimen/dimen_10"
+        android:paddingStart="@dimen/dimen_20"
+        android:paddingEnd="@dimen/dimen_20"
         >
 
         <com.google.android.material.textfield.TextInputLayout
@@ -93,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/residence"
-                android:textColor="@color/black_200"
+                android:textColor="@color/black"
                 android:textSize="@dimen/dimenst_18"
                 android:background="@null"
                 android:ellipsize="end"
@@ -193,8 +193,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/createPost"
-        android:layout_marginStart="@dimen/dimen_10"
-        android:layout_marginEnd="@dimen/dimen_10"
+        android:layout_marginStart="@dimen/dimen_20"
+        android:layout_marginEnd="@dimen/dimen_20"
         android:enabled="true"
         android:padding="@dimen/dimen_20"
         />

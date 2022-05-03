@@ -15,7 +15,8 @@ data class Residence(val id: Int,
                      val parking_motorcycle: Int,
                      val id_city: Int,
                      val image: String,
+                     var idResiFavorite: Int?,
                      val idUser: Int?,
-                     val idResiFavorite: Int?,
+                     var favouriteIdU: Int?,
                      val priceFrom: Int?
                      )

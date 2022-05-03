@@ -5,9 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.GridLayout
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +21,7 @@ import com.example.miresiapp.models.CommentModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 import com.example.miresiapp.utils.toast
+import com.example.miresiapp.views.fragments.CommentsFragment
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 
@@ -72,7 +70,17 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
         }
 
         binding.seeAllComments.setOnClickListener {
-            toast(applicationContext, "Good")
+            idResi?.let {
+                supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.slide_r_l_in,R.anim.fade_out, R.anim.fade_in, R.anim.slide_l_r_out)
+                    .addToBackStack("comments")
+                    .replace(R.id.commentsFrag, CommentsFragment().apply {
+                        arguments = Bundle().apply {
+                            putInt("resiId", it)
+                        }
+                    }).commit()
+            }
+
         }
     }
     
@@ -121,6 +129,8 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
         if (residence?.library != 0) LayoutInflater.from(applicationContext).inflate(R.layout.study_room_icon_wtext, gridLayout)
         if (residence?.parking_bicycle != 0) LayoutInflater.from(applicationContext).inflate(R.layout.bicycle_icon_wtext, gridLayout)
         if (residence?.parking_car != 0) LayoutInflater.from(applicationContext).inflate(R.layout.parking_icon_wtext, gridLayout)
+    }
+    override fun added(susscces: String) {
     }
 
     override fun error(err: String) {

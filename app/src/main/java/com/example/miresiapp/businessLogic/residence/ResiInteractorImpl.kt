@@ -4,6 +4,7 @@ import com.example.miresiapp.businessLogic.residence.IResi.Presenter
 import com.example.miresiapp.businessLogic.residence.IResi.PresenterModel
 import com.example.miresiapp.businessLogic.residence.IResi.PresenterView
 import com.example.miresiapp.models.CommentModel
+import com.example.miresiapp.models.FavouriteModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 import kotlinx.coroutines.Dispatchers
@@ -44,5 +45,17 @@ class ResiInteractorImpl(private val view: PresenterView, private val model: Pre
             view.setComments(listcomments!!)
         }
 
+    }
+
+    override suspend fun addFavourite(favourite: FavouriteModel) {
+         if (model.addToFavourote(favourite)){
+             view.added("added")
+         }
+    }
+
+    override suspend fun removeFavourite(favourite: FavouriteModel) {
+        if (model.removeFromFavourote(favourite)){
+            view.added("removed")
+        }
     }
 }

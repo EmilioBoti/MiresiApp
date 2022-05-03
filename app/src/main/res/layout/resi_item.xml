@@ -42,7 +42,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/favorite_border_24" />
+                    android:src="@drawable/favorite_border_24"
+                    android:visibility="visible" />
 
                 <TextView
                     android:id="@+id/nameResi"
@@ -79,7 +80,7 @@
                     android:layout_toEndOf="@id/locationIcon"
                     android:text="@string/name"
                     android:textColor="@color/black_200"
-                    android:textSize="@dimen/dimenst_12"
+                    android:textSize="@dimen/dimenst_14"
                     android:textStyle="italic" />
 
                 <GridLayout
