@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@color/blue_200"
+            android:background="@color/green_turquoise"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -69,7 +69,6 @@
                 android:text="@string/signup"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:backgroundTint="@color/blue_200"
                 />
         </LinearLayout>
     </LinearLayout>

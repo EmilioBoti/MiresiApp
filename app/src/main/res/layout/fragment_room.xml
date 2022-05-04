@@ -14,10 +14,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/blue_200"
+        android:background="@color/green_turquoise"
         android:alpha="1"
         android:elevation="@dimen/dimen_4"
         >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/post"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimenst_25"
+            android:textStyle="bold"
+            />
         <ImageView
             android:id="@+id/chat"
             android:layout_width="wrap_content"
@@ -47,5 +55,6 @@
         android:layout_margin="@dimen/dimen_15"
         app:tint="@color/white"
         android:src="@drawable/add_24"
+        android:backgroundTint="@color/green_turquoise"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

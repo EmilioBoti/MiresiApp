@@ -31,8 +31,8 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
     private var idResi: Int? = null
     private lateinit var model: DataProviderResi
     private lateinit var resiInteractorImpl: ResiInteractorImpl
-    private var resi: MutableList<Residence>? = null
-    private lateinit var listRooms: MutableList<Room>
+    //private var resi: MutableList<Residence>? = null
+    //private lateinit var listRooms: MutableList<Room>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,8 +85,7 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
     }
     
     override fun getResi(list: MutableList<Residence>?) {
-        resi = list
-        val residence: Residence? = resi?.get(0)
+        val residence: Residence? = list?.get(0)
         Picasso.get().load(residence?.image).fit().centerCrop().into(binding.imageResi)
         binding.name.text = residence?.resiName
         binding.about.text = residence?.description
@@ -95,12 +94,11 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
 
     }
 
-    private fun <T : MutableList<*>>checkList(list: T): Boolean {
+    private fun <T : MutableList<*>> checkList(list: T): Boolean {
         return list.isNotEmpty()
     }
     override fun setRooms(list: MutableList<Room>) {
-        listRooms = list
-        val roomAdapter = RoomAdapter(listRooms, this)
+        val roomAdapter = RoomAdapter(list, this)
 
         if (checkList(list)){
             binding.roomContainer.apply {
@@ -125,7 +123,7 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
     private fun facilities(residence: Residence?){
         if (residence?.gym != 0) LayoutInflater.from(applicationContext).inflate(R.layout.gym_layout_wtext, gridLayout)
         if (residence?.laundry != 0) LayoutInflater.from(applicationContext).inflate(R.layout.laundry_icon_wtext, gridLayout)
-        if (residence?.parking_motorcycle != 0) LayoutInflater.from(applicationContext).inflate(R.layout.gym_layout_wtext, gridLayout)
+        if (residence?.parking_motorcycle != 0) LayoutInflater.from(applicationContext).inflate(R.layout.parking_icon_wtext, gridLayout)
         if (residence?.library != 0) LayoutInflater.from(applicationContext).inflate(R.layout.study_room_icon_wtext, gridLayout)
         if (residence?.parking_bicycle != 0) LayoutInflater.from(applicationContext).inflate(R.layout.bicycle_icon_wtext, gridLayout)
         if (residence?.parking_car != 0) LayoutInflater.from(applicationContext).inflate(R.layout.parking_icon_wtext, gridLayout)

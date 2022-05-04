@@ -17,6 +17,7 @@
         android:layout_marginEnd="@dimen/dimen_5"
         app:cardCornerRadius="@dimen/dimen_1"
         app:cardElevation="@dimen/dimen_5"
+        android:elevation="@dimen/dimen_2"
         >
 
         <LinearLayout
@@ -109,6 +110,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/from"
                         android:textSize="@dimen/dimenst_15"
+                        android:textStyle="bold"
                         />
 
                     <TextView
@@ -116,8 +118,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/from"
-                        android:textSize="@dimen/dimenst_20"
-                        android:textColor="@color/green_200"
+                        android:textSize="@dimen/dimenst_25"
+                        android:textColor="@color/green_turquoise"
                         android:textStyle="bold"
                         android:layout_marginTop="@dimen/dimen_5"
                         />

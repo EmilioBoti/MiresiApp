@@ -7,7 +7,7 @@ import com.example.miresiapp.models.MessageModel
 import com.google.gson.Gson
 import io.socket.client.Socket
 
-class MessengeLogicImpl(private val viewer: IMessenger.ViewPresenter, private val model: ChatDataProvider): IMessenger.Presenter {
+class MessageLogicImpl(private val viewer: IMessage.ViewPresenter, private val model: ChatDataProvider): IMessage.Presenter {
     private var message: Message? = null
     private var listMessage: MutableList<Message>? = null
     private var mSocket: Socket = SocketCon.getSocket()

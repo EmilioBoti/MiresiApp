@@ -15,12 +15,12 @@
         android:layout_marginEnd="@dimen/dimen_15"
         android:layout_marginBottom="@dimen/dimen_3"
         android:elevation="@dimen/dimen_4"
+        app:cardBackgroundColor="@color/green_turquoise"
         app:cardCornerRadius="@dimen/dimen_15"
         app:contentPaddingBottom="@dimen/dimen_5"
         app:contentPaddingLeft="@dimen/dimen_10"
         app:contentPaddingRight="@dimen/dimen_10"
         app:contentPaddingTop="@dimen/dimen_5"
-        app:cardBackgroundColor="@color/blue_200"
 
         >
 
@@ -34,10 +34,11 @@
                 android:id="@+id/messageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_4"
                 android:text="@string/messenge"
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimenst_16"
-                android:layout_margin="@dimen/dimen_4"
+                android:textIsSelectable="true"
                 />
 
             <TextView
@@ -45,11 +46,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="@string/from"
-                android:textSize="@dimen/dimenst_12"
-                android:textColor="@color/white"
                 android:layout_marginEnd="@dimen/dimen_4"
-                />
+                android:text="@string/from"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimenst_12" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

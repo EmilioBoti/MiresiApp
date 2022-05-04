@@ -1,7 +1,10 @@
 package com.example.miresiapp.views.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.view.*
+import androidx.annotation.RequiresApi
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -28,6 +31,7 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView {
         return inflater.inflate(R.layout.fragment_forum, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentForumBinding.bind(view)
@@ -41,6 +45,12 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView {
 
         binding.createForum.setOnClickListener {
             toast(context, "Create Forum")
+        }
+
+        binding.city.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked){
+                toast(activity,buttonView.id)
+            } else toast(activity,"not checked")
         }
     }
 

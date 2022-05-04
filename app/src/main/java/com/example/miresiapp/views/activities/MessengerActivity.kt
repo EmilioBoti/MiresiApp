@@ -2,27 +2,22 @@ package com.example.miresiapp.views.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.*
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.miresiapp.R
-import com.example.miresiapp.SocketCon
 import com.example.miresiapp.adapters.chatAdapter.MessageAdapter
 import com.example.miresiapp.businessLogic.chat.ChatDataProvider
-import com.example.miresiapp.businessLogic.message.IMessenger
-import com.example.miresiapp.businessLogic.message.MessengeLogicImpl
+import com.example.miresiapp.businessLogic.message.IMessage
+import com.example.miresiapp.businessLogic.message.MessageLogicImpl
 import com.example.miresiapp.databinding.ActivityMessengerBinding
 import com.example.miresiapp.models.Message
 import com.example.miresiapp.models.MessageModel
 import com.example.miresiapp.utils.toast
 import com.google.gson.Gson
-import io.socket.client.Socket
 import kotlinx.coroutines.launch
 
-class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.ViewPresenter {
+class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessage.ViewPresenter {
     private lateinit var binding: ActivityMessengerBinding
     private var data: Bundle? = null
     private var from: Int? = null
@@ -30,7 +25,7 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
     private lateinit var message: MessageModel
     private lateinit var gson: Gson
     private lateinit var model: ChatDataProvider
-    private lateinit var messengeLogicImpl: MessengeLogicImpl
+    private lateinit var messengeLogicImpl: MessageLogicImpl
     private lateinit var messageAdapter: MessageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +41,7 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
         gson = Gson()
         binding.btnSender.setOnClickListener(this)
         model = ChatDataProvider()
-        messengeLogicImpl = MessengeLogicImpl(this, model)
+        messengeLogicImpl = MessageLogicImpl(this, model)
         from = data?.getInt("from")
         to = data?.getInt("to")
 
@@ -62,14 +57,14 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
         }
     }
     override fun onClick(v: View?) {
-        if(binding.boxMessage.text.isNotEmpty()){
+        if(binding.boxMessage.text.isNotEmpty()) {
             message = MessageModel(from!!, to!!, binding.boxMessage.text.toString().trim(), false)
             binding.boxMessage.setText("")
             messengeLogicImpl.sendMessage(message)
         }
     }
 
-    override fun showMessage(listMessage: MutableList<Message>) {to
+    override fun showMessage(listMessage: MutableList<Message>) {
         messageAdapter = MessageAdapter(listMessage, from!!)
 
         binding.messageContainer.apply {
@@ -88,7 +83,7 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
             }
         }
     }
-    private fun screenUserValid(message: Message): Boolean{
+    private fun screenUserValid(message: Message): Boolean {
         return (from == message.userReceiverId) && (message.userSenderId == to) || (from == message.userSenderId) && (message.userReceiverId == to)
     }
     override fun error(err: String) {

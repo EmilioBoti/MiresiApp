@@ -25,6 +25,7 @@ class ResiAdapter(private val listResi: MutableList<Residence>?, private val lis
         return ResiViewHolder(view, listener, applicationContext, userId)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: ResiViewHolder, position: Int) {
         holder.binData(listResi?.get(position))
     }

@@ -3,7 +3,7 @@ package com.example.miresiapp.businessLogic.message
 import com.example.miresiapp.models.Message
 import com.example.miresiapp.models.MessageModel
 
-interface IMessenger {
+interface IMessage {
     interface ViewPresenter{
         fun showMessage(listMessage: MutableList<Message>)
         fun updateChat(message: Message, pos: Int)

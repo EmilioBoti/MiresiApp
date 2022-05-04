@@ -20,7 +20,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="search">Search...</string>
+    <string name="search">Search City...</string>
     <string name="home">Home</string>
     <string name="wishList">Wish List</string>
     <string name="room">Rooms</string>
@@ -57,4 +57,6 @@
     <string name="bacelona">Barcelona</string>
     <string name="forums">Forums</string>
     <string name="reload">Reload</string>
+    <string name="post">Posts</string>
+    <string name="food">Food</string>
 </resources>
