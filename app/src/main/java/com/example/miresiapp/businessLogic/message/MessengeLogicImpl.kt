@@ -30,11 +30,14 @@ class MessengeLogicImpl(private val viewer: IMessenger.ViewPresenter, private va
         mSocket.emit("message", msm)
     }
 
-    private fun socketEventsListenner(){
+    private fun socketEventsListenner() {
         mSocket.on("private", ){ data ->
             val d = data[0]
             message = gson.fromJson<Message>(d.toString(), Message::class.java)
-            viewer.updateChat(message!!)
+            listMessage?.add(message!!)
+            listMessage?.let {
+                viewer.updateChat(it[it.size -1], it.size -1)
+            }
         }
     }
 }

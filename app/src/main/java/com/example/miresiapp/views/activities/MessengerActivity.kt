@@ -24,7 +24,6 @@ import kotlinx.coroutines.launch
 
 class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.ViewPresenter {
     private lateinit var binding: ActivityMessengerBinding
-    private lateinit var listMessage: MutableList<Message>
     private var data: Bundle? = null
     private var from: Int? = null
     private var to: Int? = null
@@ -45,10 +44,8 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
         super.onStart()
 
         gson = Gson()
-
         binding.btnSender.setOnClickListener(this)
         model = ChatDataProvider()
-        listMessage = mutableListOf()
         messengeLogicImpl = MessengeLogicImpl(this, model)
         from = data?.getInt("from")
         to = data?.getInt("to")
@@ -73,8 +70,7 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
     }
 
     override fun showMessage(listMessage: MutableList<Message>) {to
-        this.listMessage = listMessage
-        messageAdapter = MessageAdapter(this.listMessage, from!!)
+        messageAdapter = MessageAdapter(listMessage, from!!)
 
         binding.messageContainer.apply {
             layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
@@ -84,17 +80,17 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessenger.
         }
     }
 
-    override fun updateChat(message: Message) {
+    override fun updateChat(message: Message, pos: Int) {
         lifecycleScope.launch {
-            if((from == message.userReceiverId) && (message.userSenderId == to) ||
-                (from == message.userSenderId) && (message.userReceiverId == to)) {
-                listMessage.add(message)
-                binding.messageContainer.scrollToPosition(listMessage.size - 1)
-                messageAdapter.notifyItemInserted(listMessage.size -1)
+            if(screenUserValid(message)) {
+                binding.messageContainer.scrollToPosition(pos)
+                messageAdapter.notifyItemInserted(pos)
             }
         }
     }
-
+    private fun screenUserValid(message: Message): Boolean{
+        return (from == message.userReceiverId) && (message.userSenderId == to) || (from == message.userSenderId) && (message.userReceiverId == to)
+    }
     override fun error(err: String) {
         toast(applicationContext, err)
     }
