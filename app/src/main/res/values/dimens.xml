@@ -44,4 +44,7 @@
     <dimen name="dimenst_22">22sp</dimen>
     <dimen name="dimen_14">14dp</dimen>
     <dimen name="dimen_12">12dp</dimen>
+    <dimen name="dimenst_80">80sp</dimen>
+    <dimen name="dimenst_60">60sp</dimen>
+    <dimen name="dimenst_70">70sp</dimen>
 </resources>

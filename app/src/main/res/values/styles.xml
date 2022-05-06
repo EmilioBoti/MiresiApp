@@ -3,6 +3,7 @@
     <style name="fieldsLogin">
         <item name="android:layout_marginStart">@dimen/dimen_40</item>
         <item name="android:layout_marginEnd">@dimen/dimen_40</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_40</item>
     </style>
     <style name="fieldInput">
         <item name="android:padding">@dimen/dimen_15</item>
@@ -28,5 +29,16 @@
         <item name="android:textSize">@dimen/dimenst_16</item>
         <item name="android:layout_marginEnd">@dimen/dimen_5</item>
 
+    </style>
+    <style name="inputText" parent="Theme.MiresiApp">
+        <item name="android:textColor">@color/black_200</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/dimenst_16</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_10</item>
+    </style>
+    <style name="chipsStyle" parent="Theme.MiresiApp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        >
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>

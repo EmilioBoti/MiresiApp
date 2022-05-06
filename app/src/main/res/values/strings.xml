@@ -59,4 +59,5 @@
     <string name="reload">Reload</string>
     <string name="post">Posts</string>
     <string name="food">Food</string>
+    <string name="favourite">favourite</string>
 </resources>

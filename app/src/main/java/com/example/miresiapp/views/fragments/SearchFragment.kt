@@ -24,6 +24,7 @@ class SearchFragment(private val navigateTo: IHome.ViewPresenter ) : Fragment(),
     private lateinit var model: DataProviderSearch
     private lateinit var searchLogicImpl: SearchLogicImpl
     private lateinit var listCities: MutableList<City>
+    private lateinit var residencesFragment: ResidenceFragment
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_search, container, false)
@@ -53,8 +54,15 @@ class SearchFragment(private val navigateTo: IHome.ViewPresenter ) : Fragment(),
     }
 
     override fun citySearched(city: MutableList<City>) {
-        navigateTo.navigateTo(city[0].name)
+        //navigateTo.navigateTo(city[0].name)
         activity?.supportFragmentManager?.popBackStack()
+        val data = Bundle().apply { putString("city", city[0].name) }
+
+        residencesFragment = ResidenceFragment().apply { arguments = data }
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.viewContainer, residencesFragment)
+            ?.addToBackStack("search")
+            ?.commit()
     }
 
     override fun suggestions(listCities: MutableList<City>) {

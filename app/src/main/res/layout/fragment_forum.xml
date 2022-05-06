@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".views.fragments.ForumFragment">
+    tools:context=".views.fragments.ForumFragment"
+    >
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/forumToolBar"
@@ -38,10 +39,13 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_10"
+        android:paddingEnd="@dimen/dimen_20"
+        android:paddingStart="@dimen/dimen_20"
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/forumToolBar">
+        app:layout_constraintTop_toBottomOf="@id/forumToolBar"
+        >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -53,6 +57,7 @@
                 android:id="@+id/filter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 >
                 <com.google.android.material.chip.Chip
                     android:id="@+id/food"
@@ -61,10 +66,13 @@
                     android:layout_marginEnd="@dimen/dimen_10"
                     android:text="@string/food"
                     android:textColor="@color/white"
-                    app:chipBackgroundColor="@color/green_turquoise"
+                    app:chipBackgroundColor="@color/dark_blue"
                     app:chipIconTint="@color/white"
                     app:chipCornerRadius="@dimen/dimen_5"
                     android:checkable="true"
+                    app:chipStrokeColor="@color/material_on_surface_stroke"
+                    app:chipStrokeWidth="@dimen/dimen_2"
+                    app:chipSurfaceColor="@color/green_turquoise"
                     />
 
                 <com.google.android.material.chip.Chip

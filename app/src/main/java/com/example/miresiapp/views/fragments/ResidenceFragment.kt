@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,10 +31,12 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class ResidenceFragment : Fragment(), PresenterView, OnClickItemView {
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var cityName: TextView
+    private lateinit var btnBack: ImageView
     private var city: String? = null
     private lateinit var resiInteractorImpl: ResiInteractorImpl
     private lateinit var model: DataProviderResi
-    private lateinit var recyclerView: RecyclerView
     private var listResi: MutableList<Residence>? = null
     private var userId: Int? = null
 
@@ -44,11 +47,16 @@ class ResidenceFragment : Fragment(), PresenterView, OnClickItemView {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.resiContainer)
+        cityName = view.findViewById(R.id.cityName)
+        btnBack = view.findViewById(R.id.btnBack)
+
     }
 
     override fun onStart() {
         super.onStart()
+
         city = arguments?.getString("city")
+        cityName.text = city
         userId = LocalData.getCurrentUserId(activity?.applicationContext!!)
 
         model = DataProviderResi()
@@ -59,6 +67,9 @@ class ResidenceFragment : Fragment(), PresenterView, OnClickItemView {
                 resiInteractorImpl.makeRequest(it)
             }
         }
+        btnBack.setOnClickListener {
+            activity?.supportFragmentManager?.popBackStack()
+        }
     }
 
     override fun getResi(list: MutableList<Residence>?) {
@@ -68,22 +79,6 @@ class ResidenceFragment : Fragment(), PresenterView, OnClickItemView {
             layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
             adapter = resiAdapter
         }
-    }
-
-    override fun setRooms(list: MutableList<Room>) {
-        TODO("Not yet implemented")
-    }
-
-    override fun setComments(list: MutableList<CommentModel>) {
-        TODO("Not yet implemented")
-    }
-
-    override fun added(susscces: String) {
-        toast(activity, "It has been ${susscces}")
-    }
-
-    override fun error(err: String) {
-        toast(activity?.applicationContext, "Error")
     }
 
     override fun onClickItem(pos: Int, view: View) {
@@ -99,6 +94,7 @@ class ResidenceFragment : Fragment(), PresenterView, OnClickItemView {
     override fun addFavoriteItem(pos: Int, view: View) {
         val image = view as ImageView
         val favouriteModel = FavouriteModel(userId!!, listResi?.get(pos)?.id!!)
+
         if (listResi?.get(pos)?.favouriteIdU == userId) {
             listResi?.get(pos)?.favouriteIdU = null
             image.setImageIcon(Icon.createWithResource(activity, R.drawable.favorite_border_24))
@@ -112,5 +108,20 @@ class ResidenceFragment : Fragment(), PresenterView, OnClickItemView {
                 resiInteractorImpl.addFavourite(favouriteModel)
             }
         }
+    }
+    override fun setRooms(list: MutableList<Room>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun setComments(list: MutableList<CommentModel>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun added(susscces: String) {
+        toast(activity, "It has been ${susscces}")
+    }
+
+    override fun error(err: String) {
+        toast(activity?.applicationContext, "Error")
     }
 }

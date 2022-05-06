@@ -35,7 +35,7 @@ class ForumViewHolder(itemView: View, private val listener: OnClickItemView): Re
     }
 
     fun bindData(forum: ForumModel){
-        forumTitle.text = forum.forumName
+        forumTitle.text = forum.forumName.uppercase()
         forumDate.text = forum.dateCreated
 
         forum.cityName?.apply {

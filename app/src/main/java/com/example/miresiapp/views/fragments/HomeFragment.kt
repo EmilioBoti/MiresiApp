@@ -7,11 +7,11 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.SearchView
 import com.example.miresiapp.R
 import com.example.miresiapp.businessLogic.home.IHome
+import com.example.miresiapp.utils.toast
 
 class HomeFragment : Fragment(), IHome.ViewPresenter {
     private var fragContainer: FrameLayout? = null
     private lateinit var searcher: SearchView
-    private lateinit var residencesFragment: ResidenceFragment
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
@@ -34,11 +34,12 @@ class HomeFragment : Fragment(), IHome.ViewPresenter {
     }
 
     override fun navigateTo(name: String) {
-        val data = Bundle().apply { putString("city", name) }
+        /*val data = Bundle().apply { putString("city", name) }
         residencesFragment = ResidenceFragment().apply { arguments = data }
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(R.id.viewContainer, residencesFragment)
-            ?.commit()
+            ?.addToBackStack("search")
+            ?.commit()*/
     }
 
 }

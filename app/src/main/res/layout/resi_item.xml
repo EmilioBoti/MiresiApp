@@ -18,6 +18,7 @@
         app:cardCornerRadius="@dimen/dimen_1"
         app:cardElevation="@dimen/dimen_5"
         android:elevation="@dimen/dimen_2"
+        app:cardBackgroundColor="@color/white"
         >
 
         <LinearLayout
