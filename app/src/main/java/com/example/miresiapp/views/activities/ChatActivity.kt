@@ -50,8 +50,10 @@ class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {
         searcher = findViewById(R.id.searcher)
         image = findViewById(R.id.imgUser)
 
-        val img = LocalData.getImageUser(applicationContext)
-        Picasso.get().load(img).fit().into(image)
+        val img: String? = LocalData.getImageUser(applicationContext)
+        img?.let {
+            Picasso.get().load(it).fit().into(image)
+        }
 
         gson = Gson()
         model = ChatDataProvider()
@@ -69,7 +71,7 @@ class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                //chatLogicImpl.findChats(newText!!)
+                chatLogicImpl.findChats(newText!!)
                 return true
             }
         })

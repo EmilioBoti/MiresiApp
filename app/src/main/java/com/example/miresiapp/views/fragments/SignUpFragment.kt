@@ -14,6 +14,7 @@ import com.example.miresiapp.businessLogic.registe.SignUpBusinessLogic
 import com.example.miresiapp.businessLogic.registe.SignUpProvider
 import com.example.miresiapp.models.RegisterUser
 import com.example.miresiapp.models.User
+import com.example.miresiapp.utils.toast
 import kotlinx.coroutines.launch
 
 class SignUpFragment : Fragment(), ISignUp.ViewPresenter {
@@ -57,6 +58,10 @@ class SignUpFragment : Fragment(), ISignUp.ViewPresenter {
 
     override fun isCreated(newUser: User) {
         activity?.supportFragmentManager?.popBackStack()
+    }
+
+    override fun error(err: String) {
+        confimPwInput.error = err
     }
 
 }

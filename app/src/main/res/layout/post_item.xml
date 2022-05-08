@@ -137,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dimen_20"
                     android:text="@string/see"
-                    android:textColor="@color/blue_200"
+                    android:textColor="@color/green_turquoise_darker"
                     android:textStyle="bold" />
 
                 <TextView
@@ -145,7 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/goChat"
-                    android:textColor="@color/blue_200"
+                    android:textColor="@color/green_turquoise_darker"
                     android:textStyle="bold" />
             </LinearLayout>
         </RelativeLayout>

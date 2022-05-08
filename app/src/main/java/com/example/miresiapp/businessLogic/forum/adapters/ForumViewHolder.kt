@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
 import com.example.miresiapp.interfaces.OnClickItemView
@@ -26,8 +27,8 @@ class ForumViewHolder(itemView: View, private val listener: OnClickItemView): Re
 
         return TextView(itemView.context).apply {
             this.text = text
-            this.setTextColor(ColorStateList.valueOf(itemView.context.resources?.getColor(R.color.white)!!))
-            this.background = itemView.context.resources.getDrawable(R.drawable.tag_border)
+            this.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(itemView.context, R.color.white)))
+            this.background = ContextCompat.getDrawable(itemView.context, R.drawable.tag_border)
             this.setPadding(dimenRP,dimenTP, dimenRP, dimenTP)
             this.textSize = textsize
             this.layoutParams = margin

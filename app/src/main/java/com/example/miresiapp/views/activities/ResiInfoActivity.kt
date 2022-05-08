@@ -1,15 +1,21 @@
 package com.example.miresiapp.views.activities
 
+import android.content.Intent
+import android.content.res.ColorStateList
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.GridLayout
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
+import com.example.miresiapp.businessLogic.comments.adapters.CommentAdapter2
 import com.example.miresiapp.businessLogic.residence.DataProviderResi
 import com.example.miresiapp.businessLogic.residence.IResi.PresenterView
 import com.example.miresiapp.businessLogic.residence.ResiInteractorImpl
@@ -31,8 +37,7 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
     private var idResi: Int? = null
     private lateinit var model: DataProviderResi
     private lateinit var resiInteractorImpl: ResiInteractorImpl
-    //private var resi: MutableList<Residence>? = null
-    //private lateinit var listRooms: MutableList<Room>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +46,7 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onStart() {
         super.onStart()
 
@@ -71,16 +77,37 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
 
         binding.seeAllComments.setOnClickListener {
             idResi?.let {
-                supportFragmentManager.beginTransaction()
+                Intent(this, CommentActivity::class.java).apply {
+                    putExtra("resiId", it)
+                    startActivity(this)
+                }
+                /*supportFragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.slide_r_l_in,R.anim.fade_out, R.anim.fade_in, R.anim.slide_l_r_out)
                     .addToBackStack("comments")
                     .replace(R.id.commentsFrag, CommentsFragment().apply {
                         arguments = Bundle().apply {
                             putInt("resiId", it)
                         }
-                    }).commit()
+                    }).commit()*/
             }
 
+        }
+        binding.scrollContainer.fullScroll(View.FOCUS_UP)
+        binding.scrollContainer.fullScroll(View.FOCUS_DOWN)
+        binding.scrollContainer.isSmoothScrollingEnabled = true
+
+        binding.btnGoBack.setOnClickListener {
+            onBackPressed()
+        }
+
+        binding.scrollContainer.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (scrollY > 200){
+                binding.btnGoBack.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.white))
+                binding.toolbar.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.green_turquoise))
+            }else{
+                binding.btnGoBack.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.black))
+                binding.toolbar.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.transparent))
+            }
         }
     }
     
@@ -110,12 +137,12 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
     }
 
     override fun setComments(list: MutableList<CommentModel>) {
-        val commentAdapter = CommentAdapter(list, this)
+        val commentAdapter = CommentAdapter2(list, this)
 
         binding.commentsContainer.apply {
             layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
             setHasFixedSize(true)
-            addItemDecoration(DividerItemDecoration(applicationContext, LinearLayoutManager.VERTICAL))
+            //addItemDecoration(DividerItemDecoration(applicationContext, LinearLayoutManager.VERTICAL))
             adapter = commentAdapter
         }
     }

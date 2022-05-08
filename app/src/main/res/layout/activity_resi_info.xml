@@ -11,13 +11,33 @@
     android:orientation="vertical"
     android:background="@color/white"
     >
+    <FrameLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="@dimen/dimen_10"
+        android:elevation="@dimen/dimen_16"
+        >
+        <ImageView
+            android:id="@+id/btnGoBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_back_24"
+            app:tint="@color/red_pink_400"
+            />
+    </FrameLayout>
     <ScrollView
+        android:id="@+id/scrollContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:fillViewport="true"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,8 +88,7 @@
                     android:textSize="@dimen/dimenst_18"
                     android:textColor="@color/black_200"
                     android:layout_marginTop="@dimen/dimen_20"
-                    android:layout_marginEnd="@dimen/dimen_15"
-                    android:layout_marginStart="@dimen/dimen_15"
+                    android:layout_marginHorizontal="@dimen/dimenst_15"
                     tools:text="Resicencia Universitaria Aleu"
                     android:maxLines="3"
                     android:typeface="sans"
@@ -78,11 +97,12 @@
                     android:id="@+id/readMore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="end"
+                    android:gravity="center_vertical"
                     android:text="@string/readMore"
+                    android:textStyle="bold"
                     android:textColor="@color/blue_200"
                     android:layout_marginBottom="@dimen/dimen_10"
+                    app:drawableStartCompat="@drawable/arrow_drop_down_24"
                     />
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
@@ -107,7 +127,7 @@
                     android:id="@+id/roomContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_margin="@dimen/dimen_10"
                     />
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"

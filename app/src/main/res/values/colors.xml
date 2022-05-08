@@ -30,6 +30,8 @@
     <color name="darker_green">#031926</color>
     <color name="oxford_blue">#05204A</color>
 
+    <color name="transparent">#00000000</color>
+
     <color name="light_cyan">#CBF3F0</color>
     <color name="gray_200">#828A95</color>
     <color name="green_turquoise">#4ECDC4</color>

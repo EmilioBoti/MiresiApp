@@ -6,6 +6,7 @@ import com.example.miresiapp.models.User
 interface ISignUp {
     interface ViewPresenter {
         fun isCreated(newUser: User)
+        fun error(err: String)
     }
     interface Presenter{
         suspend fun resgisterUser(newUser: RegisterUser)

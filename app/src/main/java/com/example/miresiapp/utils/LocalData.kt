@@ -25,7 +25,7 @@ class LocalData {
         }
         fun getImageUser(context: Context): String?{
             val prefe = context.getSharedPreferences(context.resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
-            return  prefe?.getString("image", "")
+            return  prefe?.getString("image", null)
         }
         fun getCurrentUserId(context: Context): Int? {
             val prefe = context.getSharedPreferences(context.resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)

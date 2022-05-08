@@ -54,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/dimen_15"
         app:tint="@color/white"
-        android:src="@drawable/add_24"
-        android:backgroundTint="@color/green_turquoise"
+        android:src="@drawable/post_add_24"
+        app:backgroundTint="@color/green_turquoise"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

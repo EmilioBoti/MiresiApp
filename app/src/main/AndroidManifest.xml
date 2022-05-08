@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.miresiapp" >
+    package="com.example.miresiapp">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiresiApp"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m" >
+        tools:targetApi="m">
+        <activity
+            android:name=".views.activities.CommentActivity"
+            android:exported="false" />
         <activity
             android:name=".views.activities.CreatePost"
             android:exported="false" />
@@ -32,16 +35,14 @@
             android:exported="false" />
         <activity
             android:name=".views.activities.DashBoardActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".views.activities.MainBaseActivity"
             android:exported="false" />
         <activity
             android:name=".views.activities.BaseRegister"
             android:exported="true"
-            android:theme="@style/splashScreen"
-            >
+            android:theme="@style/splashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -60,6 +60,7 @@ class SearchFragment(private val navigateTo: IHome.ViewPresenter ) : Fragment(),
 
         residencesFragment = ResidenceFragment().apply { arguments = data }
         activity?.supportFragmentManager?.beginTransaction()
+            ?.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             ?.replace(R.id.viewContainer, residencesFragment)
             ?.addToBackStack("search")
             ?.commit()

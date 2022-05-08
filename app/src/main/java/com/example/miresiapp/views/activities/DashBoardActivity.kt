@@ -25,7 +25,7 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
     private lateinit var message: Message
     private var gson: Gson = Gson()
     private val POST_TAG: String = "POST"
-    private val ROOM_TAG: String = "FORUM"
+    private val FORUM_TAG: String = "FORUM"
     private val RESI_TAG: String = "RESI"
     private val FAVORITE_TAG: String = "FAVORITE"
     private val PROFILE_TAG: String = "PROFILE"
@@ -82,6 +82,7 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
     }
     private fun navTo(fragment: Fragment, tag: String) {
         supportFragmentManager.beginTransaction()
+            .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             .replace(R.id.viewContainer, fragment, tag)
             .addToBackStack(tag)
             .commit()
@@ -116,7 +117,7 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
                return true
             }
             R.id.pageForum -> {
-                setBackFragmentView(ForumFragment(), ROOM_TAG)
+                setBackFragmentView(ForumFragment(), FORUM_TAG)
                 return true
             }
             R.id.pageFavorite ->{
