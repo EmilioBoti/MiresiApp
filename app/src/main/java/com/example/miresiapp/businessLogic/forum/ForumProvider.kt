@@ -26,4 +26,36 @@ class ForumProvider: IForum.ModelPresenter{
             }
         }
     }
+
+    override suspend fun getFilterForums(name: String): MutableList<ForumModel>? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val retrofit = Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl(Consts.HOST)
+                    .build()
+
+                val services = retrofit.create(ApiEndPoint::class.java)
+                services.getFilterForums(name)?.execute()?.body()
+            }catch (err: Exception){
+                null
+            }
+        }
+    }
+
+    override suspend fun getCategories(): MutableList<CategoryModel>? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val retrofit = Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl(Consts.HOST)
+                    .build()
+
+                val services = retrofit.create(ApiEndPoint::class.java)
+                services.getAllCategories().execute().body()
+            }catch (err: Exception){
+                null
+            }
+        }
+    }
 }

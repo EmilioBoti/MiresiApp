@@ -1,5 +1,6 @@
 package com.example.miresiapp.interfaces.apiendpoints
 
+import com.example.miresiapp.businessLogic.forum.CategoryModel
 import com.example.miresiapp.models.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -27,6 +28,12 @@ interface ApiEndPoint {
 
     @GET("api/v1/forums")
     fun getForums(): Call<MutableList<ForumModel>>?
+
+    @GET("api/v1/forums/{name}")
+    fun getFilterForums(@Path("name") name: String): Call<MutableList<ForumModel>>?
+
+    @GET("api/v1/categories")
+    fun getAllCategories(): Call<MutableList<CategoryModel>>
 
     @GET("api/v1/posts")
     fun getPosts(): Call<MutableList<PostModel>>

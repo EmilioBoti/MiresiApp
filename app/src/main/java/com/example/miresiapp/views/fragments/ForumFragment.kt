@@ -1,8 +1,10 @@
 package com.example.miresiapp.views.fragments
 
+import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
 import android.view.*
+import android.widget.CompoundButton
 import androidx.annotation.RequiresApi
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
+import com.example.miresiapp.businessLogic.forum.CategoryModel
 import com.example.miresiapp.businessLogic.forum.ForumLogicImpl
 import com.example.miresiapp.businessLogic.forum.ForumProvider
 import com.example.miresiapp.businessLogic.forum.IForum
@@ -19,9 +22,11 @@ import com.example.miresiapp.databinding.FragmentForumBinding
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.ForumModel
 import com.example.miresiapp.utils.toast
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.launch
 
-class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView {
+class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, CompoundButton.OnCheckedChangeListener {
     private lateinit var binding: FragmentForumBinding
     private lateinit var model: ForumProvider
     private lateinit var forumPresenter: IForum.Presenter
@@ -41,34 +46,59 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView {
 
         lifecycleScope.launch {
             forumPresenter.requestForums()
+            forumPresenter.requestCategories()
         }
 
         binding.createForum.setOnClickListener {
             toast(context, "Create Forum")
         }
 
-        binding.city.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked){
-                toast(activity,buttonView.id)
-            } else toast(activity,"not checked")
-        }
     }
 
     override fun showForums(list: MutableList<ForumModel>) {
-
         forumAdapter = ForumAdapter(list, this)
         binding.forumContainer.apply {
             layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-            addItemDecoration(DividerItemDecoration(activity, RecyclerView.VERTICAL))
+            //addItemDecoration(DividerItemDecoration(activity, RecyclerView.VERTICAL))
             adapter = forumAdapter
         }
     }
 
+    override fun setChips(list: MutableList<CategoryModel>) {
+        for (i in 0 until list.size){
+            binding.filter.addView(createChip(list[i].name))
+        }
+    }
+
+    private fun createChip(name: String): Chip{
+
+        return Chip(activity).apply {
+            this.text = name
+            this.textSize = 18f
+            this.setTextColor(ColorStateList.valueOf(activity?.resources?.getColor(R.color.black_200)!!))
+            this.isCheckable = true
+            this.chipBackgroundColor = ColorStateList.valueOf(activity?.resources?.getColor(R.color.white)!!)
+            this.checkedIconTint = ColorStateList.valueOf(activity?.resources?.getColor(R.color.red_pink_400)!!)
+            this.chipStrokeColor = ColorStateList.valueOf(activity?.resources?.getColor(R.color.red_pink_400)!!)
+            this.chipStrokeWidth = 3f
+            this.setOnCheckedChangeListener(this@ForumFragment)
+        }
+    }
     override fun onClickItem(pos: Int, view: View) {
         toast(context, pos)
     }
 
     override fun addFavoriteItem(pos: Int, view: View) {
         TODO("Not yet implemented")
+    }
+
+    override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+        if (isChecked){
+            lifecycleScope.launch {
+                forumPresenter.filterForums(buttonView?.text as String)
+            }
+        }else lifecycleScope.launch {
+            forumPresenter.requestForums()
+        }
     }
 }

@@ -3,6 +3,7 @@
     <corners android:radius="@dimen/dimen_5"/>
     <stroke
         android:width="@dimen/dimen_2"
-        android:color="@color/green_turquoise"
+        android:color="@color/material_on_surface_stroke"
         />
+    <solid android:color="@color/green_turquoise"/>
 </shape>

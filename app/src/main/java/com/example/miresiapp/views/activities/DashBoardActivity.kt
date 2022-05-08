@@ -24,6 +24,11 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
     private var userId: Int? = 0
     private lateinit var message: Message
     private var gson: Gson = Gson()
+    private val POST_TAG: String = "POST"
+    private val ROOM_TAG: String = "FORUM"
+    private val RESI_TAG: String = "RESI"
+    private val FAVORITE_TAG: String = "FAVORITE"
+    private val PROFILE_TAG: String = "PROFILE"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +48,7 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener(this)
+
     }
     private fun socketEventListenner(){
         mSocket.on("private", ) { data ->
@@ -64,10 +70,20 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
             //.addToBackStack(null)
             .commit()
     }
-    private fun setBackFragmentView( fragment: Fragment){
+    private fun setBackFragmentView(fragment: Fragment, tag: String) {
+        val current = supportFragmentManager.findFragmentById(R.id.viewContainer)
+
+        current?.tag?.let {
+            if (current.tag != tag){
+                navTo(fragment, tag)
+            }
+        }?: navTo(fragment, tag)
+
+    }
+    private fun navTo(fragment: Fragment, tag: String) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.viewContainer, fragment)
-            .addToBackStack(null)
+            .replace(R.id.viewContainer, fragment, tag)
+            .addToBackStack(tag)
             .commit()
     }
 
@@ -76,13 +92,14 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
         residencesFragment = ResidenceFragment()
         val frag = supportFragmentManager.fragments
         conn()
+
         cityId?.let {
             val data = Bundle().apply { putString("city", it) }
             residencesFragment = ResidenceFragment().apply {
                 arguments = data
             }
-            setFragmentView(residencesFragment)
-        }?: if (frag.size > 0){
+            setBackFragmentView(residencesFragment, RESI_TAG)
+        }?: if (frag.size > 0) {
             setFragmentView(frag[frag.size-1])
         }else setFragmentView(HomeFragment())
 
@@ -95,15 +112,19 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
                return true
             }
             R.id.pageRoom -> {
-                setBackFragmentView(RoomFragment())
+                setBackFragmentView(RoomFragment(), POST_TAG)
                return true
             }
             R.id.pageForum -> {
-                setBackFragmentView(ForumFragment())
+                setBackFragmentView(ForumFragment(), ROOM_TAG)
                 return true
             }
             R.id.pageFavorite ->{
-                setBackFragmentView(FavoriteFragment())
+                setBackFragmentView(FavoriteFragment(), FAVORITE_TAG)
+                return true
+            }
+            R.id.pageProfile ->{
+                setBackFragmentView(ProfileFragment(), PROFILE_TAG)
                 return true
             }
             else -> { false }
