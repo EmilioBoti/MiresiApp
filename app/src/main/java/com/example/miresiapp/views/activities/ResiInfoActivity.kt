@@ -60,7 +60,7 @@ class ResiInfoActivity : AppCompatActivity(), PresenterView, OnClickItemView {
             lifecycleScope.launch {
                 resiInteractorImpl.getSingleResi(it)
                 resiInteractorImpl.getRooms(it)
-                resiInteractorImpl.getComments(it, 10)
+                resiInteractorImpl.getComments(it, 3)
             }
         }
 

@@ -5,7 +5,8 @@ import com.example.miresiapp.models.CommentModel
 interface IComment {
 
     interface ViewPresenter{
-        fun setComments(listComments: MutableList<CommentModel>)
+        fun showComments(listComments: MutableList<CommentModel>)
+        fun setComment(listComments: CommentModel, size: Int?)
         fun error()
     }
     interface Presenter{
@@ -14,5 +15,6 @@ interface IComment {
     }
     interface ModelPresenter{
         suspend fun getComments(resiId: Int, limit: Int): MutableList<CommentModel>?
+        suspend fun postComment(comment: CommentModel): CommentModel?
     }
 }

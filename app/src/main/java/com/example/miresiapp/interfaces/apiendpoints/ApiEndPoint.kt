@@ -7,6 +7,11 @@ import retrofit2.http.*
 
 interface ApiEndPoint {
 
+
+    @Headers("Content-Type: application/json")
+    @POST("api/v1/postComment")
+    fun postComment(@Body comment: CommentModel): Call<CommentModel>
+
     @Headers("Content-Type: application/json")
     @POST("api/v1/createPost")
     fun insertPost(@Body post: Post): Call<Boolean>

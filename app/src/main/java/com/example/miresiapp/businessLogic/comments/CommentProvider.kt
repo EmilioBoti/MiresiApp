@@ -26,4 +26,20 @@ class CommentProvider: IComment.ModelPresenter {
             }
         }
     }
+
+    override suspend fun postComment(comment: CommentModel): CommentModel? {
+        return withContext(Dispatchers.IO){
+            try {
+                val retrofit = Retrofit.Builder()
+                    .baseUrl(Consts.HOST)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+
+                val service = retrofit.create(ApiEndPoint::class.java)
+                service.postComment(comment).execute().body()
+            } catch (err: Exception){
+                null
+            }
+        }
+    }
 }

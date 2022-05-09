@@ -9,10 +9,15 @@ class CommentLogicImpl(private val view: ViewPresenter, private val model: Model
     override suspend fun requestComments(resiId: Int, limit: Int) {
         listComment = model.getComments(resiId, limit)
         listComment?.let {
-            view.setComments(it)
+            view.showComments(it)
         }
     }
 
     override suspend fun pushComment(commentModel: CommentModel) {
+        val comment: CommentModel? = model.postComment(commentModel)
+        comment?.let {
+            listComment?.add(it)
+            view.setComment(it, listComment?.size)
+        }
     }
 }
