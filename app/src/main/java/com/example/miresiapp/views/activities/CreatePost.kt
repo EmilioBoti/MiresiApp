@@ -1,9 +1,12 @@
 package com.example.miresiapp.views.activities
 
+import android.icu.util.LocaleData
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.DatePicker
 import androidx.lifecycle.lifecycleScope
 import com.example.miresiapp.businessLogic.createPost.*
 import com.example.miresiapp.databinding.ActivityCreatePostBinding
@@ -11,7 +14,11 @@ import com.example.miresiapp.models.City
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 import com.example.miresiapp.utils.toast
+import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.*
 
 class CreatePost : AppCompatActivity(), IPost.ViewPresenter, View.OnClickListener {
     private lateinit var binding: ActivityCreatePostBinding
@@ -54,6 +61,35 @@ class CreatePost : AppCompatActivity(), IPost.ViewPresenter, View.OnClickListene
         binding.rooms.setOnItemClickListener { parent, view, position, id ->
             roomId = listRooms[position].id
         }
+
+        //this code is a meess I know :)
+        binding.dateStart.setOnClickListener {
+            val datePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Start Date")
+                .build()
+
+            datePicker.show(supportFragmentManager, "start")
+            datePicker.addOnPositiveButtonClickListener {
+                val formatter = SimpleDateFormat("yyyy-MM-dd")
+                val date = formatter.format(Date(it))
+                binding.dateStart.setText(date)
+            }
+
+        }
+        binding.dateEnd.setOnClickListener {
+            val datePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Start Date")
+                .build()
+
+            datePicker.show(supportFragmentManager, "start")
+            datePicker.addOnPositiveButtonClickListener {
+                val formatter = SimpleDateFormat("yyyy-MM-dd")
+                val date = formatter.format(Date(it))
+                binding.dateEnd.setText(date)
+            }
+
+        }
+
     }
 
     override fun setDropDown(list: MutableList<Residence>?) {
