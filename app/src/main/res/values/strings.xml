@@ -62,4 +62,5 @@
     <string name="favourite">favourite</string>
     <string name="createForum">Create Forum</string>
     <string name="Title">Title</string>
+    <string name="tag">tag</string>
 </resources>
