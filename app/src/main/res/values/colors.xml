@@ -17,16 +17,20 @@
     <color name="red_200">#F83A44</color>
     <color name="red_400">#F72631</color>
     <color name="red_500">#D90812</color>
+    <color name="red_pink_400">#FF6B6B</color>
 
     <!--others color -->
     <color name="rich_Black">#011627</color>
     <color name="baby_powder">#FDFFFC</color>
-    <color name="floral_white">#FFF8F0</color>
+    <color name="floral_white">#EFF6EE</color>
     <color name="ghost_white">#F7F7FF</color>
     <color name="gray">#393E41</color>
     <color name="indigo_blue">#124E78</color>
     <color name="dark_blue">#13293D</color>
     <color name="darker_green">#031926</color>
     <color name="oxford_blue">#05204A</color>
+
+    <color name="gray_200">#828A95</color>
+    <color name="green_turquoise">#4ECDC4</color>
 
 </resources>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.fragments.HomeFragment"
-    android:background="@drawable/bg_message_box"
+    android:background="@color/white"
     >
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/dark_blue"
+        android:background="@color/green_turquoise"
         android:elevation="@dimen/dimen_4"
         >
 
@@ -27,6 +27,7 @@
             android:drawableEnd="@drawable/search_24"
             android:layout_margin="@dimen/dimen_10"
             android:hint="@string/search"
+            android:theme="@style/Theme.MiresiApp"
             />
     </com.google.android.material.appbar.MaterialToolbar>
 

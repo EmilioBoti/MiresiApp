@@ -4,24 +4,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".views.fragments.ResidenceFragment">
+    tools:context=".views.fragments.ResidenceFragment"
+    android:background="@color/white"
+    >
 
-    <LinearLayout
-        android:id="@+id/dropdown"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/resiToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/green_turquoise"
+        android:tag="@string/residence"
         >
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_back_24"
+            android:layout_marginEnd="@dimen/dimen_15"
+            app:tint="@color/white"
+            />
+        <TextView
+            android:id="@+id/cityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/city"
+            android:textSize="@dimen/dimenst_25"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            />
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/resiContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/dropdown"
+        app:layout_constraintTop_toBottomOf="@id/resiToolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

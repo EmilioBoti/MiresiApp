@@ -20,7 +20,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="search">Search...</string>
+    <string name="search">Search City...</string>
     <string name="home">Home</string>
     <string name="wishList">Wish List</string>
     <string name="room">Rooms</string>
@@ -51,4 +51,15 @@
     <string name="residence">Residence</string>
     <string name="nameResi">Resicencia Universitaria</string>
     <string name="comments">Comments</string>
+    <string name="seeAllComments">View All comments</string>
+    <string name="forumtitle">Title of the Forum</string>
+    <string name="forumDate">10/04/2022</string>
+    <string name="bacelona">Barcelona</string>
+    <string name="forums">Forums</string>
+    <string name="reload">Reload</string>
+    <string name="post">Posts</string>
+    <string name="food">Food</string>
+    <string name="favourite">favourite</string>
+    <string name="createForum">Create Forum</string>
+    <string name="Title">Title</string>
 </resources>

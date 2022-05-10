@@ -8,11 +8,11 @@ import com.example.miresiapp.databinding.PostItemBinding
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.PostModel
 
-class PostAdapter(private val list: MutableList<PostModel>,private val listener: OnClickItemView): RecyclerView.Adapter<PostViewHolder>() {
+class PostAdapter(private val list: MutableList<PostModel>,private val userId:Int ,private val listener: OnClickItemView): RecyclerView.Adapter<PostViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val binding = PostItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
-        return PostViewHolder(binding, listener)
+        return PostViewHolder(binding, userId ,listener)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {

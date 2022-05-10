@@ -10,15 +10,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         style="@style/fieldsLogin"
-        android:layout_marginBottom="@dimen/dimen_50"
         >
         <TextView
             android:id="@+id/emailTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/emailTitle"
-            android:textColor="@color/black"
-            android:layout_marginBottom="@dimen/dimen_10"
+            style="@style/inputText"
+
             />
 
         <EditText
@@ -28,6 +27,7 @@
             android:inputType="textEmailAddress"
             android:background="@drawable/login_input_corner"
             style="@style/fieldInput"
+            android:textColor="@color/black_200"
             />
     </LinearLayout>
 

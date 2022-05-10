@@ -11,7 +11,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/dark_blue"
+        android:background="@color/green_turquoise"
         android:elevation="@dimen/dimen_4"
         >
 
@@ -22,6 +22,7 @@
             android:layout_marginEnd="@dimen/dimen_10"
             >
             <ImageView
+                android:id="@+id/imgUser"
                 android:layout_width="@dimen/dimen_50"
                 android:layout_height="@dimen/dimen_50"
                 android:src="@drawable/person_24"

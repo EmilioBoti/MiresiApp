@@ -1,14 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.fragments.ForumFragment">
+    android:background="@color/white"
+    tools:context=".views.fragments.ForumFragment"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/forumToolBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="?actionBarSize"
+        android:background="@color/green_turquoise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forums"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimenst_25"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/dimen_20"
+            android:src="@drawable/search_24"
+            app:tint="@color/white" />
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <HorizontalScrollView
+        android:id="@+id/filters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_10"
+        android:paddingEnd="@dimen/dimen_20"
+        android:paddingStart="@dimen/dimen_20"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forumToolBar"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            >
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/filter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:text="@string/food"
+                    android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/dark_blue"
+                    app:chipIconTint="@color/white"
+                    app:chipCornerRadius="@dimen/dimen_5"
+                    android:checkable="true"
+                    app:chipStrokeColor="@color/material_on_surface_stroke"
+                    app:chipStrokeWidth="@dimen/dimen_2"
+                    app:chipSurfaceColor="@color/green_turquoise"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:text="@string/city"
+                    android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/green_turquoise"
+                    app:chipIconTint="@color/white"
+                    app:chipCornerRadius="@dimen/dimen_5"
+                    android:checkable="true"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:text="@string/food"
+                    android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/green_turquoise"
+                    app:chipIconTint="@color/white"
+                    app:chipCornerRadius="@dimen/dimen_5"
+                    android:checkable="true"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:text="@string/food"
+                    android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/green_turquoise"
+                    app:chipIconTint="@color/white"
+                    app:chipCornerRadius="@dimen/dimen_5"
+                    android:checkable="true"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:text="@string/food"
+                    android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/green_turquoise"
+                    app:chipIconTint="@color/white"
+                    app:chipCornerRadius="@dimen/dimen_5"
+                    android:checkable="true"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:backgroundTint="@color/green_turquoise"
+                    android:text="@string/food"
+                    android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/green_turquoise"
+                    app:chipIconTint="@color/white"
+                    app:chipCornerRadius="@dimen/dimen_5"
+                    android:checkable="true"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:text="@string/food"
+                    android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/green_turquoise"
+                    app:chipIconTint="@color/white"
+                    app:chipCornerRadius="@dimen/dimen_5"
+                    android:checkable="true"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:text="@string/food"
+                    android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/green_turquoise"
+                    app:chipIconTint="@color/white"
+                    app:chipCornerRadius="@dimen/dimen_5"
+                    android:checkable="true"
+                    />
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/filters" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forumContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        tools:listitem="@layout/forum_item" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/createForum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_15"
+        android:backgroundTint="@color/green_turquoise"
+        android:src="@drawable/add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,8 +11,22 @@ interface ApiEndPoint {
     fun insertPost(@Body post: Post): Call<Boolean>
 
     @Headers("Content-Type: application/json")
+    @POST("api/v1/addfavourite")
+    fun addToFavourite(@Body favourite: FavouriteModel): Call<Boolean>
+
+    @Headers("Content-Type: application/json")
+    @POST("api/v1/removefavourite")
+    fun removeFromFavourite(@Body favourite: FavouriteModel): Call<Boolean>
+
+    @Headers("Content-Type: application/json")
     @POST("api/v1/signup")
     fun register(@Body newUser: RegisterUser): Call<User>
+
+    @GET("api/v1/comments/{id}/{limit}")
+    fun getComments(@Path("id") id: Int,@Path("limit") limit: Int, ): Call<MutableList<CommentModel>>
+
+    @GET("api/v1/forums")
+    fun getForums(): Call<MutableList<ForumModel>>?
 
     @GET("api/v1/posts")
     fun getPosts(): Call<MutableList<PostModel>>

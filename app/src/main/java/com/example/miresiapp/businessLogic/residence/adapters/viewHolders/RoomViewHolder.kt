@@ -9,7 +9,7 @@ import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.Room
 import com.squareup.picasso.Picasso
 
-class RoomViewHolder(inteView: View, private val listener: OnClickItemView) : RecyclerView.ViewHolder(inteView) {
+class RoomViewHolder(itemView: View, private val listener: OnClickItemView) : RecyclerView.ViewHolder(itemView) {
     private val roomImage: ImageView = itemView.findViewById(R.id.roomImage)
     private val roomName: TextView = itemView.findViewById(R.id.roomName)
 

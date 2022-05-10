@@ -14,55 +14,25 @@ import com.example.miresiapp.businessLogic.chat.IChat.ChatPresenter
 import com.example.miresiapp.models.Message
 import com.example.miresiapp.models.User
 import com.example.miresiapp.utils.LocalData
+import com.example.miresiapp.utils.Notifications.Companion.createNotificationChannel
+import com.example.miresiapp.utils.Notifications.Companion.showNotifycationMusic
 import com.google.gson.Gson
 import io.socket.client.Socket
 
-class ChatLogicImpl(private val viewer: ChatViewPresenter, private val model: ChatDataProvider, val context: Context ): ChatPresenter {
+class ChatLogicImpl(private val viewer: ChatViewPresenter, private val model: ChatDataProvider, private val context: Context ): ChatPresenter {
     private var listUser: MutableList<User>? = null
     private val mSocket: Socket = SocketCon.getSocket()
     private val gson: Gson = Gson()
     private lateinit var message: Message
-    private val channelId = "com.example.miresiapp"
-    private val notificationId: Int = 1
     private var userId: Int? = null
 
     init {
-        createNotificationChannel()
+        createNotificationChannel(context)
         mSocket.on("private", ) { data ->
             val d = data[0]
             message = gson.fromJson<Message>(d.toString(), Message::class.java)
             userId = LocalData.getCurrentUserId(context)
-            if (userId != message.userSenderId) showNotifycationMusic(message)
-        }
-    }
-
-    private fun showNotifycationMusic(message: Message){
-        val notificationBuider = NotificationCompat.Builder(context, channelId)
-            .setSmallIcon(R.drawable.chat_24)
-            .setContentTitle(message.fromUser)
-            .setContentText(message.sms)
-            .setAutoCancel(true)
-
-
-        with(NotificationManagerCompat.from(context)) {
-            // notificationId is a unique int for each notification that you must define
-            notify(message.userSenderId, notificationBuider.build())
-        }
-    }
-
-    private fun createNotificationChannel(){
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            val name = "com.example.musicapp"
-            val descriptionText = "music notification"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-
-            val channel = NotificationChannel(channelId, name, importance).apply {
-                description = descriptionText
-            }
-            //register channel in the system
-            val notificationManager: NotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
+            if (userId != message.userSenderId) showNotifycationMusic(context,message)
         }
     }
 
@@ -75,4 +45,20 @@ class ChatLogicImpl(private val viewer: ChatViewPresenter, private val model: Ch
     }
 
     override fun getList(): MutableList<User>? = listUser
+
+    override fun findChats(toFind: String) {
+        val list: MutableList<User> = mutableListOf()
+        listUser?.forEach {
+            if (it.name.lowercase().startsWith(toFind.lowercase())){
+               list.add(it)
+            }
+        }
+        viewer.chatFound(list)
+    }
+
+    override fun onChat(pos: Int) {
+        listUser?.let {
+            viewer.chatTo(it[pos])
+        }
+    }
 }

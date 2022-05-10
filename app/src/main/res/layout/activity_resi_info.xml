@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,113 +9,159 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     android:orientation="vertical"
-    android:background="@color/baby_powder"
+    android:background="@color/white"
     >
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         >
-        <ImageView
-            android:id="@+id/imageResi"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_300"
-            android:src="@drawable/resa_investigadors"
-            />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="@dimen/dimen_0"
             android:gravity="center_horizontal"
             >
-
-            <TextView
-                android:id="@+id/resi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/dimenst_30"
-                android:textColor="@color/black_200"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/dimen_30"
-                android:text="@string/nameResi"
-                android:typeface="sans"
-                />
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/dimenst_30"
-                android:textColor="@color/black_200"
-                android:textStyle="bold"
-                tools:text="Aleu"
-                android:typeface="sans"
+            <ImageView
+                android:id="@+id/imageResi"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_300"
                 />
 
-            <TextView
-                android:id="@+id/about"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textSize="@dimen/dimenst_18"
-                android:textColor="@color/black_200"
-                android:layout_marginTop="@dimen/dimen_20"
-                android:layout_marginEnd="@dimen/dimen_15"
-                android:layout_marginStart="@dimen/dimen_15"
-                tools:text="Resicencia Universitaria Aleu"
-                android:maxLines="3"
-                android:typeface="sans"
-                />
-            <TextView
-                android:id="@+id/readMore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="end"
-                android:text="@string/readMore"
-                android:textColor="@color/blue_200"
-                android:layout_marginBottom="@dimen/dimen_10"
-                />
-            <com.google.android.material.divider.MaterialDivider
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <include
-                layout="@layout/facilities"
-                />
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/room"
-                style="@style/subTitleInfo"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/roomContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_10"
-                />
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/resi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimenst_30"
+                    android:textColor="@color/black_200"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/dimen_30"
+                    android:text="@string/nameResi"
+                    android:typeface="sans"
+                    />
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimenst_30"
+                    android:textColor="@color/black_200"
+                    android:textStyle="bold"
+                    tools:text="Aleu"
+                    android:typeface="sans"
+                    />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/comments"
-                style="@style/subTitleInfo"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/commentsContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_10"
-                />
+                <TextView
+                    android:id="@+id/about"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/dimenst_18"
+                    android:textColor="@color/black_200"
+                    android:layout_marginTop="@dimen/dimen_20"
+                    android:layout_marginEnd="@dimen/dimen_15"
+                    android:layout_marginStart="@dimen/dimen_15"
+                    tools:text="Resicencia Universitaria Aleu"
+                    android:maxLines="3"
+                    android:typeface="sans"
+                    />
+                <TextView
+                    android:id="@+id/readMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="end"
+                    android:text="@string/readMore"
+                    android:textColor="@color/blue_200"
+                    android:layout_marginBottom="@dimen/dimen_10"
+                    />
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <include
+                    layout="@layout/facilities"
+                    />
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/titleRooms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/room"
+                    android:textColor="@color/black"
+                    android:textStyle="italic"
+                    style="@style/subTitleInfo"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/roomContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    />
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tittleComments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/comments"
+                    android:textColor="@color/black"
+                    android:textStyle="italic"
+                    style="@style/subTitleInfo"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/commentsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/comment_item"
+                    />
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <RelativeLayout
+                    android:id="@+id/seeAllComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_10"
+                    android:gravity="center_vertical"
+                    >
+                    <TextView
+                        android:id="@+id/seeAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seeAllComments"
+                        android:textColor="@color/black_200"
+                        android:textSize="@dimen/dimenst_18"
+                        />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/arrow_forward_ios_24" />
+                </RelativeLayout>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+    <FrameLayout
+        android:id="@+id/commentsFrag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

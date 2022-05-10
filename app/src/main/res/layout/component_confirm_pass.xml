@@ -19,9 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/confirmpassTitle"
-            android:textColor="@color/black"
-            android:layout_marginTop="@dimen/dimen_50"
-            android:layout_marginBottom="@dimen/dimen_10"
+            style="@style/inputText"
             />
 
         <EditText

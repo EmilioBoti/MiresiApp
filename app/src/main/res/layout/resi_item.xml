@@ -17,6 +17,8 @@
         android:layout_marginEnd="@dimen/dimen_5"
         app:cardCornerRadius="@dimen/dimen_1"
         app:cardElevation="@dimen/dimen_5"
+        android:elevation="@dimen/dimen_2"
+        app:cardBackgroundColor="@color/white"
         >
 
         <LinearLayout
@@ -42,7 +44,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/favorite_border_24" />
+                    android:src="@drawable/favorite_border_24"
+                    android:visibility="visible" />
 
                 <TextView
                     android:id="@+id/nameResi"
@@ -79,7 +82,7 @@
                     android:layout_toEndOf="@id/locationIcon"
                     android:text="@string/name"
                     android:textColor="@color/black_200"
-                    android:textSize="@dimen/dimenst_12"
+                    android:textSize="@dimen/dimenst_14"
                     android:textStyle="italic" />
 
                 <GridLayout
@@ -108,6 +111,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/from"
                         android:textSize="@dimen/dimenst_15"
+                        android:textStyle="bold"
                         />
 
                     <TextView
@@ -115,8 +119,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/from"
-                        android:textSize="@dimen/dimenst_20"
-                        android:textColor="@color/green_200"
+                        android:textSize="@dimen/dimenst_25"
+                        android:textColor="@color/green_turquoise"
                         android:textStyle="bold"
                         android:layout_marginTop="@dimen/dimen_5"
                         />

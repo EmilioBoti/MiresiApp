@@ -9,6 +9,7 @@ class LocalData {
         private const val id: String = "userId"
         private const val name: String = "name"
         private const val email: String = "email"
+        private const val image: String = "image"
 
         fun saveUserLogin(context: Context, user: User): Boolean {
             val prefe = context.getSharedPreferences(context.resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
@@ -17,11 +18,15 @@ class LocalData {
                 putInt(id, user.id)
                 putString(name, user.name)
                 putString(email, user.email)
+                putString(image, user.image)
                 apply()
             }
             return true
         }
-
+        fun getImageUser(context: Context): String?{
+            val prefe = context.getSharedPreferences(context.resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
+            return  prefe?.getString("image", "")
+        }
         fun getCurrentUserId(context: Context): Int? {
             val prefe = context.getSharedPreferences(context.resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
             return prefe?.getInt(id, 0)

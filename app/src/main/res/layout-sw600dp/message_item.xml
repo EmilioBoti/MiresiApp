@@ -29,15 +29,6 @@
             android:orientation="vertical"
             android:gravity="end"
             >
-            <!--<TextView
-                android:id="@+id/from"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/from"
-                android:textSize="@dimen/dimenst_16"
-                android:textStyle="bold"
-                android:textColor="@color/blue_200"
-                />-->
 
             <TextView
                 android:id="@+id/messageText"
@@ -47,6 +38,15 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimenst_20"
                 android:layout_margin="@dimen/dimen_4"
+                />
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/from"
+                android:textSize="@dimen/dimenst_12"
+                android:textColor="@color/white"
                 />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

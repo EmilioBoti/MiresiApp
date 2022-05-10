@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.MiresiApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/dark_blue</item>
+        <item name="colorPrimary">@color/green_turquoise</item>
         <item name="colorPrimaryVariant">@color/green_500</item>
         <item name="colorOnPrimary">@color/yellow_200</item>
         <!-- Secondary brand color. -->
@@ -12,11 +12,15 @@
         <item name="android:windowActionBar">false</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <!-- Status bar color. -->
-
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
     </style>
     <style name="fullScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowActionBar">false</item>
+    </style>
+    <style name="splashScreen" parent="Theme.MiresiApp"
+        >
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 </resources>

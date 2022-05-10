@@ -1,6 +1,10 @@
 package com.example.miresiapp.views.fragments
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +22,7 @@ import com.example.miresiapp.businessLogic.posts.PostsLogicImpl
 import com.example.miresiapp.businessLogic.posts.adapters.PostAdapter
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.PostModel
+import com.example.miresiapp.utils.LocalData
 import com.example.miresiapp.views.activities.ResiInfoActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import io.socket.client.Socket
@@ -33,7 +38,6 @@ class RoomFragment : Fragment(), View.OnClickListener, IPost.ViewPresenter, OnCl
     private lateinit var postsLogicImpl: PostsLogicImpl
     private lateinit var postDataProvider: PostDataProvider
     private lateinit var postAdapter: PostAdapter
-    private lateinit var mSocket: Socket
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_room, container, false)
@@ -45,7 +49,7 @@ class RoomFragment : Fragment(), View.OnClickListener, IPost.ViewPresenter, OnCl
         chatIcon = view.findViewById(R.id.chat)
         postContainer = view.findViewById(R.id.postContainer)
 
-        fragmentLayout = activity?.findViewById<FrameLayout>(R.id.loginFrag)
+        fragmentLayout = activity?.findViewById<FrameLayout>(R.id.fragContainer)
         createPost = view.findViewById(R.id.createPoast)
         createPost.setOnClickListener(this)
 
@@ -54,15 +58,34 @@ class RoomFragment : Fragment(), View.OnClickListener, IPost.ViewPresenter, OnCl
     override fun onStart() {
         super.onStart()
 
+        idUser = LocalData.getCurrentUserId(activity?.applicationContext!!)
         postDataProvider = PostDataProvider()
         postsLogicImpl = PostsLogicImpl(this, postDataProvider, activity)
 
-        lifecycleScope.launch {
-            postsLogicImpl.requestPost()
-        }
+
+        if (networkConectivity()){
+            lifecycleScope.launch {
+                postsLogicImpl.requestPost()
+            }
+        } else activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.viewContainer, NotConnection())?.commit()
 
         chatIcon.setOnClickListener {
             postsLogicImpl.navigaateTo()
+        }
+    }
+
+    private fun networkConectivity(): Boolean{
+        val conn = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            conn.activeNetwork?.let {
+                val c = conn.getNetworkCapabilities(it)
+                return c!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || c.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+            }?: return false
+
+        }else {
+            val netInfo = conn.activeNetworkInfo
+            return netInfo != null && netInfo.isConnectedOrConnecting
         }
     }
 
@@ -72,7 +95,7 @@ class RoomFragment : Fragment(), View.OnClickListener, IPost.ViewPresenter, OnCl
 
     override fun showPost(list: MutableList<PostModel>) {
         listPost = list
-        postAdapter = PostAdapter(listPost, this)
+        postAdapter = PostAdapter(listPost, idUser!!,this,)
         postContainer.apply {
             layoutManager = LinearLayoutManager(activity?.applicationContext, RecyclerView.VERTICAL, false)
             adapter = postAdapter
