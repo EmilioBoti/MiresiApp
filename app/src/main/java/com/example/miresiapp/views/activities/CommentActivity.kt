@@ -41,22 +41,8 @@ class CommentActivity : AppCompatActivity(), ViewPresenter, OnClickItemView {
         model = CommentProvider()
         commentPresenter = CommentLogicImpl(this, model, applicationContext)
 
-        resiId?.let {
-            if (it > 0){
-                lifecycleScope.launch {
-                    commentPresenter.requestComments(it, 20)
-                }
-            }
-        }
-
-        binding.btnSender.setOnClickListener {
-            val commentInput = binding.boxMessage.text.toString()
-            if (commentInput.isNotEmpty()){
-                lifecycleScope.launch(Dispatchers.Main) {
-                    commentPresenter.settingData(resiId, commentInput)
-                }
-            }
-        }
+        setData()
+        eventListenners()
     }
 
     override fun showComments(listComments: MutableList<CommentModel>) {
@@ -68,9 +54,30 @@ class CommentActivity : AppCompatActivity(), ViewPresenter, OnClickItemView {
     }
 
     override fun setComment(listComments: CommentModel, size: Int?) {
-        commentAdapter.notifyItemInserted(0)
-        binding.commentContainer.scrollToPosition(0)
+        commentAdapter.notifyItemInserted(size!! -1)
+        binding.commentContainer.scrollToPosition(size -1)
         binding.boxMessage.setText("")
+    }
+
+    private fun setData(){
+        resiId?.let {
+            if (it > 0){
+                lifecycleScope.launch {
+                    commentPresenter.requestComments(it, 20)
+                }
+            }
+        }
+    }
+
+    private fun eventListenners() {
+        binding.btnSender.setOnClickListener {
+            val commentInput = binding.boxMessage.text.toString()
+            if (commentInput.isNotEmpty()){
+                lifecycleScope.launch(Dispatchers.Main) {
+                    commentPresenter.settingData(resiId, commentInput)
+                }
+            }
+        }
     }
 
     override fun error() {
