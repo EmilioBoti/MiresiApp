@@ -12,6 +12,7 @@ interface IComment {
     interface Presenter{
         suspend fun requestComments(resiId: Int, limit: Int)
         suspend fun pushComment(commentModel: CommentModel)
+        suspend fun settingData(resiId: Int?, commentInput: String)
     }
     interface ModelPresenter{
         suspend fun getComments(resiId: Int, limit: Int): MutableList<CommentModel>?

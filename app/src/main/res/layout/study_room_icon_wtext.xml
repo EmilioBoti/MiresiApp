@@ -13,7 +13,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/auto_stories_24"
+            android:src="@drawable/book_stories_24"
             android:layout_margin="@dimen/dimen_5"
             />
         <TextView
