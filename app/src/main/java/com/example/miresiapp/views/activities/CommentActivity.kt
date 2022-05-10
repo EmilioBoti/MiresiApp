@@ -15,6 +15,7 @@ import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.CommentModel
 import com.example.miresiapp.utils.LocalData
 import com.example.miresiapp.utils.toast
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,10 +38,8 @@ class CommentActivity : AppCompatActivity(), ViewPresenter, OnClickItemView {
         super.onStart()
 
         resiId = intent?.getIntExtra("resiId", 0)
-        userId = LocalData.getCurrentUserId(applicationContext)!!
         model = CommentProvider()
-        commentPresenter = CommentLogicImpl(this, model)
-
+        commentPresenter = CommentLogicImpl(this, model, applicationContext)
 
         resiId?.let {
             if (it > 0){
@@ -51,13 +50,10 @@ class CommentActivity : AppCompatActivity(), ViewPresenter, OnClickItemView {
         }
 
         binding.btnSender.setOnClickListener {
-            val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss a")
-
             val commentInput = binding.boxMessage.text.toString()
             if (commentInput.isNotEmpty()){
-                val comment = CommentModel(userId!!, LocalData.getCurrentUserName(applicationContext), resiId!!, commentInput, date.format(Date().time), LocalData.getImageUser(applicationContext))
-                lifecycleScope.launch {
-                    commentPresenter.pushComment(comment)
+                lifecycleScope.launch(Dispatchers.Main) {
+                    commentPresenter.settingData(resiId, commentInput)
                 }
             }
         }
@@ -65,7 +61,6 @@ class CommentActivity : AppCompatActivity(), ViewPresenter, OnClickItemView {
 
     override fun showComments(listComments: MutableList<CommentModel>) {
         commentAdapter = CommentAdapter2(listComments, this)
-
         binding.commentContainer.apply {
             layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
             adapter = commentAdapter
@@ -73,8 +68,8 @@ class CommentActivity : AppCompatActivity(), ViewPresenter, OnClickItemView {
     }
 
     override fun setComment(listComments: CommentModel, size: Int?) {
-        commentAdapter.notifyItemInserted(size!! -1)
-        binding.commentContainer.scrollToPosition(size-1)
+        commentAdapter.notifyItemInserted(0)
+        binding.commentContainer.scrollToPosition(0)
         binding.boxMessage.setText("")
     }
 
