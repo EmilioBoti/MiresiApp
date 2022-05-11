@@ -63,4 +63,9 @@
     <string name="createForum">Create Forum</string>
     <string name="Title">Title</string>
     <string name="tag">tag</string>
+    <string name="longText">this is a long text to see how the comment section look like :)</string>
+    <string name="reply">Reply</string>
+    <string name="like">Like</string>
+    <string name="tags">Tags</string>
+    <string name="create">Create</string>
 </resources>

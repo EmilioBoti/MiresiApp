@@ -5,9 +5,9 @@ import android.content.Intent
 import com.example.miresiapp.R
 import com.example.miresiapp.businessLogic.createPost.PostDataProvider
 import com.example.miresiapp.models.PostModel
-import com.example.miresiapp.views.activities.ChatActivity
+import com.example.miresiapp.views.activities.ui.chat.ChatActivity
 import com.example.miresiapp.views.activities.CreatePost
-import com.example.miresiapp.views.activities.MessengerActivity
+import com.example.miresiapp.views.activities.ui.chat.MessengerActivity
 
 class PostsLogicImpl(private val viewer: IPost.ViewPresenter, private val model: PostDataProvider, private val context: Context?): IPost.Presenter {
     private var idUser: Int? = null

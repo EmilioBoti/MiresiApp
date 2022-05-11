@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.fragments.CreateForumFragment">
+    tools:context=".views.fragments.CreateForumFragment"
+    android:background="@color/white"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/forumToolBar"
@@ -39,12 +46,12 @@
             android:inputType="textPersonName"
             android:layout_marginTop="@dimen/dimen_20"
             android:layout_marginHorizontal="@dimen/dimen_20"
-            android:text="@string/Title"
+            android:hint="@string/name"
             android:padding="@dimen/dimen_15"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/forumToolBar"
-            android:background="@drawable/tag_border"
+            android:background="@drawable/login_input_corner"
             />
 
         <LinearLayout
@@ -62,7 +69,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_50"
-                app:boxBackgroundColor="@color/green_200"
+                app:boxBackgroundColor="@color/green_turquoise"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="@dimen/dimen_5"
                 app:boxCornerRadiusBottomStart="@dimen/dimen_5"
@@ -93,7 +100,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_50"
-                app:boxBackgroundColor="@color/green_200"
+                app:boxBackgroundColor="@color/green_turquoise"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="@dimen/dimen_5"
                 app:boxCornerRadiusBottomStart="@dimen/dimen_5"
@@ -107,7 +114,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:dropDownSelector="@drawable/spinner_style"
                     android:ellipsize="end"
                     android:inputType="none"
                     android:maxLines="1"
@@ -120,6 +126,122 @@
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tags"
+            android:textSize="@dimen/dimenst_22"
+            android:textStyle="bold"
+            android:textColor="@color/black_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.06"
+            android:layout_marginTop="@dimen/dimen_20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selectContainer"
+            app:layout_constraintVertical_bias="0.067" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:chipSpacingHorizontal="@dimen/dimen_5"
+            app:singleSelection="true"
+            >
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tag"
+                android:textAlignment="gravity"
+                android:textSize="@dimen/dimenst_18"
+                app:chipBackgroundColor="@color/green_turquoise"
+                android:checkable="true"
+                app:chipStrokeWidth="@dimen/dimen_1"
+                app:chipStrokeColor="@color/material_on_surface_stroke"
+                />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tag"
+                android:textColor="@color/white"
+                android:textAlignment="gravity"
+                android:textSize="@dimen/dimenst_18"
+                app:chipBackgroundColor="@color/red_pink_400"
+                android:checkable="true"
+                app:chipStrokeWidth="@dimen/dimen_1"
+                app:chipStrokeColor="@color/material_on_surface_stroke"
+                />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tag"
+                android:textAlignment="gravity"
+                android:textSize="@dimen/dimenst_18"
+                app:chipBackgroundColor="@color/green_turquoise"
+                android:checkable="true"
+                app:chipStrokeWidth="@dimen/dimen_1"
+                app:chipStrokeColor="@color/material_on_surface_stroke"
+                />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tag"
+                android:textAlignment="gravity"
+                android:textSize="@dimen/dimenst_18"
+                app:chipBackgroundColor="@color/green_turquoise"
+                android:checkable="true"
+                app:chipStrokeWidth="@dimen/dimen_1"
+                app:chipStrokeColor="@color/material_on_surface_stroke"
+                />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tag"
+                android:textAlignment="gravity"
+                android:textSize="@dimen/dimenst_18"
+                app:chipBackgroundColor="@color/green_turquoise"
+                android:checkable="true"
+                app:chipStrokeWidth="@dimen/dimen_1"
+                app:chipStrokeColor="@color/material_on_surface_stroke"
+                />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tag"
+                android:textAlignment="gravity"
+                android:textSize="@dimen/dimenst_18"
+                app:chipBackgroundColor="@color/green_turquoise"
+                android:checkable="true"
+                app:chipStrokeWidth="@dimen/dimen_1"
+                app:chipStrokeColor="@color/material_on_surface_stroke"
+                />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tag"
+                android:textAlignment="gravity"
+                android:textSize="@dimen/dimenst_18"
+                app:chipBackgroundColor="@color/green_turquoise"
+                android:checkable="true"
+                app:chipStrokeWidth="@dimen/dimen_1"
+                app:chipStrokeColor="@color/material_on_surface_stroke"
+                />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tag"
+                android:textAlignment="gravity"
+                android:textSize="@dimen/dimenst_18"
+                app:chipBackgroundColor="@color/green_turquoise"
+                android:checkable="true"
+                app:chipStrokeWidth="@dimen/dimen_1"
+                app:chipStrokeColor="@color/material_on_surface_stroke"
+                />
+        </com.google.android.material.chip.ChipGroup>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCreatePost"
             android:layout_width="match_parent"
@@ -127,86 +249,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="@string/createPost"
-            android:layout_marginStart="@dimen/dimen_20"
-            android:layout_marginEnd="@dimen/dimen_20"
+            android:text="@string/create"
+            android:layout_marginHorizontal="@dimen/dimen_20"
             android:enabled="true"
             android:padding="@dimen/dimen_20"
             />
-
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tags"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.111"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/selectContainer"
-            app:layout_constraintVertical_bias="0.067" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:layout_width="@dimen/dimen_350"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            app:layout_constraintVertical_bias="0.0">
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tag"
-                android:textAlignment="gravity"
-                android:textSize="@dimen/dimenst_16"
-                />
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tag"
-                android:textAlignment="gravity"
-                android:textSize="@dimen/dimenst_16"
-                />
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tag"
-                android:textAlignment="gravity"
-                android:textSize="@dimen/dimenst_16"
-                />
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tag"
-                android:textAlignment="gravity"
-                android:textSize="@dimen/dimenst_16"
-                />
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tag"
-                android:textAlignment="gravity"
-                android:textSize="@dimen/dimenst_16"
-                />
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tag"
-                android:textAlignment="gravity"
-                android:textSize="@dimen/dimenst_16"
-                />
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tag"
-                android:textAlignment="gravity"
-                android:textSize="@dimen/dimenst_16"
-                />
-        </com.google.android.material.chip.ChipGroup>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

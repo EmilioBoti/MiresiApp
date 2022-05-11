@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.activities.ui.forums.CreateForumActivity"
+    android:theme="@style/Theme.MiresiApp"
+    >
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/forumToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/green_turquoise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/dimen_20"
+            android:src="@drawable/arrow_back_24"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/createForum"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimenst_25"
+            android:textStyle="bold" />
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_marginHorizontal="@dimen/dimen_20"
+        android:hint="@string/name"
+        android:padding="@dimen/dimen_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forumToolBar"
+        android:background="@drawable/login_input_corner"
+        />
+
+    <LinearLayout
+        android:id="@+id/selectContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/dimen_20"
+        android:paddingEnd="@dimen/dimen_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="@dimen/dimen_20"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50"
+            app:boxBackgroundColor="@color/green_turquoise"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="@dimen/dimen_5"
+            app:boxCornerRadiusBottomStart="@dimen/dimen_5"
+            app:boxCornerRadiusTopEnd="@dimen/dimen_5"
+            app:boxCornerRadiusTopStart="@dimen/dimen_5"
+            app:boxStrokeColor="@color/blue_200"
+            app:boxStrokeWidth="@dimen/dimen_1"
+
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/cities"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:ellipsize="end"
+                android:inputType="none"
+                android:maxLines="1"
+                android:paddingTop="@dimen/dimen_5"
+                android:paddingBottom="@dimen/dimen_5"
+                android:text="@string/city"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimenst_18" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50"
+            app:boxBackgroundColor="@color/green_turquoise"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="@dimen/dimen_5"
+            app:boxCornerRadiusBottomStart="@dimen/dimen_5"
+            app:boxCornerRadiusTopEnd="@dimen/dimen_5"
+            app:boxCornerRadiusTopStart="@dimen/dimen_5"
+            app:boxStrokeColor="@color/blue_200"
+            app:boxStrokeWidth="@dimen/dimen_1">
+
+            <AutoCompleteTextView
+                android:id="@+id/choose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:ellipsize="end"
+                android:inputType="none"
+                android:maxLines="1"
+                android:paddingTop="@dimen/dimen_5"
+                android:paddingBottom="@dimen/dimen_5"
+                android:text="@string/residence"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimenst_18"
+                app:tint="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tags"
+        android:textSize="@dimen/dimenst_22"
+        android:textStyle="bold"
+        android:textColor="@color/black_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        android:layout_marginTop="@dimen/dimen_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectContainer"
+        app:layout_constraintVertical_bias="0.067" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/tagContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:chipSpacingHorizontal="@dimen/dimen_5"
+        app:singleSelection="true"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCreatePost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/create"
+        android:layout_marginHorizontal="@dimen/dimen_20"
+        android:enabled="true"
+        android:padding="@dimen/dimen_20"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

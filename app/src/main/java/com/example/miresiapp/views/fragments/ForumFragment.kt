@@ -1,15 +1,15 @@
 package com.example.miresiapp.views.fragments
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.CompoundButton
 import androidx.annotation.RequiresApi
-import androidx.core.view.get
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
@@ -22,8 +22,8 @@ import com.example.miresiapp.databinding.FragmentForumBinding
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.ForumModel
 import com.example.miresiapp.utils.toast
+import com.example.miresiapp.views.activities.ui.forums.CreateForumActivity
 import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.launch
 
 class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, CompoundButton.OnCheckedChangeListener {
@@ -36,7 +36,6 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, Compoun
         return inflater.inflate(R.layout.fragment_forum, container, false)
     }
 
-    @RequiresApi(Build.VERSION_CODES.S)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentForumBinding.bind(view)
@@ -50,7 +49,9 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, Compoun
         }
 
         binding.createForum.setOnClickListener {
-            toast(context, "Create Forum")
+            Intent(activity, CreateForumActivity::class.java).apply {
+                startActivity(this)
+            }
         }
 
     }
@@ -59,7 +60,6 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, Compoun
         forumAdapter = ForumAdapter(list, this)
         binding.forumContainer.apply {
             layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-            //addItemDecoration(DividerItemDecoration(activity, RecyclerView.VERTICAL))
             adapter = forumAdapter
         }
     }
@@ -71,15 +71,14 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, Compoun
     }
 
     private fun createChip(name: String): Chip{
-
         return Chip(activity).apply {
             this.text = name
             this.textSize = 18f
-            this.setTextColor(ColorStateList.valueOf(activity?.resources?.getColor(R.color.black_200)!!))
+            this.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(),R.color.black_200)))
             this.isCheckable = true
-            this.chipBackgroundColor = ColorStateList.valueOf(activity?.resources?.getColor(R.color.white)!!)
-            this.checkedIconTint = ColorStateList.valueOf(activity?.resources?.getColor(R.color.red_pink_400)!!)
-            this.chipStrokeColor = ColorStateList.valueOf(activity?.resources?.getColor(R.color.red_pink_400)!!)
+            this.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),R.color.white))
+            this.checkedIconTint = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),R.color.red_pink_400))
+            this.chipStrokeColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),R.color.red_pink_400))
             this.chipStrokeWidth = 3f
             this.setOnCheckedChangeListener(this@ForumFragment)
         }

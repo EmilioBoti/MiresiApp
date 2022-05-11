@@ -16,16 +16,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".views.activities.ui.forums.CreateForumActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.activities.CommentActivity"
             android:exported="false" />
         <activity
             android:name=".views.activities.CreatePost"
             android:exported="false" />
         <activity
-            android:name=".views.activities.MessengerActivity"
+            android:name=".views.activities.ui.chat.MessengerActivity"
             android:exported="false" />
         <activity
-            android:name=".views.activities.ChatActivity"
+            android:name=".views.activities.ui.chat.ChatActivity"
             android:exported="false" />
         <activity
             android:name=".views.activities.ResiInfoActivity"
@@ -35,7 +38,7 @@
             android:exported="false" />
         <activity
             android:name=".views.activities.DashBoardActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".views.activities.MainBaseActivity"
             android:exported="false" />

@@ -1,4 +1,4 @@
-package com.example.miresiapp.views.activities
+package com.example.miresiapp.views.activities.ui.chat
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,11 +7,9 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
-import com.example.miresiapp.SocketCon
 import com.example.miresiapp.adapters.chatAdapter.ChatAdapter
 import com.example.miresiapp.businessLogic.chat.ChatDataProvider
 import com.example.miresiapp.businessLogic.chat.ChatLogicImpl
@@ -22,7 +20,6 @@ import com.example.miresiapp.models.User
 import com.example.miresiapp.utils.LocalData
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
-import io.socket.client.Socket
 import kotlinx.coroutines.launch
 
 class ChatActivity : AppCompatActivity(), ChatViewPresenter, OnClickItemView {

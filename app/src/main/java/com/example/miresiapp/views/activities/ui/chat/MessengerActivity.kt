@@ -1,4 +1,4 @@
-package com.example.miresiapp.views.activities
+package com.example.miresiapp.views.activities.ui.chat
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -79,6 +79,8 @@ class MessengerActivity : AppCompatActivity(), View.OnClickListener, IMessage.Vi
         lifecycleScope.launch {
             if(screenUserValid(message)) {
                 binding.messageContainer.scrollToPosition(pos)
+                binding.messageContainer.setHasFixedSize(true)
+                binding.messageContainer.fling(0, 500000)
                 messageAdapter.notifyItemInserted(pos)
             }
         }

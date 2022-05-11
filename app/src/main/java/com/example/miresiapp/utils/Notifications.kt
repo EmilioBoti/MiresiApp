@@ -10,7 +10,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.miresiapp.R
 import com.example.miresiapp.models.Message
-import com.example.miresiapp.views.activities.MessengerActivity
+import com.example.miresiapp.views.activities.ui.chat.MessengerActivity
 
 class Notifications {
     companion object {
