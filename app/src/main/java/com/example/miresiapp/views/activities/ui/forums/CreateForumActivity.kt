@@ -31,9 +31,9 @@ class CreateForumActivity : AppCompatActivity(), IForum.ViewPresenter, CompoundB
 
     override fun onStart() {
         super.onStart()
+
         forumModel = ForumProvider()
         forumLogicImpl = ForumLogicImpl(this, forumModel)
-
 
         lifecycleScope.launch {
             forumLogicImpl.requestCategories()
@@ -54,7 +54,7 @@ class CreateForumActivity : AppCompatActivity(), IForum.ViewPresenter, CompoundB
 
     private fun createChip(name: String): Chip {
 
-        return Chip(Activity().baseContext).apply {
+        return Chip(applicationContext).apply {
             this.text = name
             this.textSize = 18f
             this.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(Activity().baseContext,R.color.black_200)))

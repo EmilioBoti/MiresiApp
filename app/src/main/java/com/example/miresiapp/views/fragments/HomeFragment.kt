@@ -8,10 +8,12 @@ import androidx.appcompat.widget.SearchView
 import com.example.miresiapp.R
 import com.example.miresiapp.businessLogic.home.IHome
 import com.example.miresiapp.utils.toast
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : Fragment(), IHome.ViewPresenter {
     private var fragContainer: FrameLayout? = null
     private lateinit var searcher: SearchView
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
@@ -22,6 +24,9 @@ class HomeFragment : Fragment(), IHome.ViewPresenter {
 
         searcher = view.findViewById(R.id.searcher)
         fragContainer = activity?.findViewById<FrameLayout>(R.id.fragContainer)
+        bottomNavigationView = activity?.findViewById(R.id.bottom_navigation)!!
+        bottomNavigationView.menu.findItem(R.id.pageHome).isChecked = true
+
 
         searcher.setOnSearchClickListener {
 

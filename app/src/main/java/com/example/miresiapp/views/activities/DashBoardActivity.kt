@@ -10,6 +10,7 @@ import com.example.miresiapp.SocketCon
 import com.example.miresiapp.models.Message
 import com.example.miresiapp.utils.LocalData
 import com.example.miresiapp.utils.Notifications
+import com.example.miresiapp.utils.toast
 import com.example.miresiapp.views.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
@@ -49,6 +50,21 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener(this)
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        val current = supportFragmentManager.findFragmentById(R.id.viewContainer)
+
+        if (current != HomeFragment()){
+            setFragmentView(HomeFragment())
+            for (i in 0..supportFragmentManager.backStackEntryCount){
+                supportFragmentManager.popBackStack()
+            }
+        } else {
+            onBackPressed()
+        }
     }
     private fun socketEventListenner(){
         mSocket.on("private", ) { data ->

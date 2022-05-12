@@ -68,4 +68,10 @@
     <string name="like">Like</string>
     <string name="tags">Tags</string>
     <string name="create">Create</string>
+    <string name="accountSettings">Account Settings</string>
+    <string name="country">Country/region</string>
+    <string name="gender">Gender</string>
+    <string name="age">Age</string>
+    <string name="desactiveAccount">Desactive Account</string>
+    <string name="deleteAccount">Delete Account</string>
 </resources>

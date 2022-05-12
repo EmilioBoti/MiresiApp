@@ -1,14 +1,352 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.fragments.ProfileFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.fragments.ProfileFragment"
+    android:background="@drawable/top_border"
+    android:layout_marginTop="@dimen/dimen_5"
+    android:elevation="@dimen/dimen_16"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        >
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/accountToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
 
-</FrameLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_back_24"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/accountSettings"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimenst_20"
+                android:textStyle="bold"
+                />
+        </com.google.android.material.appbar.MaterialToolbar>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imgContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/accountToolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:cardCornerRadius="@dimen/dimen_200"
+            app:cardPreventCornerOverlap="true"
+            android:layout_marginTop="@dimen/dimen_25"
+            >
+
+            <ImageView
+                android:id="@+id/userImage"
+                android:layout_width="@dimen/dimen_150"
+                android:layout_height="@dimen/dimen_150"
+                android:src="@drawable/placeholder_user_img2"
+                />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/imgContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/name"
+            android:textStyle="bold"
+            android:textSize="@dimen/dimenst_25"
+            android:textColor="@color/black_200"
+            android:layout_marginTop="@dimen/dimen_15"
+            />
+
+        <RelativeLayout
+            android:id="@+id/emailContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/userName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dimen_45"
+            android:paddingVertical="@dimen/dimen_10"
+            android:layout_marginHorizontal="@dimen/dimen_25"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/emailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/emailTitle"
+                android:textColor="@color/black_200"
+                android:textSize="@dimen/dimenst_20"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimenst_25"
+                android:layout_toStartOf="@id/goTo"
+                android:text="@string/emailTitle"
+                android:textSize="@dimen/dimenst_20" />
+            <ImageView
+                android:id="@+id/goTo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_forward_ios_24"
+                android:layout_alignParentEnd="true"
+
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/passwordContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/emailContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:paddingVertical="@dimen/dimen_10"
+            android:layout_marginHorizontal="@dimen/dimen_25"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/passwordTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/passwordTitle"
+                android:textColor="@color/black_200"
+                android:textSize="@dimen/dimenst_20"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimenst_25"
+                android:layout_toStartOf="@id/goToPW"
+                android:text="@string/passwordTitle"
+                android:textSize="@dimen/dimenst_20" />
+            <ImageView
+                android:id="@+id/goToPW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_forward_ios_24"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/countryContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/passwordContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:paddingVertical="@dimen/dimen_10"
+            android:layout_marginHorizontal="@dimen/dimen_25"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/countryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/country"
+                android:textColor="@color/black_200"
+                android:textSize="@dimen/dimenst_20"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimenst_25"
+                android:layout_toStartOf="@id/goToCountry"
+                android:text="@string/country"
+                android:textSize="@dimen/dimenst_20" />
+            <ImageView
+                android:id="@+id/goToCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_forward_ios_24"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/genderContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/countryContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:paddingVertical="@dimen/dimen_10"
+            android:layout_marginHorizontal="@dimen/dimen_25"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/genderTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:textColor="@color/black_200"
+                android:textSize="@dimen/dimenst_20"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimenst_25"
+                android:layout_toStartOf="@id/goToGender"
+                android:text="@string/gender"
+                android:textSize="@dimen/dimenst_20" />
+            <ImageView
+                android:id="@+id/goToGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_forward_ios_24"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/genderContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:paddingVertical="@dimen/dimen_10"
+            android:layout_marginHorizontal="@dimen/dimen_25"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/ageTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/age"
+                android:textColor="@color/black_200"
+                android:textSize="@dimen/dimenst_20"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimenst_25"
+                android:layout_toStartOf="@id/goToAge"
+                android:text="@string/age"
+                android:textSize="@dimen/dimenst_20" />
+            <ImageView
+                android:id="@+id/goToAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_forward_ios_24"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/desactiveAccountContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/ageContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:paddingVertical="@dimen/dimen_10"
+            android:layout_marginHorizontal="@dimen/dimen_25"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/desactiveAccountTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/desactiveAccount"
+                android:textColor="@color/black_200"
+                android:textSize="@dimen/dimenst_20"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/desactiveAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimenst_25"
+                android:layout_toStartOf="@id/goToDesactiveAccount"
+                android:text="@string/age"
+                android:textSize="@dimen/dimenst_20" />
+            <ImageView
+                android:id="@+id/goToDesactiveAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_forward_ios_24"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/deleteAccountContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/desactiveAccountContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:paddingVertical="@dimen/dimen_10"
+            android:layout_marginHorizontal="@dimen/dimen_25"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/deleteAccountTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/deleteAccount"
+                android:textColor="@color/black_200"
+                android:textSize="@dimen/dimenst_20"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/deleteAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimenst_25"
+                android:layout_toStartOf="@id/goToDeleteAccount"
+                android:text="@string/deleteAccount"
+                android:textSize="@dimen/dimenst_20" />
+            <ImageView
+                android:id="@+id/goToDeleteAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_forward_ios_24"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

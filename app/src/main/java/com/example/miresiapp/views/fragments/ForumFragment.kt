@@ -23,6 +23,7 @@ import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.ForumModel
 import com.example.miresiapp.utils.toast
 import com.example.miresiapp.views.activities.ui.forums.CreateForumActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.chip.Chip
 import kotlinx.coroutines.launch
 
@@ -31,6 +32,7 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, Compoun
     private lateinit var model: ForumProvider
     private lateinit var forumPresenter: IForum.Presenter
     private lateinit var forumAdapter: ForumAdapter
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_forum, container, false)
@@ -40,6 +42,8 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, Compoun
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentForumBinding.bind(view)
 
+        bottomNavigationView = activity?.findViewById(R.id.bottom_navigation)!!
+        bottomNavigationView.selectedItemId = R.id.pageForum
         model = ForumProvider()
         forumPresenter = ForumLogicImpl(this, model)
 

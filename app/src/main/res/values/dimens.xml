@@ -48,4 +48,5 @@
     <dimen name="dimenst_60">60sp</dimen>
     <dimen name="dimenst_70">70sp</dimen>
     <dimen name="dimen_16">16dp</dimen>
+    <dimen name="dimen_45">45dp</dimen>
 </resources>
