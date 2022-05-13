@@ -74,4 +74,5 @@
     <string name="age">Age</string>
     <string name="desactiveAccount">Desactive Account</string>
     <string name="deleteAccount">Delete Account</string>
+    <string name="edit">Edit</string>
 </resources>

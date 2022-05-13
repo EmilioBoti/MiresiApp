@@ -19,6 +19,17 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProfileBinding.bind(view)
 
-    }
 
+        binding.goTo.setOnClickListener {
+            navToEditScreen()
+        }
+
+    }
+    private fun navToEditScreen(){
+        activity?.supportFragmentManager
+            ?.beginTransaction()
+            ?.replace(R.id.viewContainer, EditProfileFragment(), "EDIT")
+            ?.addToBackStack("EDIT")
+            ?.commit()
+    }
 }
