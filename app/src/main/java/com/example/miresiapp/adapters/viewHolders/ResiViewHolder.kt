@@ -44,11 +44,9 @@ class ResiViewHolder(itemView: View, private val listener: OnClickItemView,
         }
         if (residence?.gym != 0) {
             accessTo.addView(createImage(R.drawable.fitness_center_24))
-            //LayoutInflater.from(applicationContext).inflate(R.layout.gym_layout, accessTo)
         }
         if (residence?.parking_car != 0){
             accessTo.addView(createImage(R.drawable.local_parking_24))
-            //LayoutInflater.from(applicationContext).inflate(R.layout.parking_icon_layout, accessTo)
         }
 
         Picasso.get().load(residence?.image)

@@ -2,23 +2,60 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/dimen_400"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.fragments.EditProfileFragment"
     android:background="@drawable/top_border"
+    android:padding="@dimen/dimen_10"
+    android:layout_marginTop="@dimen/dimen_15"
+    android:layout_gravity="bottom"
+    android:layout_marginHorizontal="@dimen/dimen_5"
+    android:elevation="@dimen/dimen_12"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/edit"
-        android:textColor="@color/black_200"
-        android:textStyle="bold"
-        android:textSize="@dimen/dimenst_22"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dimen_10"
+        android:paddingTop="@dimen/dimen_15"
+        >
 
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="@dimen/dimen_15"
+            android:hint="@string/name"
+            />
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input"
+            android:layout_marginEnd="@dimen/dimen_15"
+            android:layout_toStartOf="@id/apply"
+            android:text="@string/cancel"
+            android:textColor="@color/black_200"
+            android:textSize="@dimen/dimenst_16"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input"
+            android:layout_alignParentEnd="true"
+            android:text="@string/apply"
+            android:textColor="@color/black_200"
+            android:textSize="@dimen/dimenst_16"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

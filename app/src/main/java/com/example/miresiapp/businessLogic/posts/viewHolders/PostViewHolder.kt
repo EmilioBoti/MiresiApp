@@ -13,12 +13,14 @@ class PostViewHolder(private val binding: PostItemBinding, private val userId: I
         binding.roomName.text = postModel.roomName
         binding.resiName.text = postModel.resiName
         binding.dates.text = "${postModel.dateStart} - ${postModel.dateEnd}"
-        Picasso.get().load(postModel.roomImg).fit().into(binding.imagePost)
-        Picasso.get().load(postModel.userImg).into(binding.imageUser)
+        Picasso.get().load(postModel.roomImg).fit().centerCrop().into(binding.imagePost)
+        Picasso.get().load(postModel.userImg).fit().centerCrop().into(binding.imageUser)
         binding.userName.text = postModel.userName
         binding.priceRoom.text = "€${postModel.price}"
 
-        if (userId == postModel.userId) binding.chatTo.visibility = View.GONE
+        if (userId == postModel.userId){
+            binding.chatTo.visibility = View.GONE
+        }else binding.chatTo.visibility = View.VISIBLE
 
         binding.chatTo.setOnClickListener { view ->
             if (RecyclerView.NO_POSITION != absoluteAdapterPosition){

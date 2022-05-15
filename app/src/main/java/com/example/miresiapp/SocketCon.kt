@@ -8,7 +8,6 @@ import java.net.URISyntaxException
 
 object SocketCon {
     lateinit var mSocket: Socket
-    val host: String = "https://miresi-chat.herokuapp.com/"
 
     @Synchronized
     fun setSocket(){

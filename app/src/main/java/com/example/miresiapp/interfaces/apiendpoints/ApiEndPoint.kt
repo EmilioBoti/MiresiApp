@@ -8,6 +8,11 @@ import retrofit2.http.*
 interface ApiEndPoint {
 
 
+
+    @Headers("Content-Type: application/json")
+    @PUT("api/v1/updateUser/{id}")
+    fun updateUser(@Path("id") id: Int, @Body map: HashMap<String, Any>): Call<Boolean>
+
     @Headers("Content-Type: application/json")
     @POST("api/v1/postComment")
     fun postComment(@Body comment: CommentModel): Call<CommentModel>
