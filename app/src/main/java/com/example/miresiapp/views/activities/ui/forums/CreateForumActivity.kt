@@ -4,7 +4,10 @@ import android.app.Activity
 import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.CompoundButton
+import androidx.appcompat.view.ContextThemeWrapper
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.miresiapp.R
@@ -38,6 +41,9 @@ class CreateForumActivity : AppCompatActivity(), IForum.ViewPresenter, CompoundB
         lifecycleScope.launch {
             forumLogicImpl.requestCategories()
         }
+        binding.btnGoBack.setOnClickListener {
+            onBackPressed()
+        }
 
     }
 
@@ -46,22 +52,21 @@ class CreateForumActivity : AppCompatActivity(), IForum.ViewPresenter, CompoundB
     }
 
     override fun setChips(list: MutableList<CategoryModel>) {
-        binding.tagContainer.addView(createChip("ok"))
-        /*list.forEach {
+        list.forEach {
             binding.tagContainer.addView(createChip(it.name))
-        }*/
+        }
     }
 
     private fun createChip(name: String): Chip {
 
-        return Chip(applicationContext).apply {
+        return Chip(this).apply {
             this.text = name
             this.textSize = 18f
-            this.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(Activity().baseContext,R.color.black_200)))
+            this.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(this@CreateForumActivity,R.color.black_200)))
             this.isCheckable = true
-            this.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(Activity().baseContext,R.color.white))
-            this.checkedIconTint = ColorStateList.valueOf(ContextCompat.getColor(Activity().baseContext,R.color.red_pink_400))
-            this.chipStrokeColor = ColorStateList.valueOf(ContextCompat.getColor(Activity().baseContext,R.color.red_pink_400))
+            this.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(this@CreateForumActivity,R.color.white))
+            this.checkedIconTint = ColorStateList.valueOf(ContextCompat.getColor(this@CreateForumActivity,R.color.red_pink_400))
+            this.chipStrokeColor = ColorStateList.valueOf(ContextCompat.getColor(this@CreateForumActivity,R.color.red_pink_400))
             this.chipStrokeWidth = 3f
             this.setOnCheckedChangeListener(this@CreateForumActivity)
         }

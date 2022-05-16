@@ -7,4 +7,7 @@ data class User(
     val email: String,
     val socketId: String,
     val image: String,
+    val country: String?,
+    val gender: String?,
+    val age: Int?
     )

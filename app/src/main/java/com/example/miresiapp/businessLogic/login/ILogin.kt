@@ -3,8 +3,8 @@ package com.example.miresiapp.businessLogic.login
 import com.example.miresiapp.models.User
 import com.example.miresiapp.models.UserLogin
 
-interface ILoginInteractor {
-    interface PresenterView{
+interface ILogin {
+    interface PresenterView {
         fun login(user: User?)
         fun error()
     }

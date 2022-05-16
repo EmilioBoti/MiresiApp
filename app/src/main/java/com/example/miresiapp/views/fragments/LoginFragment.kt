@@ -1,6 +1,5 @@
 package com.example.miresiapp.views.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,7 +12,7 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.miresiapp.R
 import com.example.miresiapp.SocketCon
-import com.example.miresiapp.businessLogic.login.ILoginInteractor
+import com.example.miresiapp.businessLogic.login.ILogin
 import com.example.miresiapp.businessLogic.login.LoginBusinessLogic
 import com.example.miresiapp.models.DataProvider
 import com.example.miresiapp.models.User
@@ -22,7 +21,7 @@ import com.example.miresiapp.views.activities.DashBoardActivity
 import io.socket.client.Socket
 import kotlinx.coroutines.launch
 
-class LoginFragment : Fragment(), View.OnClickListener, ILoginInteractor.PresenterView {
+class LoginFragment : Fragment(), View.OnClickListener, ILogin.PresenterView {
     private lateinit var emailInput: EditText
     private lateinit var pwInput: EditText
     private lateinit var btnLogin: Button

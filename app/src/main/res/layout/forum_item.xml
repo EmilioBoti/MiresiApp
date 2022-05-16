@@ -19,11 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
+
             <TextView
                 android:id="@+id/forumTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
                 android:layout_marginEnd="@dimen/dimen_15"
+                android:layout_toStartOf="@id/forumDate"
                 android:text="@string/forumtitle"
                 android:textColor="@color/black"
                 android:textSize="@dimen/dimenst_20"
@@ -34,26 +37,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@id/forumTitle"
-                android:layout_toEndOf="@id/forumTitle"
+                android:layout_alignParentEnd="true"
                 android:text="@string/forumDate"
                 android:textColor="@color/black"
                 android:textSize="@dimen/dimenst_16" />
 
+            <TextView
+                android:id="@+id/reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/forumDate"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:text="@string/reply"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimenst_16" />
+
             <HorizontalScrollView
-                android:layout_below="@id/forumTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="none"
+                android:layout_below="@id/reply"
                 android:layout_marginTop="@dimen/dimen_5"
-                >
+                android:scrollbars="none">
+
                 <LinearLayout
                     android:id="@+id/tagContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingTop="@dimen/dimen_5"
-                    >
-                </LinearLayout>
+                    />
             </HorizontalScrollView>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

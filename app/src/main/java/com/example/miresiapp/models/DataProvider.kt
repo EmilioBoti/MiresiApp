@@ -6,7 +6,7 @@ import com.example.miresiapp.utils.Consts
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import com.example.miresiapp.businessLogic.city.ICityInter.ModelPresenter
-import com.example.miresiapp.businessLogic.login.ILoginInteractor.ModelLogin
+import com.example.miresiapp.businessLogic.login.ILogin.ModelLogin
 import com.google.gson.Gson
 import kotlinx.coroutines.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull

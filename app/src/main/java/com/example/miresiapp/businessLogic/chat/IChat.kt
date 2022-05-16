@@ -10,7 +10,7 @@ interface IChat {
         fun chatTo(user: User)
         fun error(err: String)
     }
-    interface  ChatPresenter{
+    interface ChatPresenter{
         suspend fun requestChats(userId: Int)
         fun getList(): MutableList<User>?
         fun findChats(toFind: String)

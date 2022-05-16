@@ -14,14 +14,24 @@ import android.widget.RelativeLayout
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.lifecycleScope
 import com.example.miresiapp.R
+import com.example.miresiapp.businessLogic.chat.ChatDataProvider
+import com.example.miresiapp.businessLogic.login.ILogin
+import com.example.miresiapp.businessLogic.profile.EditProvider
+import com.example.miresiapp.businessLogic.profile.ProfilePresenterImpl
 import com.example.miresiapp.databinding.FragmentProfileBinding
+import com.example.miresiapp.models.User
 import com.example.miresiapp.utils.LocalData
 import com.example.miresiapp.utils.toast
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.launch
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(), ILogin.PresenterView {
     private lateinit var binding: FragmentProfileBinding
+    private lateinit var model: ChatDataProvider
+    private lateinit var profilePresenter: ProfilePresenterImpl
+    private var userId: Int? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_profile, container, false)
@@ -31,16 +41,16 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProfileBinding.bind(view)
 
-        Picasso.get().load(LocalData.getImageUser(activity?.applicationContext!!))
-            .fit()
-            .centerCrop()
-            .into(binding.userImage)
+        userId = LocalData.getCurrentUserId(activity?.applicationContext!!)
 
-        //binding.email.text = LocalData.getEmailUser(activity?.applicationContext!!)
-        //binding.userName.text = LocalData.getCurrentUserName(activity?.applicationContext!!)
-        //binding.country.text = LocalData.getCurrentUserCountry(activity?.applicationContext!!)
-        //binding.age.text = LocalData.getCurrentUserAge(activity?.applicationContext!!, "age")
+        model = ChatDataProvider()
+        profilePresenter = ProfilePresenterImpl(this, model)
 
+        userId?.let {
+            lifecycleScope.launch {
+                profilePresenter.requestChats(it)
+            }
+        }
         eventsClick()
     }
     private fun eventsClick(){
@@ -75,5 +85,21 @@ class ProfileFragment : Fragment() {
             startActivity(this)
         }
 
+    }
+
+    override fun login(user: User?) {
+        user?.let {
+            Picasso.get().load(LocalData.getImageUser(activity?.applicationContext!!)).fit().centerCrop()
+                .into(binding.userImage)
+            binding.userName.text = it.name
+            binding.email.text = it.email
+            binding.country.text = it.country
+            binding.gender.text = it.gender
+            binding.age.text = it.age?.toString()
+        }
+    }
+
+    override fun error() {
+        TODO("Not yet implemented")
     }
 }

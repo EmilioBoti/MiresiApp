@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/btnGoBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
@@ -34,7 +35,7 @@
     </com.google.android.material.appbar.MaterialToolbar>
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/fieldNameForum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -48,6 +49,25 @@
         app:layout_constraintTop_toBottomOf="@+id/forumToolBar"
         android:background="@drawable/login_input_corner"
         />
+    <EditText
+        android:id="@+id/fieldTextarea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="4"
+        android:gravity="top"
+        android:textAlignment="gravity"
+        android:maxLines="10"
+        android:maxLength="255"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_marginHorizontal="@dimen/dimen_20"
+        android:hint="@string/about"
+        android:padding="@dimen/dimen_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldNameForum"
+        android:background="@drawable/login_input_corner"
+        />
 
     <LinearLayout
         android:id="@+id/selectContainer"
@@ -57,7 +77,8 @@
         android:paddingStart="@dimen/dimen_20"
         android:paddingEnd="@dimen/dimen_20"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
+        app:layout_constraintTop_toBottomOf="@+id/fieldTextarea"
+        >
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_marginTop="@dimen/dimen_20"

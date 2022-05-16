@@ -1,8 +1,8 @@
 package com.example.miresiapp.businessLogic.login
 
 import android.content.Context
-import com.example.miresiapp.businessLogic.login.ILoginInteractor.PresenterView
-import com.example.miresiapp.businessLogic.login.ILoginInteractor.Presenter
+import com.example.miresiapp.businessLogic.login.ILogin.PresenterView
+import com.example.miresiapp.businessLogic.login.ILogin.Presenter
 import com.example.miresiapp.models.DataProvider
 import com.example.miresiapp.models.User
 import com.example.miresiapp.models.UserLogin
