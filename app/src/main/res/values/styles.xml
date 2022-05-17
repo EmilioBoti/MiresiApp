@@ -41,4 +41,16 @@
         >
         <item name="android:textColor">@color/white</item>
     </style>
+    <style name="settingsTitle" parent="Theme.MiresiApp">
+        <item name="android:textColor">@color/gray_200</item>
+        <item name="android:textSize">@dimen/dimenst_20</item>
+        <item name="android:layout_marginTop">@dimen/dimen_20</item>
+        <item name="android:layout_marginStart">@dimen/dimen_20</item>
+    </style>
+    <style name="settingsSubTitle" parent="Theme.MiresiApp">
+        <item name="android:textColor">@color/black_200</item>
+        <item name="android:textSize">@dimen/dimenst_25</item>
+        <item name="android:layout_marginStart">@dimen/dimen_5</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_20</item>
+    </style>
 </resources>
