@@ -7,8 +7,6 @@ import retrofit2.http.*
 
 interface ApiEndPoint {
 
-
-
     @Headers("Content-Type: application/json")
     @PUT("api/v1/updateUser/{id}")
     fun updateUser(@Path("id") id: Int, @Body map: HashMap<String, Any>): Call<Boolean>
@@ -34,7 +32,10 @@ interface ApiEndPoint {
     fun register(@Body newUser: RegisterUser): Call<User>
 
     @GET("api/v1/comments/{id}/{limit}")
-    fun getComments(@Path("id") id: Int,@Path("limit") limit: Int, ): Call<MutableList<CommentModel>>
+    fun getComments(@Path("id") id: Int,@Path("limit") limit: Int ): Call<MutableList<CommentModel>>
+
+    @GET("api/v1/homeResi/{limit}")
+    fun getHomeResis(@Path("limit") limit: Int ): Call<MutableList<Residence>>
 
     @GET("api/v1/forums")
     fun getForums(): Call<MutableList<ForumModel>>?
@@ -53,6 +54,9 @@ interface ApiEndPoint {
 
     @GET("api/v1/resirooms/{id}")
     fun getRoomsResi(@Path("id") id: Int): Call<MutableList<Room>>
+
+    @GET("api/v1/rooms/{limit}")
+    fun getRooms(@Path("limit") limit: Int): Call<MutableList<Room>>
 
     @GET("api/v1/resi/{id}")
     fun getSingleResi(@Path("id") id: Int): Call<MutableList<Residence>>

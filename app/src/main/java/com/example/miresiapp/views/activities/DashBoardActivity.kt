@@ -141,7 +141,7 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
                 return true
             }
             R.id.pageProfile ->{
-                setBackFragmentView(ProfileFragment(), PROFILE_TAG)
+                setBackFragmentView(SettingFragment(), PROFILE_TAG)
                 return true
             }
             else -> { false }

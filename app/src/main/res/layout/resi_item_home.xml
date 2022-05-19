@@ -22,19 +22,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="@dimen/dimen_10"
-            android:layout_marginBottom="@dimen/dimen_5"
+            android:layout_marginBottom="@dimen/dimen_10"
             >
             <ImageView
-                android:id="@+id/roomImage"
+                android:id="@+id/imgResi"
                 android:layout_width="@dimen/dimen_300"
                 android:layout_height="@dimen/dimen_180"
                 android:src="@drawable/barcelona"
                 android:cropToPadding="false"
                 />
+
         </androidx.cardview.widget.CardView>
         <TextView
-            android:id="@+id/roomName"
+            android:id="@+id/resiNameH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/name"
@@ -48,6 +50,7 @@
             android:id="@+id/nameCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/name"
             android:textSize="@dimen/dimenst_18"
             android:textColor="@color/black"
             android:layout_marginHorizontal="@dimen/dimen_5"

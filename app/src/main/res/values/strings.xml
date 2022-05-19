@@ -48,7 +48,7 @@
     <string name="userName">Emilio Botier</string>
     <string name="goChat">Chat</string>
     <string name="see">See</string>
-    <string name="residence">Residence</string>
+    <string name="residence">Residences</string>
     <string name="nameResi">Resicencia Universitaria</string>
     <string name="comments">Comments</string>
     <string name="seeAllComments">View All comments</string>
@@ -91,4 +91,5 @@
     <string name="support">Support</string>
     <string name="help">Get help</string>
     <string name="termsPravacy"><![CDATA[Terms & Pravacy]]></string>
+    <string name="currentChats">Current Chats</string>
 </resources>
