@@ -13,6 +13,7 @@ class HomePresenter(private val view: IHome.ViewPresenter, private val modelPres
         listResis?.let {
             view.setResi(it)
         }
+
     }
 
     override suspend fun requestRooms(limit: Int) {

@@ -10,7 +10,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class PostDataProvider: IPost.ModelPresenter, DataProviderResi() {
+open class PostDataProvider: IPost.ModelPresenter, DataProviderResi() {
     var listResi: MutableList<City>? = null
 
     override suspend fun getAllCities(): MutableList<City>? {

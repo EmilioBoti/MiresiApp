@@ -1,12 +1,9 @@
 package com.example.miresiapp.views.activities
 
-import android.icu.util.LocaleData
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.format.DateFormat
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.DatePicker
 import androidx.lifecycle.lifecycleScope
 import com.example.miresiapp.businessLogic.createPost.*
 import com.example.miresiapp.databinding.ActivityCreatePostBinding
@@ -17,7 +14,6 @@ import com.example.miresiapp.utils.toast
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.*
 
 class CreatePost : AppCompatActivity(), IPost.ViewPresenter, View.OnClickListener {

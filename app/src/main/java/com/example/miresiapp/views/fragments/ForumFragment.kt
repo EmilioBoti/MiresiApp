@@ -20,7 +20,9 @@ import com.example.miresiapp.businessLogic.forum.IForum
 import com.example.miresiapp.businessLogic.forum.adapters.ForumAdapter
 import com.example.miresiapp.databinding.FragmentForumBinding
 import com.example.miresiapp.interfaces.OnClickItemView
+import com.example.miresiapp.models.City
 import com.example.miresiapp.models.ForumModel
+import com.example.miresiapp.models.Room
 import com.example.miresiapp.utils.toast
 import com.example.miresiapp.views.activities.ui.forums.CreateForumActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -72,6 +74,14 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, Compoun
         for (i in 0 until list.size){
             binding.filter.addView(createChip(list[i].name))
         }
+    }
+
+    override fun setRooms(list: MutableList<Room>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun setCities(list: MutableList<City>) {
+        TODO("Not yet implemented")
     }
 
     private fun createChip(name: String): Chip{

@@ -16,6 +16,10 @@ interface ApiEndPoint {
     fun postComment(@Body comment: CommentModel): Call<CommentModel>
 
     @Headers("Content-Type: application/json")
+    @POST("api/v1/publishForum")
+    fun publishForum(@Body forum: Forum): Call<Boolean>
+
+    @Headers("Content-Type: application/json")
     @POST("api/v1/createPost")
     fun insertPost(@Body post: Post): Call<Boolean>
 

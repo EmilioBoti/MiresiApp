@@ -126,7 +126,7 @@
             app:boxStrokeWidth="@dimen/dimen_1">
 
             <AutoCompleteTextView
-                android:id="@+id/choose"
+                android:id="@+id/resiDrop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -170,7 +170,7 @@
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnCreatePost"
+        android:id="@+id/btnCreateForum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
