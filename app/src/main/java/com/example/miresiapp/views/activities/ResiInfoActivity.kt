@@ -11,7 +11,6 @@ import android.widget.GridLayout
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
@@ -19,15 +18,12 @@ import com.example.miresiapp.businessLogic.comments.adapters.CommentAdapter2
 import com.example.miresiapp.businessLogic.residence.DataProviderResi
 import com.example.miresiapp.businessLogic.residence.IResi.PresenterView
 import com.example.miresiapp.businessLogic.residence.ResiInteractorImpl
-import com.example.miresiapp.businessLogic.residence.adapters.CommentAdapter
 import com.example.miresiapp.businessLogic.residence.adapters.RoomAdapter
 import com.example.miresiapp.databinding.ActivityResiInfoBinding
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.CommentModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
-import com.example.miresiapp.utils.toast
-import com.example.miresiapp.views.fragments.CommentsFragment
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 

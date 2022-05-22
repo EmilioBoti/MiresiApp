@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.fragments.forum.CommentsFragment"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
+
     <TextView
         android:id="@+id/commentTitle"
         android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
         app:layout_constraintBottom_toTopOf="@id/commentContainer"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/commentContainer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_0"
@@ -30,7 +30,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/divider"
-        tools:listitem="@layout/comment_item2"
         />
 
     <com.google.android.material.divider.MaterialDivider
@@ -78,4 +77,5 @@
             android:textSize="@dimen/dimenst_18"
             android:textStyle="bold" />
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

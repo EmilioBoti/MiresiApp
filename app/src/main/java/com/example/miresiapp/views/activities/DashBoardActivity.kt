@@ -12,6 +12,7 @@ import com.example.miresiapp.utils.LocalData
 import com.example.miresiapp.utils.Notifications
 import com.example.miresiapp.views.activities.ui.settings.BaseSettings
 import com.example.miresiapp.views.fragments.*
+import com.example.miresiapp.views.fragments.forum.ForumFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import com.google.gson.Gson

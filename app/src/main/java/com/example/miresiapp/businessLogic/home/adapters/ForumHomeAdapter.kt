@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
-import com.example.miresiapp.businessLogic.forum.adapters.ForumViewHolder
+import com.example.miresiapp.businessLogic.forum.adapters.viewholders.ForumViewHolder
 import com.example.miresiapp.interfaces.OnClickItemView
-import com.example.miresiapp.models.ForumModel
+import com.example.miresiapp.models.forumModels.ForumModel
 
 class ForumHomeAdapter(private val list: MutableList<ForumModel>, private val listener: OnClickItemView): RecyclerView.Adapter<ForumViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForumViewHolder {

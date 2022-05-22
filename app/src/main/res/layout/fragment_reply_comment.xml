@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".views.fragments.forum.CommentsFragment"
-    android:background="@color/white">
+    tools:context=".views.fragments.forum.ReplyComment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/replyContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:listitem="@layout/comment_item2"
+        android:layout_marginStart="@dimen/dimen_25"
         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

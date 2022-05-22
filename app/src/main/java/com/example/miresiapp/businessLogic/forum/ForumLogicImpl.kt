@@ -3,14 +3,14 @@ package com.example.miresiapp.businessLogic.forum
 
 import android.content.Context
 import com.example.miresiapp.models.City
-import com.example.miresiapp.models.Forum
-import com.example.miresiapp.models.ForumModel
+import com.example.miresiapp.models.forumModels.Forum
+import com.example.miresiapp.models.forumModels.ForumModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.utils.LocalData
 import com.example.miresiapp.utils.toast
 
-class ForumLogicImpl(private val viewer: IForum.ViewPresenter, private val model: ForumProvider,
-                     private val context: Context
+open class ForumLogicImpl(private val viewer: IForum.ViewPresenter, private val model: ForumProvider,
+                          private val context: Context
 ): IForum.Presenter {
     private var list: MutableList<ForumModel>? = null
     private var listCategory: MutableList<CategoryModel>? = null

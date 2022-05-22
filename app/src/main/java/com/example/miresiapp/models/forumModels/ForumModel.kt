@@ -1,4 +1,4 @@
-package com.example.miresiapp.models
+package com.example.miresiapp.models.forumModels
 
 data class ForumModel(
     val forumId: Int,

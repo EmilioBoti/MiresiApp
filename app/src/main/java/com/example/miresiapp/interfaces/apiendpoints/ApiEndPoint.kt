@@ -2,10 +2,24 @@ package com.example.miresiapp.interfaces.apiendpoints
 
 import com.example.miresiapp.businessLogic.forum.CategoryModel
 import com.example.miresiapp.models.*
+import com.example.miresiapp.models.forumModels.Comment
+import com.example.miresiapp.models.forumModels.Forum
+import com.example.miresiapp.models.forumModels.ForumComment
+import com.example.miresiapp.models.forumModels.ForumModel
 import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiEndPoint {
+
+    @Headers("Content-type: application/json")
+    @POST("api/v1/commentForum")
+    fun commentForum(@Body comment: ForumComment): Call<Boolean>
+
+    @GET("api/v1/forumComments/{forumId}")
+    fun getCommentsForum(@Path("forumId") forumId: Int ): Call<MutableList<Comment>>
+
+    @GET("api/v1/commentsReply/{fatherId}/{forumId}")
+    fun getReplyComments(@Path("fatherId") fatherId: Int, @Path("forumId") forumId: Int ): Call<MutableList<Comment>>
 
     @Headers("Content-Type: application/json")
     @PUT("api/v1/updateUser/{id}")

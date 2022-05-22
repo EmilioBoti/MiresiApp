@@ -1,4 +1,4 @@
-package com.example.miresiapp.businessLogic.forum.adapters
+package com.example.miresiapp.businessLogic.forum.adapters.viewholders
 
 import android.content.res.ColorStateList
 import android.view.View
@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
 import com.example.miresiapp.interfaces.OnClickItemView
-import com.example.miresiapp.models.ForumModel
+import com.example.miresiapp.models.forumModels.ForumModel
 
 class ForumViewHolder(itemView: View, private val listener: OnClickItemView): RecyclerView.ViewHolder(itemView) {
     private val forumTitle: TextView = itemView.findViewById(R.id.forumTitle)

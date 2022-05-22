@@ -1,4 +1,4 @@
-package com.example.miresiapp.views.fragments
+package com.example.miresiapp.views.fragments.forum
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

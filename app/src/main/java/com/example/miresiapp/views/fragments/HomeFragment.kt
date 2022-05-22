@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.view.*
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
-import com.example.miresiapp.businessLogic.forum.adapters.ForumAdapter
 import com.example.miresiapp.businessLogic.home.HomePresenter
 import com.example.miresiapp.businessLogic.home.HomeProvider
 import com.example.miresiapp.businessLogic.home.IHome
@@ -19,10 +17,9 @@ import com.example.miresiapp.businessLogic.home.adapters.ResiHomeAdapter
 import com.example.miresiapp.businessLogic.residence.adapters.RoomAdapter
 import com.example.miresiapp.databinding.FragmentHomeBinding
 import com.example.miresiapp.interfaces.OnClickItemView
-import com.example.miresiapp.models.ForumModel
+import com.example.miresiapp.models.forumModels.ForumModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
-import com.example.miresiapp.utils.toast
 import com.example.miresiapp.views.activities.ResiInfoActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch

@@ -1,12 +1,9 @@
 package com.example.miresiapp.businessLogic.home
 
-import com.example.miresiapp.businessLogic.chat.ChatDataProvider
-import com.example.miresiapp.businessLogic.residence.DataProviderResi
 import com.example.miresiapp.interfaces.apiendpoints.ApiEndPoint
-import com.example.miresiapp.models.ForumModel
+import com.example.miresiapp.models.forumModels.ForumModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
-import com.example.miresiapp.models.User
 import com.example.miresiapp.utils.Consts
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

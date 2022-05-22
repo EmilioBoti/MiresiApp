@@ -1,6 +1,6 @@
 package com.example.miresiapp.businessLogic.home
 
-import com.example.miresiapp.models.ForumModel
+import com.example.miresiapp.models.forumModels.ForumModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 

@@ -17,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".views.activities.ui.forums.ForumReply"
+            android:exported="false" />
+        <activity
             android:name=".views.activities.ui.settings.BaseSettings"
             android:exported="false" />
         <activity

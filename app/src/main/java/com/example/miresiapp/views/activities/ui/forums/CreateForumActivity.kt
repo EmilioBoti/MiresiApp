@@ -15,6 +15,9 @@ import com.example.miresiapp.businessLogic.createPost.DropDownAdapter
 import com.example.miresiapp.businessLogic.forum.*
 import com.example.miresiapp.databinding.ActivityCreateForumBinding
 import com.example.miresiapp.models.*
+import com.example.miresiapp.models.forumModels.Comment
+import com.example.miresiapp.models.forumModels.ForumComment
+import com.example.miresiapp.models.forumModels.ForumModel
 import com.example.miresiapp.utils.toast
 import com.google.android.material.chip.Chip
 import kotlinx.coroutines.launch
@@ -125,6 +128,14 @@ class CreateForumActivity : AppCompatActivity(), IForum.ViewPresenter,
 
     override fun error(s: String) {
         toast(this, s)
+    }
+
+    override fun showForumsComments(it: MutableList<Comment>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showReplyComments(commentId: Int, forumId: Int) {
+        TODO("Not yet implemented")
     }
 
     private fun createChip(id: Int, name: String): Chip {
