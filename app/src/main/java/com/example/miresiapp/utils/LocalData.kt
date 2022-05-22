@@ -45,6 +45,16 @@ class LocalData {
             }
             return true
         }
+
+        fun removeData(context: Context) {
+            val prefe = context.getSharedPreferences(context.resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
+                ?.edit()
+            prefe?.apply {
+                clear()
+                apply()
+            }
+        }
+
         fun getCurrentUserCountry(context: Context): String? {
             val prefe = context.getSharedPreferences(context.resources.getString(R.string.pref_loged_user), Context.MODE_PRIVATE)
             return prefe?.getString(country, "None")

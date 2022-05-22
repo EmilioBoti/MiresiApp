@@ -10,7 +10,7 @@ import com.example.miresiapp.SocketCon
 import com.example.miresiapp.models.Message
 import com.example.miresiapp.utils.LocalData
 import com.example.miresiapp.utils.Notifications
-import com.example.miresiapp.utils.toast
+import com.example.miresiapp.views.activities.ui.settings.BaseSettings
 import com.example.miresiapp.views.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
@@ -136,12 +136,14 @@ class DashBoardActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedL
                 setBackFragmentView(ForumFragment(), FORUM_TAG)
                 return true
             }
-            R.id.pageFavorite ->{
+            R.id.pageFavorite -> {
                 setBackFragmentView(FavoriteFragment(), FAVORITE_TAG)
                 return true
             }
-            R.id.pageProfile ->{
-                setBackFragmentView(SettingFragment(), PROFILE_TAG)
+            R.id.pageProfile -> {
+                Intent(this, BaseSettings::class.java).apply {
+                    startActivity(this)
+                }
                 return true
             }
             else -> { false }

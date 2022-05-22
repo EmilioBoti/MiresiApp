@@ -3,6 +3,7 @@ package com.example.miresiapp.businessLogic.home
 import com.example.miresiapp.businessLogic.chat.ChatDataProvider
 import com.example.miresiapp.businessLogic.residence.DataProviderResi
 import com.example.miresiapp.interfaces.apiendpoints.ApiEndPoint
+import com.example.miresiapp.models.ForumModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 import com.example.miresiapp.models.User
@@ -40,6 +41,22 @@ class HomeProvider: IHome.ModelPresenter {
 
                 val service = retrofit.create(ApiEndPoint::class.java)
                 service.getRooms(limit).execute().body()
+            }catch (err: Exception){
+                null
+            }
+        }
+    }
+
+    override suspend fun getForums(limit: Int): MutableList<ForumModel>? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val retrofit = Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl(Consts.HOST)
+                    .build()
+
+                val services = retrofit.create(ApiEndPoint::class.java)
+                services.getForum(limit)?.execute()?.body()
             }catch (err: Exception){
                 null
             }

@@ -1,14 +1,14 @@
-package com.example.miresiapp.businessLogic.forum.adapters
+package com.example.miresiapp.businessLogic.home.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
+import com.example.miresiapp.businessLogic.forum.adapters.ForumViewHolder
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.ForumModel
 
-class ForumAdapter( private val list: MutableList<ForumModel>,private val listener: OnClickItemView): RecyclerView.Adapter<ForumViewHolder>() {
-
+class ForumHomeAdapter(private val list: MutableList<ForumModel>, private val listener: OnClickItemView): RecyclerView.Adapter<ForumViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForumViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.forum_item2, parent,false)
         return ForumViewHolder(view, listener)

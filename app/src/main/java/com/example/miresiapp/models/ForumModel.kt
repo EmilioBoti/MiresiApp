@@ -10,7 +10,7 @@ data class ForumModel(
     val cityId: Int?,
     val categoryName: String?,
     val dateCreated: String,
-    val image: String?,
+    val image: Int?,
     val tag: String?,
     val resiName: String?,
     val cityName: String?

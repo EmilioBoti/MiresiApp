@@ -1,11 +1,11 @@
 package com.example.miresiapp.models
 
 data class Forum(
-    val name: String,
-    val creatorUser: Int,
-    val about: String,
-    val resiId: Int?,
-    val cityId: Int?,
-    val categoryId: Int?,
-    val image: String?
+    var name: String,
+    var creatorUser: Int,
+    var about: String? = "",
+    var resiId: Int?= 0,
+    var cityId: Int?= 0,
+    var categoryId: Int? = 0,
+    var image: Int? = 0
     )

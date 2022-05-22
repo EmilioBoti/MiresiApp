@@ -31,7 +31,7 @@
                     android:id="@+id/userImage"
                     android:layout_width="@dimen/dimen_40"
                     android:layout_height="@dimen/dimen_40"
-                    android:src="@drawable/ic_launcher_foreground"
+                    android:src="@drawable/person_24"
                     />
             </androidx.cardview.widget.CardView>
 

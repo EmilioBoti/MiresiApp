@@ -3,6 +3,7 @@ package com.example.miresiapp.businessLogic.forum.adapters
 import android.content.res.ColorStateList
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -14,11 +15,12 @@ import com.example.miresiapp.models.ForumModel
 class ForumViewHolder(itemView: View, private val listener: OnClickItemView): RecyclerView.ViewHolder(itemView) {
     private val forumTitle: TextView = itemView.findViewById(R.id.forumTitle)
     private val forumDate: TextView = itemView.findViewById(R.id.forumDate)
+    private val icon: ImageView = itemView.findViewById(R.id.iconContainer)
     private val tagContainer: LinearLayout = itemView.findViewById(R.id.tagContainer)
-    private val textsize: Float = 18f
+    private val textsize: Float = 16f
     private val dimenRM: Int = 12
     private val dimenRP: Int = 20
-    private val dimenTP: Int = 3
+    private val dimenTP: Int = 8
     private val dimenB: Int = 0
 
     private fun setView(text: String ): TextView {
@@ -36,8 +38,17 @@ class ForumViewHolder(itemView: View, private val listener: OnClickItemView): Re
     }
 
     fun bindData(forum: ForumModel){
-        forumTitle.text = forum.forumName.uppercase()
+        forumTitle.text = forum.forumName
         forumDate.text = forum.dateCreated
+        tagContainer.removeAllViews()
+
+        forum.image?.let {
+            try {
+                icon.setImageDrawable(ContextCompat.getDrawable(itemView.context, it))
+            }catch (err: Exception){
+
+            }
+        }
 
         forum.cityName?.apply {
             tagContainer.addView(setView(this))

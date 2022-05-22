@@ -9,7 +9,6 @@ class ProfilePresenterImpl(private val viewer: ILogin.PresenterView, private val
 
     override suspend fun requestChats(userId: Int) {
         user = model.getUser(userId)
-
         user?.let {
             viewer.login(it[0])
         }

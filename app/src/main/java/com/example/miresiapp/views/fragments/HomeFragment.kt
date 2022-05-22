@@ -10,13 +10,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
+import com.example.miresiapp.businessLogic.forum.adapters.ForumAdapter
 import com.example.miresiapp.businessLogic.home.HomePresenter
 import com.example.miresiapp.businessLogic.home.HomeProvider
 import com.example.miresiapp.businessLogic.home.IHome
+import com.example.miresiapp.businessLogic.home.adapters.ForumHomeAdapter
 import com.example.miresiapp.businessLogic.home.adapters.ResiHomeAdapter
 import com.example.miresiapp.businessLogic.residence.adapters.RoomAdapter
 import com.example.miresiapp.databinding.FragmentHomeBinding
 import com.example.miresiapp.interfaces.OnClickItemView
+import com.example.miresiapp.models.ForumModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 import com.example.miresiapp.utils.toast
@@ -27,7 +30,7 @@ import kotlinx.coroutines.launch
 class HomeFragment : Fragment(), IHome.ViewPresenter, OnClickItemView {
     private lateinit var binding: FragmentHomeBinding
     private var fragContainer: FrameLayout? = null
-    private lateinit var bottomNavigationView: BottomNavigationView
+    private var bottomNavigationView: BottomNavigationView? = null
     private lateinit var model: HomeProvider
     private lateinit var homePresenter: HomePresenter
 
@@ -41,7 +44,7 @@ class HomeFragment : Fragment(), IHome.ViewPresenter, OnClickItemView {
 
         fragContainer = activity?.findViewById<FrameLayout>(R.id.fragContainer)
         bottomNavigationView = activity?.findViewById(R.id.bottom_navigation)!!
-        bottomNavigationView.menu.findItem(R.id.pageHome).isChecked = true
+        bottomNavigationView?.menu?.findItem(R.id.pageHome)?.isChecked = true
 
         model = HomeProvider()
         homePresenter = HomePresenter(this, model)
@@ -51,6 +54,10 @@ class HomeFragment : Fragment(), IHome.ViewPresenter, OnClickItemView {
         }
         lifecycleScope.launch {
             homePresenter.requestRooms(10)
+
+        }
+        lifecycleScope.launch {
+            homePresenter.requestForums(3)
         }
 
         binding.searcher.setOnSearchClickListener {
@@ -81,6 +88,15 @@ class HomeFragment : Fragment(), IHome.ViewPresenter, OnClickItemView {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
             adapter = resiAdapter
+        }
+    }
+
+    override fun setForums(list: MutableList<ForumModel>) {
+        val forumdapter = ForumHomeAdapter(list, this)
+        binding.forumsContainer.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+            adapter = forumdapter
         }
     }
 

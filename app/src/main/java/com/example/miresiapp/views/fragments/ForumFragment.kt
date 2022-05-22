@@ -22,6 +22,7 @@ import com.example.miresiapp.databinding.FragmentForumBinding
 import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.City
 import com.example.miresiapp.models.ForumModel
+import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 import com.example.miresiapp.utils.toast
 import com.example.miresiapp.views.activities.ui.forums.CreateForumActivity
@@ -32,7 +33,7 @@ import kotlinx.coroutines.launch
 class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, CompoundButton.OnCheckedChangeListener {
     private lateinit var binding: FragmentForumBinding
     private lateinit var model: ForumProvider
-    private lateinit var forumPresenter: IForum.Presenter
+    private lateinit var forumPresenter: ForumLogicImpl
     private lateinit var forumAdapter: ForumAdapter
     private lateinit var bottomNavigationView: BottomNavigationView
 
@@ -47,7 +48,7 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, Compoun
         bottomNavigationView = activity?.findViewById(R.id.bottom_navigation)!!
         bottomNavigationView.selectedItemId = R.id.pageForum
         model = ForumProvider()
-        forumPresenter = ForumLogicImpl(this, model)
+        forumPresenter = ForumLogicImpl(this, model, activity?.applicationContext!!)
 
         lifecycleScope.launch {
             forumPresenter.requestForums()
@@ -84,6 +85,18 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, Compoun
         TODO("Not yet implemented")
     }
 
+    override fun setResis(list: MutableList<Residence>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showForumReply(id: Int) {
+        toast(activity, id)
+    }
+
+    override fun error(s: String) {
+        TODO("Not yet implemented")
+    }
+
     private fun createChip(name: String): Chip{
         return Chip(activity).apply {
             this.text = name
@@ -92,13 +105,14 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, Compoun
             this.isCheckable = true
             this.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),R.color.white))
             this.checkedIconTint = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),R.color.red_pink_400))
-            this.chipStrokeColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),R.color.red_pink_400))
+            this.chipStrokeColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),R.color.green_turquoise_darker))
             this.chipStrokeWidth = 3f
             this.setOnCheckedChangeListener(this@ForumFragment)
         }
     }
+
     override fun onClickItem(pos: Int, view: View) {
-        toast(context, pos)
+        forumPresenter.clickedForum(pos)
     }
 
     override fun addFavoriteItem(pos: Int, view: View) {

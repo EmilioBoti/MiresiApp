@@ -44,6 +44,9 @@ interface ApiEndPoint {
     @GET("api/v1/forums")
     fun getForums(): Call<MutableList<ForumModel>>?
 
+    @GET("api/v1/forum/{limit}")
+    fun getForum(@Path("limit") limit: Int): Call<MutableList<ForumModel>>?
+
     @GET("api/v1/forums/{name}")
     fun getFilterForums(@Path("name") name: String): Call<MutableList<ForumModel>>?
 
