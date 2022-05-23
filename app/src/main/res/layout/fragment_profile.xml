@@ -297,7 +297,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dimenst_25"
                 android:layout_toStartOf="@id/goToDesactiveAccount"
-                android:text="@string/age"
                 android:textSize="@dimen/dimenst_20" />
             <ImageView
                 android:id="@+id/goToDesactiveAccount"
@@ -336,7 +335,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dimenst_25"
                 android:layout_toStartOf="@id/goToDeleteAccount"
-                android:text="@string/deleteAccount"
                 android:textSize="@dimen/dimenst_20" />
             <ImageView
                 android:id="@+id/goToDeleteAccount"

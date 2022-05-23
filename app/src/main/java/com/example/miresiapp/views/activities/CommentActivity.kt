@@ -22,7 +22,6 @@ import java.util.*
 
 class CommentActivity : AppCompatActivity(), ViewPresenter, OnClickItemView {
     private lateinit var binding: ActivityCommentBinding
-    private var userId: Int? = null
     private var resiId: Int? = null
     private lateinit var model: CommentProvider
     private lateinit var commentPresenter: CommentLogicImpl
@@ -81,15 +80,12 @@ class CommentActivity : AppCompatActivity(), ViewPresenter, OnClickItemView {
     }
 
     override fun error() {
-        TODO("Not yet implemented")
     }
 
     override fun onClickItem(pos: Int, view: View) {
-        TODO("Not yet implemented")
     }
 
     override fun addFavoriteItem(pos: Int, view: View) {
-        TODO("Not yet implemented")
     }
 
 

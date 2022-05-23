@@ -3,7 +3,7 @@
     <item android:drawable="@color/white"
         />
     <item>
-        <bitmap android:src="@mipmap/ic_logo_foreground"
+        <bitmap android:src="@mipmap/logo_2_foreground"
             android:gravity="center"
             android:mipMap="true"
             />

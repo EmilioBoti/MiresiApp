@@ -23,7 +23,6 @@ import com.example.miresiapp.models.forumModels.ForumModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 import com.example.miresiapp.models.forumModels.Comment
-import com.example.miresiapp.models.forumModels.ForumComment
 import com.example.miresiapp.views.activities.ui.forums.CreateForumActivity
 import com.example.miresiapp.views.activities.ui.forums.ForumReply
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -106,8 +105,8 @@ class ForumFragment : Fragment(), IForum.ViewPresenter, OnClickItemView, Compoun
         TODO("Not yet implemented")
     }
 
-    override fun showReplyComments(commentId: Int, forumId: Int) {
-        TODO("Not yet implemented")
+    override fun showReplyComments(comment: Comment) {
+
     }
 
     private fun createChip(name: String): Chip{

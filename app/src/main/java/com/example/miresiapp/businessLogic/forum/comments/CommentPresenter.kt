@@ -19,17 +19,14 @@ class CommentPresenter(private val viewer: IForum.ViewPresenter, private val mod
     }
 
     override suspend fun requestReplyComments(fatherId: Int, forumId: Int) {
-        val list = model.getReplyComments(fatherId, forumId)
-        list?.let {
 
-        }
     }
 
     fun getCommentClicked(pos: Int) {
         listComments?.let {
             val commentId = it[pos].id
             val forumId = it[pos].forumId
-            viewer.showReplyComments(commentId, forumId)
+            viewer.showReplyComments(it[pos])
         }
     }
 

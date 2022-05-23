@@ -17,7 +17,7 @@ interface IForum {
         fun showForumReply(id: Int)
         fun error(s: String)
         fun showForumsComments(it: MutableList<Comment>)
-        fun showReplyComments(commentId: Int, forumId: Int)
+        fun showReplyComments(comment: Comment)
     }
     interface Presenter{
         suspend fun requestForums()

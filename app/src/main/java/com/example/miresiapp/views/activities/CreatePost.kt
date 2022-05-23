@@ -123,7 +123,7 @@ class CreatePost : AppCompatActivity(), IPost.ViewPresenter, View.OnClickListene
     }
 
     override fun postCreated(valid: Boolean) {
-        toast(applicationContext, valid)
+        toast(applicationContext, "Created")
     }
 
     override fun errorValidDate(err: String) {

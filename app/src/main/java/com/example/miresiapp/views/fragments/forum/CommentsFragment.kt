@@ -47,6 +47,8 @@ class CommentsFragment : Fragment(), IForum.ViewPresenter, OnClickItemView {
                 commentPresenter.requestComment(it)
             }
         }
+
+
     }
 
     override fun showForumsComments(it: MutableList<Comment>) {
@@ -58,12 +60,16 @@ class CommentsFragment : Fragment(), IForum.ViewPresenter, OnClickItemView {
         }
     }
 
-    override fun showReplyComments(commentId: Int, forumId: Int) {
+    override fun showReplyComments(comment: Comment) {
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(R.id.commentContainer, ReplyComment().apply {
                 arguments = Bundle().apply {
-                    putInt("fatherId", commentId)
-                    putInt("forunmId", forumId)
+                    putString("userName", comment.name)
+                    putString("comment", comment.comments)
+                    putString("image", comment.image)
+                    putString("date", comment.date_created)
+                    putInt("fatherId", comment.id)
+                    putInt("forunmId", comment.forumId)
                 }
             })
             ?.addToBackStack(null)

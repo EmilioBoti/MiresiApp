@@ -20,6 +20,7 @@ import com.example.miresiapp.interfaces.OnClickItemView
 import com.example.miresiapp.models.forumModels.ForumModel
 import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
+import com.example.miresiapp.utils.toast
 import com.example.miresiapp.views.activities.ResiInfoActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch

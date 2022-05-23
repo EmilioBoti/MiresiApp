@@ -54,7 +54,7 @@ class CommentLogicImpl(private val view: ViewPresenter, private val model: Model
     }
 
     private fun currentDate(): String {
-        val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss a")
+        val date = SimpleDateFormat("yyyy/MM/dd")
         return date.format(Date().time)
     }
 

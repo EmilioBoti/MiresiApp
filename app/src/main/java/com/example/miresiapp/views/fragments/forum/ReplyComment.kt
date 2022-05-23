@@ -11,9 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.miresiapp.R
 import com.example.miresiapp.businessLogic.forum.CategoryModel
 import com.example.miresiapp.businessLogic.forum.ForumProvider
-import com.example.miresiapp.businessLogic.forum.IForum
 import com.example.miresiapp.businessLogic.forum.adapters.CommentAdapter
-import com.example.miresiapp.businessLogic.forum.comments.CommentPresenter
 import com.example.miresiapp.businessLogic.forum.comments.IComment
 import com.example.miresiapp.businessLogic.forum.comments.ReplyCommPresenter
 import com.example.miresiapp.databinding.FragmentReplyCommentBinding
@@ -23,6 +21,7 @@ import com.example.miresiapp.models.Residence
 import com.example.miresiapp.models.Room
 import com.example.miresiapp.models.forumModels.Comment
 import com.example.miresiapp.models.forumModels.ForumModel
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 
 class ReplyComment : Fragment(), IComment.ViewPresenter, OnClickItemView {
@@ -45,6 +44,11 @@ class ReplyComment : Fragment(), IComment.ViewPresenter, OnClickItemView {
         commentPresenter = ReplyCommPresenter(this, model, activity?.applicationContext!!)
 
         data?.let {
+            binding.userName.text = it.getString("userName")
+            binding.comment.text = it.getString("comment")
+            binding.date.text = it.getString("date")
+            Picasso.get().load(it.getString("image")).into(binding.userImage)
+
             lifecycleScope.launch {
                 commentPresenter.requestReplyComments(it.getInt("fatherId"), it.getInt("forunmId"))
             }
@@ -65,7 +69,7 @@ class ReplyComment : Fragment(), IComment.ViewPresenter, OnClickItemView {
     override fun addFavoriteItem(pos: Int, view: View) {
     }
 
-    override fun showReplyComments(commentId: Int, forumId: Int) {
+    override fun showReplyComments(comment: Comment) {
     }
 
     override fun showForums(list: MutableList<ForumModel>) {
@@ -90,6 +94,6 @@ class ReplyComment : Fragment(), IComment.ViewPresenter, OnClickItemView {
     }
 
     override fun showForumsComments(it: MutableList<Comment>) {
-        
+
     }
 }

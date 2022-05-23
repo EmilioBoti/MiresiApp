@@ -16,7 +16,6 @@ import com.example.miresiapp.businessLogic.forum.*
 import com.example.miresiapp.databinding.ActivityCreateForumBinding
 import com.example.miresiapp.models.*
 import com.example.miresiapp.models.forumModels.Comment
-import com.example.miresiapp.models.forumModels.ForumComment
 import com.example.miresiapp.models.forumModels.ForumModel
 import com.example.miresiapp.utils.toast
 import com.google.android.material.chip.Chip
@@ -134,7 +133,7 @@ class CreateForumActivity : AppCompatActivity(), IForum.ViewPresenter,
         TODO("Not yet implemented")
     }
 
-    override fun showReplyComments(commentId: Int, forumId: Int) {
+    override fun showReplyComments(comment: Comment) {
         TODO("Not yet implemented")
     }
 

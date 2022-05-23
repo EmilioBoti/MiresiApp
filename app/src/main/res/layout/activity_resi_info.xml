@@ -141,6 +141,9 @@
                     tools:listitem="@layout/comment_item"
                     />
 
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <RelativeLayout
                     android:id="@+id/seeAllComments"
                     android:layout_width="match_parent"
@@ -163,9 +166,6 @@
                         android:layout_centerVertical="true"
                         android:src="@drawable/arrow_forward_ios_24" />
                 </RelativeLayout>
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
